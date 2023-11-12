@@ -14,8 +14,12 @@ W7:	Students create groups for battles
 
 W8:	Students setup an automated workflow for the forked repository on Github
 
----------------------------------------------------------------------------------------------------------------
+W9: 	Students decide to join a tournament
 
+W10: 	Educator decides to close tournament
+
+---------------------------------------------------------------------------------------------------------------
+WORLD CONTROLLED
 SP1:	An educator fills out a tournament creation form
 
 SP2:	An educator uploads the details of a code kata battle(the assignment, the rules, the tests)
@@ -41,11 +45,19 @@ SP11:	A student registers an account on the platform
 
 SP12:	A student subscribes to a tournament
 
-SP13: 	Students and educator can look at the rank for a battle they are involved in
+SP13: 	Students and educator look at the rank for a battle they are involved in
 
-SP14:	Students and educator can look at the rank for a tournament
+SP14:	Students and educator look at the rank for a tournament
+
+sp15:	Educator closes tournament
+
+sp16: 	User looks at list of available tournament
+
+SP17:	A student accepts and invitet o a group to partecipate to a battle
+
 
 ---------------------------------------------------------------------------------------------------------------
+MACHINE CONTROLLED
 
 SP1:	The platform notifies all students when a tournament is created
 
@@ -69,21 +81,26 @@ M2:	The platform updates scores and leaderboard of a group
 
 M3:	The platform updates students personal scores at the end of a battle
 
+M4: 	Close battle on submission deadline 
+
+
+
 ---------------------------------------------------------------------------------------------------------------
 
 SCENARIOS:
 
-s1:	Educator creates tournament 
-s2: 	Educator creates battle 
-s3:	Student subscribe tournament
-s4: 	Team of students join battle
-s5	Application scores commit from student
-s6:	Battle subssion deadline expires
-s7: 	Educator close torunament
-s8:	Users looks at battle rank(only involved)
-s9:	Users look at tournament rank
-s10:	User looks at list of available tournament
-s11:	Join a team for a battle
+s1:	Educator creates tournament [w1, wsp1, msp1]
+s2: 	Educator creates battle [w3,wsp2, msp2]
+s3:	Student subscribe tournament [w9,wsp12, wsp16]
+s4: 	Team of students join battle [w5,w7,wsp8,w8, msp5, msp6]
+s5	Application scores commit from student[wsp9, msp4,m1, m2]
+s6:	Battle subssion deadline expires [m3, m4,msp3]
+s7: 	Educator close torunament [w10,wsp15, msp14]
+s8:	Users looks at battle rank(only involved) [wsp13]
+s9:	Users look at tournament rank[WSP14]
+s10:	Join a team for a battle[w7,wsp8,wsp17]
+s12:	User logs in[wsp4,wsp5]
+s13:	User sign in[wsp10, wsp11]
 
 ---------------
 
