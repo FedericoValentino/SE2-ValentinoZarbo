@@ -8,7 +8,7 @@
 
 ----------
 
-## Assignement
+## Assignment
 
 CodeKataBattle (CKB) is a new platform that helps students improve their software development skills
 by training with peers on code kata1 . Educators use the platform to challenge students by creating code
