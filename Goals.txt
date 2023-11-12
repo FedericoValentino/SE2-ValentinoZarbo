@@ -164,6 +164,10 @@ A2:	An educator will complete the manual evaluation
 
 A3:	Github will always notifies the CKB platform after every student commit
 
+A4: 	Students are always able to create a group to join a battle
+
+A5:	Educators will only close a tournament when no battle is still ongoing
+
 
 #TODO Educator uses the CKB platform to go through all sources for manual evaluation
 #TODO Students can look at tournaments rank he is or was subscribed to
