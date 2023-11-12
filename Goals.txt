@@ -41,9 +41,9 @@ SP11:	A student registers an account on the platform
 
 SP12:	A student subscribes to a tournament
 
-SP13: 	Students and educator can look at the final leaderboard for a battle/tournament
+SP13: 	Students and educator can look at the rank for a battle they are involved in
 
-SP14:	Students and educators can look at other students scores for each tournament/battle they partecipated in
+SP14:	Students and educator can look at the rank for a tournament
 
 ---------------------------------------------------------------------------------------------------------------
 
@@ -70,6 +70,22 @@ M2:	The platform updates scores and leaderboard of a group
 M3:	The platform updates students personal scores at the end of a battle
 
 ---------------------------------------------------------------------------------------------------------------
+
+SCENARIOS:
+
+s1:	Educator creates tournament 
+s2: 	Educator creates battle 
+s3:	Student subscribe tournament
+s4: 	Team of students join battle
+s5	Application scores commit from student
+s6:	Battle subssion deadline expires
+s7: 	Educator close torunament
+s8:	Users looks at battle rank(only involved)
+s9:	Users look at tournament rank
+s10:	User looks at list of available tournament
+s11:	Join a team for a battle
+
+---------------
 
 G1: 	An educator can create a tournament with a set of rules
 
