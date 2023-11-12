@@ -89,18 +89,19 @@ M4: 	Close battle on submission deadline
 
 SCENARIOS:
 
-s1:	Educator creates tournament [w1, wsp1, msp1]
-s2: 	Educator creates battle [w3,wsp2, msp2]
-s3:	Student subscribe tournament [w9,wsp12, wsp16]
-s4: 	Team of students join battle [w5,w7,wsp8,w8, msp5, msp6]
-s5	Application scores commit from student[wsp9, msp4,m1, m2]
-s6:	Battle subssion deadline expires [m3, m4,msp3]
-s7: 	Educator close torunament [w10,wsp15, msp14]
+s1:	User sign in[wsp10, wsp11]
+s2:	User logs in[wsp4,wsp5]
+s3:	Educator creates tournament [w1, wsp1, msp1]
+s4: 	Educator creates battle [w3,wsp2, msp2]
+s5:	Student subscribe tournament [w9,wsp12, wsp16]
+s6: 	Team of students join battle [w5,w7,wsp8,w8, msp5, msp6]
+s7:	Application scores commit from student[wsp9, msp4,m1, m2]
 s8:	Users looks at battle rank(only involved) [wsp13]
-s9:	Users look at tournament rank[WSP14]
-s10:	Join a team for a battle[w7,wsp8,wsp17]
-s12:	User logs in[wsp4,wsp5]
-s13:	User sign in[wsp10, wsp11]
+s9:	Battle subssion deadline expires [m3, m4,msp3]
+s10: 	Educator close torunament [w10,wsp15, msp14]	
+s11:	Users look at tournament rank[WSP14]
+
+
 
 ---------------
 
