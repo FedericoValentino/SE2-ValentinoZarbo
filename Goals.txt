@@ -139,22 +139,24 @@ R9:	Students are allowed to login -> General Requirement
 
 R10:	Educators are allowed to login -> General Requirement
 
-R11:	If manual evaluation is required the platform allows an educator to go through 
+R11:	If manual evaluation is required the platform allows an educator to go through (if manual evalutaion is req. at the end of a battle deadline ....)
 	sources and add a score -> G4
 
 R12:	Educators can look at student ranks from previous and current tournaments -> G5
 
-R13:	Students can look at students rank from the current tournament -> G5
+R13:	Students can look at students rank from the current tournament -> G5 
 
-R14:	The platform saves in the student profile the ranking from partecipated tournaments -> G5
+R14:	The platform saves in the student profile the ranking from partecipated tournaments -> G5 NO
 
-R15:	Students have a personal profile -> G5
+R15:	Students have a personal profile -> G5 NO
 
-R16:	All users can see a student's profile -> G5
+R16:	All users can see a student's profile -> G5  NO
+ 
+R17:	The platform can analyze students source and add score -> G4 (when new solution are signaled, the platform pulls them froom github and analyze ... )
 
-R17:	The platform can analyze students source and add score -> G4
+R18:	When an educator is part of a tournament he can create a battle -> G2 GIA PRESENTE
 
-R18:	When an educator is part of a tournament he can create a battle -> G2
+AGGIUNTIVE: sign in; 
 
 -----------------------------------------------------------------------------------------------------------------
 
