@@ -71,9 +71,9 @@ A3:	Github will always notifies the CKB platform after every student commit
 
 ## G5:  All users can compare the performance of students in battles and tournaments
 
-R12:	The platform allows all users to view student ranks from previous and current tournaments they are involved in 
-R18:	For every battle the platform maintains a ranking of the groups based on their battle score 
-R19:	For every tournament the platform maintains a ranking for students based on the sum of their battle scores  
+R12:	The platform allows all users to view student ranks from previous and current tournaments they are involved in   
+R18:	For every battle the platform maintains a ranking of the groups based on their battle score   
+R19:	For every tournament the platform maintains a ranking for students based on the sum of their battle scores    
 
 
 
