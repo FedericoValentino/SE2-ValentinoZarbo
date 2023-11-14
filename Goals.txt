@@ -158,7 +158,7 @@ R11:	If manual evaluation is required when a battle deadline expires the platfor
 
 R12:	The platform allows all users to view student ranks from previous and current tournaments they are involved in -> G5
 
-R13:	The platform analyzes and scores the source of a group solution for a codekata -> G4
+R13:	The platform analyzes and scores the source of a group solution for a codekata battle-> G4
 
 R14:	The platform pulls group sources from Github when it receive a notification
 
@@ -168,6 +168,9 @@ R16: 	The platform allows educators to close tournaments when there are no curre
 
 R17: 	When a battle deadline expires the platform starts the automated evaluation for all groups
 
+R18:	For every battle the platform maintains a ranking of the groups based on their battle score 
+
+R19:	For every tournament the platform maintains a ranking for students based on the sum of their battle scores 
 
 
 

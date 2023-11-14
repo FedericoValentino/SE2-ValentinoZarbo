@@ -4,9 +4,9 @@ Da mettere codici use case,
 MANTENERE AGGIORNATO  
 
 Problemi trovati:
-1. requirment ripetuti
-2. requirement non utili
-3. goal 4 potrebbe essere parte di goal 5
+1. Dove mettere close tournament??
+2. mancano requirments (vedi sotto)
+3. 
 4. 
 
 | goal          |  req          | Use Case      |  
@@ -20,14 +20,66 @@ Problemi trovati:
 |            g3 |      r7      | subscribe tournament|             
 |     g2        |   r8          |upload CodeKata|             
 |            g |      r9      |  login student|             
-|     g        |   r10          |login educator|             
-|     g4        |   r11          | manual evaluation|            
+|             |   r10          |login educator|             
+|               |   r11          | manual evaluation on expire|            
 |     g5        |   r12          | look Tournament rank|            
-|     g5        |   r13          | look tournament rank|           
-|     g5        |   r14          | NO|           
-|     g5        |   r15          | NO|           
-|     g5        |   r16          | NO|           
-|     g4        |   r17          | automated avaluation|           
-|     g2        |   r18          | uguale a r3|           
+|     g4        |   r13          | automated evaluation|           
+|     g4        |   r14          | pull sources|           
+|     g        |   r15          | sign in|           
+|     ???        |   r16          | close tournament|           
+|     g4        |   r17          | automated avaluation on expire|           
+|     g5        |   r18          | battle ranking|  
+|     g5        |   r19          | tournament ranking|           
 
-|
+
+## G1: An educator can create a tournament 
+
+R1:	The platform allows a signed in educator to create tournaments
+
+## G2:	An educator can create battles inside of a tournament in which he is involved
+
+R2:	The platform allows an educator that created a tournament, to invite other educator to 
+	be co-creators -> G2
+
+R3:	The platform allows educators who are involved with a tournament to create new battles in the context of 
+	that same tournament -> G2
+
+R4:	The platform allows an educator to upload the codekata (description and software project, 
+including test cases and build automation scripts) and set deadlines, group rules when creating a battle -> G2
+
+R8: The platform allows an educator creating a battle to include a manual evaluation stage -> G2
+
+## G3:	Students can partecipate and compete in battles created by an educator, alone or in groups
+
+R5:	The platform allows a student subscribed to a tournament to join a battle in that tournament context
+R6:	The platform allows students to create a group by inviting other students when joinin a battle 
+R7:	The platform allows students to subscribe to a tournament
+
+missing: the platform creates a github repository for a battle, platform notifies student with repository link
+
+A1:	The students can correctly setup the Github actions workflow(we dont know how to do it)
+A4: 	Students are always able to create a group to join a battle
+
+
+## G4:	Students are scored based on their performance in battles
+
+R11:	If manual evaluation is required when a battle deadline expires the platform allows an educator to go through sources and add a score -> G4
+R13:	The platform analyzes and scores the source of a group solution for a codekata battle
+R14:	The platform pulls group sources from Github when it receive a notification
+R17: 	When a battle deadline expires the platform starts the automated evaluation for all groups
+
+A2:	An educator will complete the manual evaluation
+A3:	Github will always notifies the CKB platform after every student commit
+
+## G5:  All users can compare the performance of students in battles and tournaments
+
+R12:	The platform allows all users to view student ranks from previous and current tournaments they are involved in -> G5
+
+R18:	For every battle the platform maintains a ranking of the groups based on their battle score 
+
+R19:	For every tournament the platform maintains a ranking for students based on the sum of their battle scores 
+
+
+
+
+MANCA GOAL CHIUDI TORNEO
