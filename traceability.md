@@ -31,6 +31,7 @@ Problemi trovati:
 |     g5        |   r18          | battle ranking|  
 |     g5        |   r19          | tournament ranking|           
 
+# Goal completness and correctness
 
 ## G1: An educator can create a tournament 
 
