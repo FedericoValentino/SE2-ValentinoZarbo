@@ -1,164 +1,181 @@
-W1:	An educator wants to create a tournament to evaluate students performance
+## Phenomena
 
-W2:	Students fork the created repository for a battle on Github
+### WORLD
 
-W3:	An educator creates the battle assignment
+* W1:	An educator wants to create a tournament to evaluate students performance
 
-W4:	Students write source code for the code kata battle
+* W2:	Students fork the created repository for a battle on Github
 
-W5:	Students create commits on Github
+* W3:	An educator creates the battle assignment
 
-W6:	Students decide to join a battle
+* W4:	Students write source code for the code kata battle
 
-W7:	Students create groups for battles
+* W5:	Students create commits on Github
 
-W8:	Students setup an automated workflow for the forked repository on Github
+* W6:	Students decide to join a battle
 
-W9: 	Students decide to join a tournament
+* W7:	Students create groups for battles
 
-W10: 	Educator decides to close tournament
+* W8:	Students setup an automated workflow for the forked repository on Github
+
+* W9: 	Students decide to join a tournament
+
+* W10: 	Educator decides to close tournament
 
 ---------------------------------------------------------------------------------------------------------------
-WORLD CONTROLLED
-SP1:	An educator fills out a tournament creation form
 
-SP2:	An educator uploads the details of a code kata battle(the assignment, the rules, the tests)
+### SHARED
 
-SP3:	A group(maybe singleton) joins a battle respecting the rules regarding the min and max group size
+#### WORLD CONTROLLED
 
-SP4:	An educator logs into the platform
+* SP1:	An educator fills out a tournament creation form
 
-SP5: 	A student logs into the platform
+* SP2:	An educator uploads the details of a code kata battle(the assignment, the rules, the tests)
 
-SP6:	The system requires additional manual evalution by an educator for a battle(if required by the rules) 
+* SP3:	A group(maybe singleton) joins a battle respecting the rules regarding the min and max group size
+
+* SP4:	An educator logs into the platform
+
+* SP5: 	A student logs into the platform
+
+* SP6:	The system requires additional manual evalution by an educator for a battle(if required by the rules) 
 	#godown
 
-SP7:	The educator inserts an additional manual score for a battle
+* SP7:	The educator inserts an additional manual score for a battle
 
-SP8:	A student invites other students to a group to partecipate to a battle
+* SP8:	A student invites other students to a group to partecipate to a battle
 
-SP9:	Github on commit notifies the code kata platform
+* SP9:	Github on commit notifies the code kata platform
 
-SP10:	An educator registers an account on the platform
+* SP10:	An educator registers an account on the platform
 
-SP11:	A student registers an account on the platform
+* SP11:	A student registers an account on the platform
 
-SP12:	A student subscribes to a tournament
+* SP12:	A student subscribes to a tournament
 
-SP13: 	Students and educator look at the rank for a battle they are involved in
+* SP13: 	Students and educator look at the rank for a battle they are involved in
 
-SP14:	Students and educator look at the rank for a tournament
+* SP14:	Students and educator look at the rank for a tournament
 
-sp15:	Educator closes tournament
+* sp15:	Educator closes tournament
 
-sp16: 	User looks at list of available tournament
+* sp16: 	User looks at list of available tournament
 
-SP17:	A student accepts and invitet o a group to partecipate to a battle
+* SP17:	A student accepts and invitet o a group to partecipate to a battle
 
 
 ---------------------------------------------------------------------------------------------------------------
-MACHINE CONTROLLED
+#### MACHINE CONTROLLED
 
-SP1:	The platform notifies all students when a tournament is created
+* SP1:	The platform notifies all students when a tournament is created
 
-SP2:	The platfotm notifies all students subscribed to a tournament of new upcoming battles
+* SP2:	The platfotm notifies all students subscribed to a tournament of new upcoming battles
 
-SP3:	The platform notifies the final score to all students subscribed to a battle, when that battle ends
+* SP3:	The platform notifies the final score to all students subscribed to a battle, when that battle ends
 
-SP4:	When the platform is notifies about a commit, it pulls from the committed repository to start the 
+* SP4:	When the platform is notifies about a commit, it pulls from the committed repository to start the 
 	mandatory analysis
 
-SP5:	The platform creates the github repository for a battle
+* SP5:	The platform creates the github repository for a battle
 
-SP6:	The platform sends links to the created repository for the battle to all students who are subscribed 
+* SP6:	The platform sends links to the created repository for the battle to all students who are subscribed 
 	to the battle
 
 ---------------------------------------------------------------------------------------------------------------
 
-M1:	The platform does the mandatory evaluation at each commit from a student for a battle
+### MACHINE
 
-M2:	The platform updates scores and leaderboard of a group
+* M1:	The platform does the mandatory evaluation at each commit from a student for a battle
 
-M3:	The platform updates students personal scores at the end of a battle
+* M2:	The platform updates scores and leaderboard of a group
 
-M4: 	Close battle on submission deadline 
+* M3:	The platform updates students personal scores at the end of a battle
+
+* M4: 	Close battle on submission deadline 
 
 
 
 ---------------------------------------------------------------------------------------------------------------
 
-SCENARIOS:
+## SCENARIOS:
 
-s1:	User sign in[wsp10, wsp11]
-s2:	User logs in[wsp4,wsp5]
-s3:	Educator creates tournament [w1, wsp1, msp1]
-s4: 	Educator creates battle [w3,wsp2, msp2]
-s5:	Student subscribe tournament [w9,wsp12, wsp16]
-s6: 	Team of students join battle [w5,w7,wsp8,w8, msp5, msp6]
-s7:	Application scores commit from student[wsp9, msp4,m1, m2]
-s8:	Users looks at battle rank(only involved) [wsp13]
-s9:	Battle subssion deadline expires [m3, m4,msp3]
-s10: 	Educator close torunament [w10,wsp15, msp14]	
-s11:	Users look at tournament rank[WSP14]
+* s1:	User sign in[wsp10, wsp11]
+* s2:	User logs in[wsp4,wsp5]
+* s3:	Educator creates tournament [w1, wsp1, msp1]
+* s4: 	Educator creates battle [w3,wsp2, msp2]
+* s5:	Student subscribe tournament [w9,wsp12, wsp16]
+* s6: 	Team of students join battle [w5,w7,wsp8,w8, msp5, msp6]
+* s7:	Application scores commit from student[wsp9, msp4,m1, m2]
+* s8:	Users looks at battle rank(only involved) [wsp13]
+* s9:	Battle subssion deadline expires [m3, m4,msp3]
+* s10: 	Educator close torunament [w10,wsp15, msp14]	
+* s11:	Users look at tournament rank[WSP14]
 
 
 
 ---------------
 
-G1: 	An educator can create a tournament with a set of rules
+## GOALS
 
-G2:	An educator can create battles inside of a tournament, for which he is an organizer or co-organizer
+G1: An educator can create a tournament 
 
-G3:	Students can partecipate and compete in tournaments created by an educator, alone or in groups
+G2:	An educator can create battles inside of a tournament in which he is involved
+
+G3:	Students can partecipate and compete in battles created by an educator, alone or in groups
 
 G4:	Students are scored based on their performance in battles
 
-G5:	The platform allows students and educators to compare results of the performance of students
+G5:	The platform allows students and educators to compare the performance of students
 
 ---------------------------------------------------------------------------------------------------------------
 
-R1:	If an educator is signed in he can create tournaments -> G1
+## RequirementS
 
-R2:	If a user is an educator and he/she created a tournament, he/she can invite other educator to 
+R1:	The platform allows a signed in educator to create tournaments -> G1
+
+R2:	The platform allows an educator that created a tournament, to invite other educator to 
 	be co-creators -> G2
 
-R3:	If a user is creator or co-creator of a tournament he can create new battles inside of 
+R3:	The platform allows educators who are involved with a tournament to create new battles in the context of 
 	that same tournament -> G2
 
-R4:	When creating a battle the educator can upload all the info required -> G2
+R4:	The platform allows an educator to upload the codekata (description and software project, 
+including test cases and build automation scripts) and set deadlines, group rules when creating a battle -> G2
 
-R5:	A student can subscribe to a battle -> G3
+R5:	The platform allows a student subscribed to a tournament to join a battle in that tournament context-> G3
 
-R6:	A student can create a group by inviting other students for a battle -> G3
+R6:	The platform allows students to create a group by inviting other students when joinin a battle -> G3
 
-R7:	A student can subscribe to a tournament -> G3
+R7:	The platform allows students to subscribe to a tournament -> G3
 
-R8: 	When creating a battle an educator can decide to include a manual evaluation stage -> G2
+R8: The platform allows an educator creating a battle to include a manual evaluation stage -> G2
 
-R9:	Students are allowed to login -> General Requirement
+R9:	The platform allows Students to login -> General Requirement
 
-R10:	Educators are allowed to login -> General Requirement
+R10: The platform allows Educators to login -> General Requirement
 
-R11:	If manual evaluation is required the platform allows an educator to go through (if manual evalutaion is req. at the end of a battle deadline ....)
-	sources and add a score -> G4
+R11:	If manual evaluation is required when a battle deadline expires the platform allows an educator to go through sources and add a score -> G4
 
-R12:	Educators can look at student ranks from previous and current tournaments -> G5
+R12:	The platform allows all users to view student ranks from previous and current tournaments they are involved in -> G5
 
-R13:	Students can look at students rank from the current tournament -> G5 
+R13:	The platform analyzes and scores the source of a group solution for a codekata -> G4
 
-R14:	The platform saves in the student profile the ranking from partecipated tournaments -> G5 NO
+R14:	The platform pulls group sources from Github when it receive a notification
 
-R15:	Students have a personal profile -> G5 NO
+R15:	The platform allows all user to sign in
 
-R16:	All users can see a student's profile -> G5  NO
- 
-R17:	The platform can analyze students source and add score -> G4 (when new solution are signaled, the platform pulls them froom github and analyze ... )
+R16: 	The platform allows educators to close tournaments when there are no current active battle
 
-R18:	When an educator is part of a tournament he can create a battle -> G2 GIA PRESENTE
+R17: 	When a battle deadline expires the platform starts the automated evaluation for all groups
 
-AGGIUNTIVE: sign in; 
+
+
+
+
 
 -----------------------------------------------------------------------------------------------------------------
+
+## ASSUMPTIONS
 
 A1:	The students can correctly setup the Github actions workflow(we dont know how to do it)
 
