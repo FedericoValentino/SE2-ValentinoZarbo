@@ -5,7 +5,7 @@ MANTENERE AGGIORNATO
 
 Problemi trovati:
 1. Dove mettere close tournament??
-2. 
+2. invita studenti per gruppo fa parte di join battle???
 3. 
 4. 
 
@@ -29,7 +29,8 @@ Problemi trovati:
 |     ???        |   r16          | close tournament|           
 |     g4        |   r17          | automated avaluation on expire|           
 |     g5        |   r18          | battle ranking|  
-|     g5        |   r19          | tournament ranking|           
+|     g5        |   r19          | tournament ranking|  
+|g3  |      | create repository|
 
 
 
