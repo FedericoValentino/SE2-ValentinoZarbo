@@ -3,11 +3,12 @@
 ## G1: An educator can create a tournament 
 
 R1:	The platform allows a signed in educator to create tournaments
+R2:	The platform allows an educator that created a tournament, to invite other educator to be co-creators
+R16: The platform allows an educator to close a tournament
 
 ## G2:	An educator can create battles inside of a tournament in which he is involved
 
-R2:	The platform allows an educator that created a tournament, to invite other educator to ***(andrebbe in un goal di gestione torneo con chiudi torneo)***
-	be co-creators  
+  
 R3:	The platform allows educators who are involved with a tournament to create new battles in the context of 
 	that same tournament  
 R4:	The platform allows an educator to upload the codekata (description and software project,

@@ -117,7 +117,7 @@
 
 ## GOALS
 
-G1: An educator can create a tournament 
+G1: An educator can manage a tournament 
 
 G2:	An educator can create battles inside of a tournament in which he is involved
 
@@ -164,7 +164,7 @@ R14:	The platform pulls group sources from Github when it receive a notification
 
 R15:	The platform allows all user to sign in
 
-R16: 	The platform allows educators to close tournaments when there are no current active battle
+R16: 	The platform allows educators to close tournaments
 
 R17: 	When a battle deadline expires the platform starts the automated evaluation for all groups
 
