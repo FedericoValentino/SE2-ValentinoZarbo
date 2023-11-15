@@ -12,7 +12,7 @@ Problemi trovati:
 | goal          |  req          | Use Case      |  
 |---------------|---------------|---------------|
 |            g1 |      r1      |   createTournament   |               
-|     g2        |   r2          | invite educator for tournament     | 
+|     g1        |   r2          | invite educator for tournament     | 
 |            g2 |      r3      |   createBattle |
 |     g2        |   r4          | upload CodeKata |             
 |            g3 |      r5      | student join battle|              
@@ -26,7 +26,7 @@ Problemi trovati:
 |     g4        |   r13          | automated evaluation|           
 |     g4        |   r14          | pull sources|           
 |     g        |   r15          | sign in|           
-|     ???        |   r16          | close tournament|           
+|     g1        |   r16          | close tournament|           
 |     g4        |   r17          | automated avaluation on expire|           
 |     g5        |   r18          | battle ranking|  
 |     g5        |   r19          | tournament ranking|  
