@@ -14,7 +14,7 @@
 
 | Name | Create Tournament |
 |:---- | ----------------- |
-|Actors| Educator |
+|Actors| Educator, Students |
 |Entry condition | Educator is logged into the platform |
 |Event flow | * Educator presses "Create Tournament" button <br> * Educator fills out details of tournament <br> * Educator adds other collaborators to tournament(other Educators) <br> * Educator completes tournament creation <br> * Platform notifies all Students of new tournament |
 | Exit | Tournament is created successfully |
