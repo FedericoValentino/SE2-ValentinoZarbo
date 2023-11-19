@@ -45,9 +45,9 @@
 |Name | Look at tournament ranks |
 |:--- | ------------ |
 |Actors| Students, Educators|
-|Entry Condition| Student or Educator are on the main tournament page|
-|Event flow| Student or educator look at current ranks|
-|Exit| Student and educator are happy?|
+|Entry Condition| Student or Educator are on the main tournament page and are involved|
+|Event flow| Student or educator click on tournament leaderboard|
+|Exit| Platform shows Tournament leader board|
 |Exception| Tournament hasn't yet started |
 
 ## UC Fede6 Manual Evaluation
