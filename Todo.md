@@ -1,11 +1,5 @@
 # TODO
 
-* Class Diagram da correggere con le proprietà #Fede
-- Mettere proprietà
-- Allargare
-- Mettere indicatori su frecce
-- Vedere se tutto quadra
-
 * Alloy
 
 * Software System Attributes: come facciamo a raggiungerli #Nico
