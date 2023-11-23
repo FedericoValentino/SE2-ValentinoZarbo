@@ -1,4 +1,4 @@
-#SW system attributes
+# SW system attributes
 
 CAN BE IMPROVED
 
