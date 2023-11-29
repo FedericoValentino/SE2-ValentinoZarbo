@@ -1,3 +1,9 @@
+///TODO
+///Mettere associazione tra score squadra e battaglia tramite RankBattle
+///LeaderBoardBattle deve essere collegata per forza ad una battle
+///
+///Caratterizzare le rules con min e max groups
+
 abstract sig User{
 }
 
@@ -11,14 +17,14 @@ sig Student extends User{
 }{this in Group.students}
 
 sig Group{
-	students : set Student,
+	students : some Student,
 	battleScore : disj one Score,
 	battleRank: disj one RankBattle
 }{this in Battle.currentGroups}
 
 sig Tournament{
-	battleList : set Battle,
-	leaderboard : one LeaderboardTournament
+	battleList : disj some Battle,
+	leaderBoard : disj one LeaderboardTournament
 }{this in Educator.tournamentsInvolved and this in Student.subscribedTournaments}
 
 sig Battle{
@@ -27,7 +33,7 @@ sig Battle{
 	rules :disj one Rules,
 	repo : disj one Repository,
 	leaderBoard: disj one LeaderboardBattle
-}
+}{this in Tournament.battleList}
 
 sig LeaderboardBattle{
 	positions : disj set RankBattle
@@ -66,13 +72,40 @@ fact studentInOneGroupForBattle{
 	)
 }
 
-
-pred show{
-#Student=3
-#Battle=2
-#Group=2
+fact rankAssociatedToBattleLeaderboard{
+	all b : Battle | (
+		all g : Group | g in b.currentGroups iff (g.battleRank in b.leaderBoard.positions)
+		)
 }
 
-run show
+fact noTwoRanksForSameTournament{
+	all t : Tournament | (
+		all st : Student | t in st.subscribedTournaments iff (
+			one rank : RankTournament | rank in st.tournamentRanks and rank in t.leaderBoard.positions
+		)
+	)
+}
+
+fact ifInBattleThenInTournament{
+	all t : Tournament | (
+		all b : Battle | (
+			all g : Group | (
+				all st: Student | (g in b.currentGroups and st in g.students and b in t.battleList) implies t in st.subscribedTournaments
+			)
+		)
+	)
+}
+
+///---------------------------------------------------PREDICATES--------------------------------
+pred show{
+#Student > 5
+#Tournament > 1
+#Group > 1
+#Tournament.battleList > 1
+#Battle.currentGroups > 1
+}
+
+run show for 10
+
 
 
