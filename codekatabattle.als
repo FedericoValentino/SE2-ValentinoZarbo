@@ -3,7 +3,7 @@
 ///LeaderBoardBattle deve essere collegata per forza ad una battle
 ///
 ///Caratterizzare le rules con min e max groups
-
+open util/integer
 abstract sig User{
 }
 
@@ -59,9 +59,16 @@ sig CodeKata{
 
 sig TestCase{}{this in CodeKata.testCases}
 
-sig Rules{}{this in Battle.rules}
+sig Rules{
+	minSize : Int,
+	maxSize : Int
+}{this in Battle.rules}
 
 ///---------------------------------------------FACTS---------------------------------------
+
+fact {
+	all r :Rules | (int r.minSize>=1 and int r.minSize<=int r.maxSize) 
+}
 
 fact studentInOneGroupForBattle{
 	all battle : Battle | (
