@@ -69,6 +69,12 @@ sig Rules{
 fact {
 	all r :Rules | (int r.minSize>=1 and int r.minSize<=int r.maxSize) 
 }
+fact respectSizeRule{
+	all b : Battle | 
+		(all g : Group | 
+			(g in b.currentGroups implies ( int #g.students>=int b.rules.minSize and int #g.students<=int b.rules.maxSize) )
+		)
+}
 
 fact studentInOneGroupForBattle{
 	all battle : Battle | (
@@ -110,9 +116,9 @@ pred show{
 #Group > 1
 #Tournament.battleList > 1
 #Battle.currentGroups > 1
+Rules.maxSize<5
 }
 
 run show for 10
-
 
 
