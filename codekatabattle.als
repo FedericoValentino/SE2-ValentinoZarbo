@@ -50,7 +50,7 @@ one sig ClosedTournament extends TournamentStatus{}
 abstract sig BattleStatus{}
 one sig SubscriptionOpen extends BattleStatus{} //no ranking no repo in battle, 
 one sig SubmissionOpen extends BattleStatus{} 
-one sig ClosedClosed extends BattleStatus{} // 
+one sig BattleClosed extends BattleStatus{} // 
 
 
 sig LeaderboardBattle{
@@ -70,7 +70,7 @@ abstract sig Rank{
 
 sig RankTournament extends Rank{
     studentScore : disj one StudentScore
-}{this in LeaderboardTournament.positions and this in Student.tournamentRank}
+}{this in LeaderboardTournament.positions and this in Student.tournamentRank }
 
 sig RankBattle extends Rank{
     battleScore : disj lone GroupScore
@@ -126,14 +126,21 @@ fact rankAssociatedToBattleLeaderboard{
 		all g : Group | g in b.currentGroups iff (g.battleRank in b.leaderBoard.positions)
 		)
 }
+fact oneRankForTournament{//this implies that for every tournament the student is in there is only one rank and for every rank there is only one tournament subscribed
+	all s: Student |(all t : Tournament | t in s.subscribedTournaments implies one r: Rank| r in s.tournamentRank and r in t.leaderBoard.positions)
+			and (all r :RankTournament | r in s.tournamentRank implies (one t : Tournament| t in s.subscribedTournaments and r in t.leaderBoard.positions))
+	
+//without the 2 predicates there could be case were a student had 2 ranks for a tournament he wasnt in
 
-fact noTwoRanksForSameTournament{
-	all t : Tournament | (
-		all st : Student | t in st.subscribedTournaments iff (
-			one rank : RankTournament | rank in st.tournamentRank and rank in t.leaderBoard.positions
-		)
-	)
+
 }
+//fact noTwoRanksForSameTournament{
+	//all t : Tournament | (
+		//all st : Student | t in st.subscribedTournaments implies (
+			//one rank : RankTournament | rank in st.tournamentRank and rank in t.leaderBoard.positions
+//		)
+	//)
+//}
 
 fact ifInBattleThenInTournament{
 	all t : Tournament | (
@@ -154,9 +161,22 @@ pred show{
 #Battle.currentGroups > 1
 Rules.maxSize<5
 }
+pred noWierdRanks{
 
+ (some s:Student| (some t: Tournament | t in s.subscribedTournaments and no r:Rank| r in s.tournamentRank) )
+
+
+}
+pred freeShow{
+some Group
+}
 pred showBattleInSubscriptionStatus{
 one b : Battle | (b.battleStatus = SubscriptionOpen)
+}
+pred studentInTwoGroupBattle{//ok never happens
+	some b : Battle| (some disj g1, g2 :Group| g1 in b.currentGroups and g2 in b.currentGroups and (	one s: Student | s in g1.students and s in g2.students) 
+)
+
 }
 pred checkNewVer{
 #Student > 5
@@ -169,9 +189,10 @@ Rules.minSize=2
 all b : Battle |(
 	no disj g1, g2 : Group | (	g1 in b.currentGroups and g2 in b.currentGroups) and (
 				some s : Student | s in g1.students and s in g2.students)
-)
+	)
 }
-pred noGroupBattle{
+
+pred noGroupBattle{//ok it is acceptable
 //no e : Educator| no e.tournamentsInvolved
 one Battle 
 lone s:Student |  #s.subscribedTournaments>0
@@ -180,5 +201,5 @@ no Group
 
 }
 
-run noGroupBattle for 10
+run freeShow for 3
 
