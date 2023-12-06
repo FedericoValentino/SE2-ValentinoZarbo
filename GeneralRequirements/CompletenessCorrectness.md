@@ -1,18 +1,19 @@
+@OBSOLETE
+
 # Goal completness and correctness
 
 ## G1: An educator can create a tournament 
 
 R1:	The platform allows a signed in educator to create tournaments
-R2:	The platform allows an educator that created a tournament, to invite other educator to be co-creators
+R2:	The platform allows an educator that created a tournament, to invite other educator and to grant them permission to create battles in the tournament context
 R16: The platform allows an educator to close a tournament
 
 ## G2:	An educator can create battles inside of a tournament in which he is involved
 
   
-R3:	The platform allows educators who are involved with a tournament to create new battles in the context of 
-	that same tournament  
-R4:	The platform allows an educator to upload the codekata (description and software project,
-including test cases and build automation scripts) and set deadlines, group rules when creating a battle  
+R3:	Educators can create battles in the context of a specific tournament they are involved in (Either by creation or by invitation) 
+R4:	The platform allows an educator to upload the codekata (description and software project, 
+including test cases and build automation scripts), set deadlines and set minimum and maximum group size when creating a battle
 R8: The platform allows an educator creating a battle to include a manual evaluation stage  
 
 ## G3:	Students can partecipate and compete in battles created by an educator, alone or in groups
