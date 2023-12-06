@@ -190,7 +190,7 @@ R17: The plaftorm shall notify students who are subscribed in a tournament that 
 
 ## ASSUMPTIONS
 
-A1:	The students can correctly setup the Github actions workflow(we dont know how to do it)
+A1:	The students can correctly setup the Github actions workflow
 
 A2:	An educator will complete the manual evaluation
 
