@@ -186,6 +186,10 @@ R16: The plaftorm shall notify students who are participating in a battle that t
 
 R17: The plaftorm shall notify students who are subscribed in a tournament that the final rank for that tournament is available -> G6
 
+R18: The platform shall create a new repository with Github for every new battle in any tournament after the submission deadline expires -> G4
+
+R19: The platform shall send the battle repository link to students who joined that battle after the submission deadline expires -> G4
+
 -----------------------------------------------------------------------------------------------------------------
 
 ## ASSUMPTIONS
