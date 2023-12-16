@@ -1,0 +1,142 @@
+\section{Purpose}
+\ac{CKB} is a new platform that helps students improve their software development skills by training with peers on code katas . Educators use the platform to challenge students by creating code kata battles in which teams of students can compete against each other, thus proving (and improving) their skills.\newline
+A code kata battle is essentially a programming exercise in a programming language of choice (e.g., Java, Python). The exercise includes a brief textual description and a software project with build automation scripts (e.g., a Gradle project in case of Java sources) that contains a set of test cases that the program must pass, but without the program implementation. Students are asked to complete the project with their code. In particular, groups of students participating in a battle are expected to follow a test-first approach and develop a solution that passes the required tests. Groups deliver their solution to the platform (by the end of the battle). At the end of the battle, the platform assigns scores to groups to create a competition rank.
+\subsection{Goals}
+The \ac{CKB} system is thought, designed and proposed to two types of users: Students and Educators.\newline
+The firsts, will be able to join the platform to test their coding skills in Tournaments, a series of code battles, where students will be able to participate in groups.\newline
+Educators instead will be able to create and manage tournaments and decide whether or not a manual score in a battle is needed or not.\newline
+Below the list of goals of the \ac{CKB} platform.\newline
+
+\begin{center}
+    \begin{longtable}{ |l|p{0.9\linewidth}| }
+        \hline
+        \textbf{ID} & \textbf{Description}\\
+        \hline
+        G1 & An Educator can manage a tournament. \\
+        \hline
+        G2 & An educator can create battles inside of a tournament in which he is involved. \\
+        \hline
+        G3 & Students can participate in tournaments created by an educator\\
+        \hline
+        G4 & Students can participate and compete in battles created by an educator, alone or in groups. \\
+        \hline
+        G5 & Students are scored based on their performance in battles. \\
+        \hline
+        G6 & The platform allows students and educators to compare the performance of students. \\
+        \hline
+        \caption{The goals.}
+    \end{longtable}
+\end{center}
+
+
+\section{Scope}
+\subsection{World phenomena}
+\begin{center}
+    \begin{longtable}{ |l|p{0.9\linewidth}| }
+        \hline
+        \textbf{ID} & \textbf{Description}\\
+        \hline
+        W1 & An educator wants to create a tournament to evaluate students performance. \\
+        \hline
+        W2 & Students fork the created repository for a battle on Github. \\
+        \hline
+        W3 & An educator creates the battle assignment. \\
+        \hline
+        W4 & Students write source code for the code kata battle. \\
+        \hline
+        W5 & Students create commits on Github. \\
+        \hline
+        W6 & Students decide to join a battle. \\
+        \hline
+        W7 & Students create groups for battles. \\
+        \hline
+        W8 & Students setup an automated workflow for the forked repository on Github. \\
+        \hline
+        W9 & Students decide to join a tournament. \\
+        \hline
+        W10 & Educator decides to close tournament. \\
+        \hline
+        \caption{World Phenomenas.}
+    \end{longtable}
+\end{center}
+\subsection{Shared phenomena}
+
+\begin{center}
+    \begin{longtable}{ |l|p{0.5\linewidth}|l|l| }
+        \hline
+        \textbf{ID} & \textbf{Description} & \textbf{Controller} & \textbf{Observer}\\
+        \hline
+        SP1 & An educator fills out a tournament creation form. & Educator & \ac{CKB}\\
+        \hline
+        SP2 & An educator uploads the details of a code kata battle(the assignment, the rules, the tests). & Educator & \ac{CKB} \\
+        \hline
+        SP3 & A group(maybe singleton) joins a battle respecting the rules regarding the min and max group size. & Student & \ac{CKB}\\
+        \hline
+        SP4 & An educator logs into the platform. & Educator & \ac{CKB} \\
+        \hline
+        SP5 & A student logs into the platform. & Student & \ac{CKB}\\
+        \hline
+        SP6 &  The system requires additional manual evalution by an educator for a battle(if required by the rules). & Educator & \ac{CKB}\\
+        \hline
+        SP7 & The educator inserts an additional manual score for a battle. & Educator & \ac{CKB}\\
+        \hline
+        SP8 & A student invites other students to a group to participate to a battle. & Student & \ac{CKB}\\
+        \hline
+        SP9 & Github on commit notifies the code kata platform. & GitHub & \ac{CKB}\\
+        \hline
+        SP10 & An educator registers an account on the platform. & Educator & \ac{CKB}\\
+        \hline
+        SP11 & A student registers an account on the platform. & Student & \ac{CKB}\\
+        \hline
+        SP12 & A student subscribes to a tournament. & Student & \ac{CKB}\\
+        \hline
+        SP13 & Students and educators look at the rank for a battle they are involved in. & User & \ac{CKB} \\
+        \hline
+        SP14 & Students and educator look at the rank for a tournament. & User & \ac{CKB}\\
+        \hline
+        SP15 & Educator closes tournament. & Educator & \ac{CKB}\\
+        \hline
+        SP16 & User looks at list of available tournament. & User & \ac{CKB}\\
+        \hline
+        SP17 &  A student accepts and invitet o a group to partecipate to a battle. & Student & \ac{CKB}\\
+        \hline
+        SP18 & The platform notifies all students when a tournament is created. & \ac{CKB} & Student\\
+        \hline
+        SP19 & The platfotm notifies all students subscribed to a tournament of new upcoming battles.& \ac{CKB} & Student\\
+        \hline
+        SP20 & The platform notifies the final score to all students subscribed to a battle, when that battle ends.& \ac{CKB} & Student\\
+        \hline
+        SP21 & When the platform is notifies about a commit, it pulls from the committed repository to start the mandatory analysis.& \ac{CKB} & Github\\
+        \hline
+        SP22 & The platform creates the github repository for a battle.& \ac{CKB} & Github\\
+        \hline
+        SP23 & The platform sends links to the created repository for the battle to all students who are subscribed to the battle.& \ac{CKB} & Student\\
+        \hline
+        \caption{Shared Phenomenas.}
+    \end{longtable}
+\end{center}
+
+\section{Definitions, Acronyms, Abbreviations}
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Acronym} & \textbf{Definition}\\
+            \hline
+            CKB & CodeKataBattle\\
+            \hline
+            CK & Code Kata\\
+            \hline
+        \end{tabular}
+        \caption{Acronyms used in the document}
+    \end{center}
+\end{table}
+
+\section{Document Structure}
+The document is divided in six sections. \newline
+The first section introduces the goals of the project and shared phenomena with also a list of definitions useful to understand the problem.\newline
+The second section provides a more accurate description of the problem, describing the details of domain and scenarios.\newline
+The third section focuses on specific requirements and provides an analysis on interface requirements, functional requirements and so on.\newline
+The fourth section provides a formal analysis using Alloy, crucial to prove the correctness of the model described.\newline
+The fifth one reports the effort spent by each group member in the redaction of this document and the last section is simply a list of bibliography references.
