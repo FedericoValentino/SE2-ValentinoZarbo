@@ -125,16 +125,20 @@ fact ifInBattleThenInTournament{
 		)
 	)
 }
+ 
+fact mustBeGroupsInStartedBattle{
+	all b :Battle| b.battleStatus!=SubscriptionOpen implies some g:Group |g in b.currentGroups
 
+}
 
 ///---------------------------------------------------PREDICATES--------------------------------
 
 
-pred noWeirdRanks{
+pred noWrongRankLogic{//to test no student can have a score and rank within a tournament without being subscribed to said tournament
 	(some s:Student| (some t: Tournament | t in s.subscribedTournaments and no r:Rank| r in s.tournamentRank) )
 }
 
-pred noStudentInTwoGroupBattle{//ok never happens
+pred noStudentInTwoGroupBattle{//to test no student can join 2 groups for a battle
 	some b : Battle| (some disj g1, g2 :Group| g1 in b.currentGroups and g2 in b.currentGroups and (	one s: Student | s in g1.students and s in g2.students) 
 	)
 }
@@ -142,25 +146,35 @@ pred noStudentInTwoGroupBattle{//ok never happens
 
 pred show{}
 
+pred showGenericTournaments{
+	some Tournament
+	#Battle>1
+}
+
+
 pred showSomeRealistic{
-	#Student > 5
+	#Student > 4
 	#Tournament > 1
 	#Group > 1
-	#Tournament.battleList > 1
-	#Battle.currentGroups > 1
+	#Battle.currentGroups > 0
 	Rules.maxSize<5
+	one s : Student| no g:Group| s in g.students 
 }
-pred showWithSomeGroups{
-	some Group
-}
-pred showBattleInSubscriptionStatus{
-	one b : Battle | (b.battleStatus = SubscriptionOpen)
-}
-pred showNoGroupBattle{
+
+
+pred showNoGroupBattle{//effectiviely a battle can have no subscribed groups only if it is within the subscription deadline
 	one Battle 
 	lone s:Student |  #s.subscribedTournaments>0
 	no Group
 }
+pred joinNewBattle[s : Student]{//shows an instance where a student "s" joined with 2 other student a battle as a group
+	one b : Battle| b.battleStatus=SubscriptionOpen and (one g:Group| s in g.students and g in b.currentGroups and  #g.students=3)
 
-run show for 3
+}
+pred joinTournament[s:Student]{//shows a student joining an existing tournament 
+	one t:Tournament| t in s.subscribedTournaments
+	one Tournament
+	one Student
 
+}
+run joinTournament for 6
