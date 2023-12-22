@@ -4,7 +4,7 @@
 * Group registration deadline: 22/10/2023
 * RASD submission deadline: 22/12/2023
 * DD submission deadline: 07/01/2024
-* Final presentation: to be scheduled
+* Final presentation: 14/02/24
 
 ----------
 
