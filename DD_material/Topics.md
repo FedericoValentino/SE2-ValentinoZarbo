@@ -2,8 +2,8 @@
 
 | Topic | Publisher | Consumer |
 |-------|-----------|------------|
-|Tournaments|TournamentModule|NotificationModule, LeaderboardModule|
-|Battles|BattleModule|NotificationModule, LeaderboardModule|
+|Tournaments|TournamentModule|NotificationModule|
+|Battles|BattleModule|NotificationModule|
 |Groups|GroupManagementModule|NotificationModule|
 |Commits|GitHubHandler|SoftwareEvalModule|
 |Scores|ManualEvalModule, SoftwareEvalModule| LeaderboardModule|
