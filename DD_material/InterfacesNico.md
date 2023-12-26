@@ -19,8 +19,8 @@
 - [ ] WebInterface//api user interface( simply exposes the rest APIs)
 
 ## Dmbs api
-### DataAccessInterface
-Exposed by Data dbms, used by Leaderboard, tournament, battle, userService(???)  
+### Data AccessInterface
+Exposed by Data dbms, used by Leaderboard, tournament, battle,group, userService(???)  
 
 * getSubscribedStudents(String : IDT): list[string studentID]
 
@@ -30,24 +30,43 @@ Exposed by Data dbms, used by Leaderboard, tournament, battle, userService(???)
 * setScoresGroupBattle(String:IDGroup, String : IDB, int :score): void
 * getScoresOfBattle(String: IDB): Map[ string: groupID, int: score]
 
+#### used by notificationService(?????  maybe in another way by creating mailLists)
+* getAllSignedStudent(): list[ string studID]
+* getSubscribedStudent(string IDT): list[ string studID]
+* getGroups(string IDB): map[string groupID; list[string studID]]
+* getInvolvedEDUBattle(string IDB): list[ string eduID]
+
 #### used by tournamentService
+* addTournament(String : EduCreator):void
+* grantBattleCreation(string : IDT, string : grantedEDU): void
 * getCurrentTournamtn(): list[ string :tournamentID]
 * getBattlesOfTourn(String : IDT):list[ string :battleID]
 * checkEducatorPermission(String : IDT, String: IDEDU ): boolean response
 
 #### used by battleService
+
 * getDeadlinesBattle(String: IDB): tuple(subsDL; submDL)
-* getGroupRules()
-* getAssignment()
-*
+* addBattle(String TournamentID, string assignment,  int submDL, int subsDL, int maxsize, int minsize): string IDB
+* getBattleAssignement(string IDB):  string assignment
+* getBattleGroupRules(string IDB):  tuple(int  maxsize,int  minsize)
+* getBattleAssignement(string IDB):  string assignment
+* getBattleDeadlines(string IDB):  tuple(string submDL,string  subsDL)
+
+
+#### used by groupservice
+
+* addGroup(list[string studID], String IDB): void
+* get
+
 #### used by userService
 
 * addStudent(String: UserName): void
 * addEducator(String UserName): void
 
-### SOURCEAccessInterface
-Exposed by SOURCE dbms, used by ManualEval, SoftwareEval, GithubHandler  
+### SOURCE AccessInterface
+Exposed by SOURCE dbms, used by ManualEval, SoftwareEval, GithubHandler, battle  
 
+* addBattleTestCases(string IDB,list[ string] testcase):void
 * getGroupSource(String: groupID, String: battleID): string SourceCodetxt
 * saveGroupSource(String: groupID, String: battleID, String: SourceCodetxt): void
 
@@ -68,7 +87,7 @@ login(String : psw, String : UserID):void
 ### TournamentApi
 * **/tournament/**  
 getCurrentTournament(String: UserId,String: UserType) : list< Tournament>  
-* **/tournament/create**  
+* **/tournament/createT**  
 createTournament(String: UserId,String: UserType, String : TournamentName): void  
 * **/tournament/{idT}/addCollaborator**   
 addCollaborator(String: UserId,String: UserType, String : CollaboratorID):void  
@@ -81,6 +100,8 @@ getTournamentsBattles(String: UserId,String: UserType, String : TournamentID): L
 
 
 ### BattleAPI
+* **/tournament/{idT}/battle/createB**    
+createBattle(String: UserId,String: UserType, String : BattleName, tuple(int maxsize, int minsize): groupRule, string : assignemtent, tuple(date: subs, date: subm): deadline, list[ string]: testcases): void  
 * **/tournament/{idT}/battle/{idB}/rules**  
  getGroupRules(String: UserId, String : BattleID): Tuple (int :MaxSize, int: MinSize)  
 * **/tournament/{idT}/battle/{idB}/assignement**  
