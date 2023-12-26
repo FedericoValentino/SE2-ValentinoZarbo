@@ -12,3 +12,12 @@
 | NewCommitsTopicWrite | * writeNewEvalRequired(Message: String) <br> |
 
 
+All the messages exchanged are JSON Strings, containing for every topic different stuff:
+
+| TOPIC | JSON Contents |
+| ----- | ------------- |
+| Tournaments | boolean newTournamentHasStarted, boolean TournamentHasEnded |
+| Battles | boolean newBattleHasStarted, boolean BattleHasEnded |
+| Groups | int groupID, list[] userID |
+| Commits | boolean newCommit, int groupID |
+| Scores | int groupID, int newScore |
