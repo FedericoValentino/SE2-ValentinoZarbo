@@ -7,6 +7,7 @@
 |Groups|GroupManagementModule|NotificationModule|
 |Commits|GitHubHandler|SoftwareEvalModule|
 |Scores|ManualEvalModule, SoftwareEvalModule| LeaderboardModule|
+|Repository|BattleModule|GithubHandler
 
 
 
