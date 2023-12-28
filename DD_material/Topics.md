@@ -4,7 +4,7 @@
 |-------|-----------|------------|
 |Tournaments|TournamentModule|NotificationModule|
 |Battles|BattleModule|NotificationModule|
-|Groups|GroupManagementModule|NotificationModule|
+|Invitations|TournamentModule, BattleModule|NotificationModule|
 |Commits|GitHubHandler|SoftwareEvalModule|
 |Scores|ManualEvalModule, SoftwareEvalModule| LeaderboardModule|
 |Repository|BattleModule|GithubHandler
