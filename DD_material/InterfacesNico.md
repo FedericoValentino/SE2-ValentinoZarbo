@@ -79,7 +79,7 @@ Here follows a three of the uri path tree of the exposed resources:
 
 ### UserAPI
 
-* **/user/create**  
+* **/user/register**  
 registerUser(StringU:UserName, String : UserType):void
 * **/user/login**  
 login(String : psw, String : UserID):void
@@ -87,7 +87,7 @@ login(String : psw, String : UserID):void
 ### TournamentApi
 * **/tournament/**  
 getCurrentTournament(String: UserId,String: UserType) : list< Tournament>  
-* **/tournament/createT**  
+* **/tournament/create_t**  
 createTournament(String: UserId,String: UserType, String : TournamentName): void  
 * **/tournament/{idT}/addCollaborator**   
 addCollaborator(String: UserId,String: UserType, String : CollaboratorID):void  
@@ -100,12 +100,12 @@ getTournamentsBattles(String: UserId,String: UserType, String : TournamentID): L
 
 
 ### BattleAPI
-* **/tournament/{idT}/battle/createB**    
+* **/tournament/{idT}/battle/create_b**    
 createBattle(String: UserId,String: UserType, String : BattleName, tuple(int maxsize, int minsize): groupRule, string : assignemtent, tuple(date: subs, date: subm): deadline, list[ string]: testcases): void  
 * **/tournament/{idT}/battle/{idB}/rules**  
  getGroupRules(String: UserId, String : BattleID): Tuple (int :MaxSize, int: MinSize)  
-* **/tournament/{idT}/battle/{idB}/assignement**  
- getAssignemntText(String: UserId, String : BattleId): String AssignemtnText  
+* **/tournament/{idT}/battle/{idB}/assignment**  
+ getAssignemntText(String: UserId, String : BattleId): String AssignmentText  
 * **/tournament/{idT}/battle/{idB}/deadlines**  
  getDeadlines(String: UserId, String : BattleID):Tuple (int :SubscriptionDL, int: SubmissionDL)  
 * **/tournament/{idT}/battle/{idB}/join**  
