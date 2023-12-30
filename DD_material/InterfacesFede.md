@@ -3,7 +3,7 @@
 
 | Interface | Methods |
 | --------- | ------- |
-| NotificationRead | * readNewTournament(): Message: String<br> * readFinalTournamentRank(): Message: String<br> * readNewBattle(): Message: String<br> * readFinalBattleRank(): Message: String<br> * readInvitation(): Message: String<br> |
+| NotificationRead | * readNewTournaments(): Message: String<br> * readFinalTournamentRank(): Message: String<br> * readNewBattle(): Message: String<br> * readFinalBattleRank(): Message: String<br> * readInvitation(): Message: String<br> |
 | TournamentTopicWrite | * writeNewTournament(Message: String)<br> * writeFinalTournamentRank(Message: String) <br> |
 | BattleTopicWrite | * writeNewBattle(Message: String)<br> * writeFinalBattleRank(Message: String) <br> |
 | ScoringTopicWrite | * writeNewScore(Message: String)<br> |
@@ -18,6 +18,9 @@ All the messages exchanged are JSON Strings, containing for every topic differen
 | ----- | ------------- |
 | Tournaments | boolean newTournamentHasStarted, boolean TournamentHasEnded |
 | Battles | boolean newBattleHasStarted, boolean BattleHasEnded |
-| Groups | int groupID, list[] userID |
+| Invitations | int type, int groupID, list[] userID |
 | Commits | boolean newCommit, int groupID |
 | Scores | int groupID, int newScore |
+| Repository | boolean newRepo |
+| RepoLinks | int BattleID, String linkToRepo |
+

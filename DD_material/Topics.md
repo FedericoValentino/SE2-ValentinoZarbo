@@ -7,8 +7,8 @@
 |Invitations|TournamentModule, BattleModule|NotificationModule|
 |Commits|GitHubHandler|SoftwareEvalModule|
 |Scores|ManualEvalModule, SoftwareEvalModule| LeaderboardModule|
-|Repository|BattleModule|GithubHandler
+|Repository|BattleModule|GithubHandler|
+|RepoLinks|GithubHandler|NotificationModule|
 
 
 
-#TODO How does one get notified of a manual evaluation?
