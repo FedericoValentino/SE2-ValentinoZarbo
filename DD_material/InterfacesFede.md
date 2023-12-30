@@ -3,13 +3,13 @@
 
 | Interface | Methods |
 | --------- | ------- |
-| NotificationRead | * readNewTournaments(): Message: String<br> * readFinalTournamentRank(): Message: String<br> * readNewBattle(): Message: String<br> * readFinalBattleRank(): Message: String<br> * readInvitation(): Message: String<br> |
-| TournamentTopicWrite | * writeNewTournament(Message: String)<br> * writeFinalTournamentRank(Message: String) <br> |
-| BattleTopicWrite | * writeNewBattle(Message: String)<br> * writeFinalBattleRank(Message: String) <br> |
-| ScoringTopicWrite | * writeNewScore(Message: String)<br> |
-| ScoringTopicRead | * readNewScore(): Message: String<br> |
-| InvitationsTopicWrite | * writeNewGroup(Message: String) <br>|
-| NewCommitsTopicWrite | * writeNewEvalRequired(Message: String) <br> |
+| NotificationRead | * read(Topic: int): Message: String - TournamentTopic<br> * read(Topic: int): Message: String - Battles Topic<br> * read(Topic: int): Message: String - Invitations Topic<br> * read(Topic: int): Message: String - Repository<br> * read(Topic: int): Message: String - RepoLinks<br>  |
+| TournamentTopicWrite | * write(Topic: int, Message: String) - Tournament Topic |
+| BattleTopicWrite | * write(Topic: int, Message: String) - Battles Topic |
+| ScoringTopicWrite | * write(Topic: int, Message: String) - Scoring Topic|
+| ScoringTopicRead | * read(Topic: int): Message: String - Scoring Topic|
+| InvitationsTopicWrite | * write(Topic: int, Message: String) - Invitations Topic |
+| NewCommitsTopicWrite | * write(Topic: int, Message: String) - Commits Topic |
 
 
 All the messages exchanged are JSON Strings, containing for every topic different stuff:
