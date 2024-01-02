@@ -96,30 +96,28 @@ R14: The platform will notify signed students of a newly created tournament
 
 * Tournament Service: Will write a new message on message broker every time a new tournament is created
 * Notification Service: Will read from message broker any new message regarding the creation of a tournament and notify students through Email Service
-* Email Service: Will send email to every student every time a tournament is created
 
 R15: The platform shall notify students who are subscribed into a tournament that a new battle is available in that tournament context
 
 * Battle Service: Will write a new message on message broker every time a new battle in a tournament is created
 * Notification Service: Will read from message broker any new message regarding the creation of a battle and notify subscribed students through Email Service
-* Email Service: Will send email to every student who is subscribed to the battle's tournament every time a battle is created
 
 R16: The plaftorm shall notify students who are participating in a battle that the final rank for that battle is available
 
 * Battle Service: Will write a new message on message broker every time a battle in a tournament has ended
 * Notification Service: Will read from message broker any new message regarding the end of a battle and notify subscribed students through Email Service
-* Email Service: Will send email to every student who is subscribed to the battle's tournament every time a battle's final rank is available
 
 R17: The plaftorm shall notify students who are subscribed in a tournament that the final rank for that tournament is available
 
 * Battle Service: Will write a new message on message broker every time a tournament has ended
 * Notification Service: Will read from message broker any new message regarding the end of a tournament and notify subscribed students through Email Service
-* Email Service: Will send email to every student who is subscribed to the tournament every time a final rank is available
 
 R18: The platform shall create a new repository with Github for every new battle in any tournament after the submission deadline expires
 
-* 
+* Battle Service: Will write a new message on message broker when the registration deadline expires
+* GitHub Handler: Will read a create repository message from the message broker and communicate with GitHub to create a new repository
 
 R19: The platform shall send the battle repository link to students who joined that battle after the submission deadline expires
 
-* 
+* GitHub Handler: Will write a message everytime a new repository is created
+* Notification Service: Will read a message containing the link to the repository and send an email through the email service to every student that has joined the repository's battle
