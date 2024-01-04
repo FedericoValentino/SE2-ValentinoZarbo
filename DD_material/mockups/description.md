@@ -35,3 +35,7 @@ In the student version during the battle subscription phase a button for joining
 
 The page presents a form where an educator can insert : Battle name, text assignement for the codekata, the 2 deadlines, the group rules.  
 There is also present an upload form for the codekata testcases.
+
+## Manual evaluation
+
+The page contains the source code of the group to be manually reviewed and an input where the user can put the decided score to be sent after clicking the 'score group' button.
