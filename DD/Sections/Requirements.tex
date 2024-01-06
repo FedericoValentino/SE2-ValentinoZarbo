@@ -1,0 +1,143 @@
+This Chapter shows how the functional and non-functional requirements of the \ac{CKB} system described in the RASD are met. We show the mapping between each requirement and which components that meet that.
+
+\subsection{Functional requirement traceability}
+\begin{itemize}
+    
+
+\item R1:	The platform allows a signed in educator to create tournaments
+\begin{itemize}
+    \item API Gateway: sign in
+    \item Tournament Service: creation of tournaments
+\end{itemize}
+
+
+\item R2:	Educators can create battles in the context of a specific tournament they are involved in (Either by creation or by invitation)
+\begin{itemize}
+\item Battle Service: creation of battles
+\end{itemize}
+\item R2.1: The platform allows an educator that created a tournament, to invite other educator and to grant them permission to create battles in the tournament context
+\begin{itemize}
+    \item Tournament Service: Invitation to collaborate to a tournament
+\end{itemize}
+
+\item R2.2:	The platform allows an educator to upload the codekata (description and software project, 
+including test cases and build automation scripts) when creating a battle
+\begin{itemize}
+    \item Battle Service: creation of battles
+\end{itemize}
+
+
+\item R2.3: The platform allows an educator to set subscribtion and submission deadlines when creating a battle
+
+\begin{itemize}
+    \item Battle Service: creation of battles
+\end{itemize}
+
+\item R2.4: The platform allows an educator to set minimum and maximum group size when creating a battle
+
+\begin{itemize}
+    \item Battle Service: creation of battles
+\end{itemize}
+
+\item R2.5: The platform allows an educator creating a battle to include a manual evaluation stage
+
+\begin{itemize}
+    \item Battle Service: creation of battles
+    \item Manual Evaluation Service: Allows an educator to add a manual score
+\end{itemize}
+
+
+\item R3:	The platform allows students to subscribe to a tournament
+
+\begin{itemize}
+\item Tournament Service: allows students to subscribe to new torunaments
+\end{itemize}
+
+\item R4:	The platform allows a student subscribed to a tournament to join a battle in that tournament context
+\begin{itemize}
+\item Battle Service: allows a student to subscribe to a new battle
+\end{itemize}
+\item R4.1: The platform allows students to create a group by inviting other students when joinin a battle
+\begin{itemize}
+\item Battle Service: allows students to create and join groups
+\end{itemize}
+\item R5:	The platform allows Students to login
+\begin{itemize}
+\item User Service: allows login
+\end{itemize}
+\item R6: The platform allows Educators to login
+\begin{itemize}
+\item User Service: allows login
+\end{itemize}
+\item R7: If manual evaluation is required during consolidation stage the platform allows an educator to go through sources and add a score to the group score
+\begin{itemize}
+\item Manual Evaluation Service: Allows an educator to add a manual score
+\end{itemize}
+\item R8: The platform allows all users to view student ranks from previous and current tournaments
+\begin{itemize}
+\item Leaderboard Service: Retrives from ApplicationDB all info to rebuild leaderboards
+\end{itemize}
+\item R8.1: For every tournament the platform maintains a ranking for students based on the sum of their battle scores
+\begin{itemize}
+\item Leaderboard Service: Holds all tournament information in ApplicationDB
+\end{itemize}
+\item R9: The platform pulls group sources from Github when it receives a notification within the submission deadline
+\begin{itemize}
+\item GitHub Handler: receives notifications from Github and stores each group source in SourceDB
+\end{itemize}
+\item R9.1: The platform analyzes, runs testcases and scores the source of a group solution for a codekata battle and updates the group score accordingly
+\begin{itemize}
+\item Software Evaluation Service: Whenever a pull is performed by Github Handler the service compiles and analyzes sources to then submit a new score
+\item Leaderboard Service: Updates score in ApplicationDB
+\end{itemize}
+\item R10: The platform allows all user to sign in
+\begin{itemize}
+\item API Gateway: allows register
+\end{itemize}
+\item R11: The platform allows educators to close tournaments
+\begin{itemize}
+\item Tournament Service: allows educators to manage tournaments
+\end{itemize}
+\item R12: When a battle deadline expires the platform sets the battle status to consolidation stage
+\begin{itemize}
+\item Battle Service: Managed all battle related deadlines
+\end{itemize}
+\item R13: The platform allows all users who are involved in a battle to look at group ranks for that battle
+\begin{itemize}
+\item Leaderboard Service: Retrives from ApplicationDB all info to rebuild leaderboards
+\end{itemize}
+\item R13.1: For every battle the platform maintains a ranking of the groups based on their battle score
+\begin{itemize}
+\item Leaderboard Service: Holds all battle information in ApplicationDB
+\end{itemize}
+\item R14: The platform will notify signed students of a newly created tournament
+\begin{itemize}
+\item Tournament Service: Will write a new message on message broker every time a new tournament is created
+\item Notification Service: Will read from message broker any new message regarding the creation of a tournament and notify students through Email Service
+\end{itemize}
+\item R15: The platform shall notify students who are subscribed into a tournament that a new battle is available in that tournament context
+\begin{itemize}
+\item Battle Service: Will write a new message on message broker every time a new battle in a tournament is created
+\item Notification Service: Will read from message broker any new message regarding the creation of a battle and notify subscribed students through Email Service
+\end{itemize}
+\item R16: The plaftorm shall notify students who are participating in a battle that the final rank for that battle is available
+\begin{itemize}
+\item Battle Service: Will write a new message on message broker every time a battle in a tournament has ended
+\item Notification Service: Will read from message broker any new message regarding the end of a battle and notify subscribed students through Email Service
+\end{itemize}
+\item R17: The plaftorm shall notify students who are subscribed in a tournament that the final rank for that tournament is available
+\begin{itemize}
+\item Battle Service: Will write a new message on message broker every time a tournament has ended
+\item Notification Service: Will read from message broker any new message regarding the end of a tournament and notify subscribed students through Email Service
+\end{itemize}
+\item R18: The platform shall create a new repository with Github for every new battle in any tournament after the submission deadline expires
+\begin{itemize}
+\item Battle Service: Will write a new message on message broker when the registration deadline expires
+\item GitHub Handler: Will read a create repository message from the message broker and communicate with GitHub to create a new repository
+\end{itemize}
+\item R19: The platform shall send the battle repository link to students who joined that battle after the submission deadline expires
+\begin{itemize}
+\item GitHub Handler: Will write a message everytime a new repository is created
+\item Notification Service: Will read a message containing the link to the repository and send an email through the email service to every student that has joined the repository's battle
+\end{itemize}
+\end{itemize}

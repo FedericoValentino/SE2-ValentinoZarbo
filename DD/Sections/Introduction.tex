@@ -1,0 +1,57 @@
+\section{Purpose}
+\ac{CKB} is a new platform that helps students improve their software development skills by training with peers on code katas . Educators use the platform to challenge students by creating code kata battles in which teams of students can compete against each other, thus proving (and improving) their skills.\newline
+A code kata battle is essentially a programming exercise in a programming language of choice (e.g., Java, Python). The exercise includes a brief textual description and a software project with build automation scripts (e.g., a Gradle project in case of Java sources) that contains a set of test cases that the program must pass, but without the program implementation. Students are asked to complete the project with their code. In particular, groups of students participating in a battle are expected to follow a test-first approach and develop a solution that passes the required tests. Groups deliver their solution to the platform (by the end of the battle). At the end of the battle, the platform assigns scores to groups to create a competition rank.
+
+\section{Scope}
+The scope of this document is to provide a detailed description of how our system will be implemented to meet the requirements defined in the RASD. It outlines the overall architecture of \ac{CKB} including all of its modules, interfaces and interactions. Furthermore it provides an integration and testing plan.
+
+\section{Definitions, Acronyms, Abbreviations}
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Acronym} & \textbf{Definition}\\
+            \hline
+            CKB & CodeKataBattle\\
+            \hline
+            CK & Code Kata\\
+            \hline
+            UI & User Interface\\
+            \hline
+            SOA & Service Oriented Architecture \\
+            \hline
+            API & Application Programming Interface \\
+            \hline
+            HTML & HyperText Markup Language\\
+            \hline
+            CSS & Cascading Style Sheet\\
+            \hline
+            JS & JavaScript\\
+            \hline
+            DBMS & DataBase Management System\\
+            \hline
+        \end{tabular}
+        \caption{Acronyms used in the document}
+    \end{center}
+\end{table}
+
+\section{Revision History}
+
+\section{Reference Documents}
+
+\begin{itemize}
+    \item RASD Document for \ac{CKB}
+\end{itemize}
+
+\section{Document Structure}
+
+The document is divided into 6 main sections:
+\begin{itemize}
+    \item The first section is a brief introduction to the document, the purpose of the system, the scope and various definitions.
+    \item The second section provides the chosen architectural design for the system. Here we describe every major component and how they interact with each other.
+    \item The third section contains various mockups for the \ac{UI}.
+    \item The fourth section describes how the current design maps to the requirements previuously defined in the RASD document.
+    \item The fifth section provides an implementation plan for the entire system.
+    \item Lastly, the sixth section contains the effort spent by every group member.
+\end{itemize}

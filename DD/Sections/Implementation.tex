@@ -1,0 +1,11 @@
+\section{Implementation \& Integration}
+The implementation and integration plan will follow a very simple strategy:
+\begin{itemize}
+    \item First we start by developing the various Microservices of our system: Tournament Service, Battle Service, Leaderboard Service, Invitation Service, Software Evaluation Service, Manual Evaluation Service, Github Handler Service.
+    \item Next we make sure the communication with the various DBs works
+    \item Then after testing the basic functionalities we will start making our services communicate with the external world by connecting the notification service to an email provider and the GitHub Handler Service to GitHub
+    \item Lastly we implement the User side of things, the API gateway and the WebApp
+\end{itemize}
+
+\section{Test Plan}
+The system should be tested statically during development and dynamically with particular dedication to ensure that no vulnerabilities are left open. For example one of the main security weak point is the Software Evaluation Service as it runs any external code which could eventually be malicious. Regarding the UI/UX side of things it is crucial that the application will be intuitive enough to ensure a good user experience.
