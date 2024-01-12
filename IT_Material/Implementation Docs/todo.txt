@@ -1,0 +1,19 @@
+DB Structure
+    JSON FILES -> Nico
+GitHub Implementation -> TODO LATER
+Software Eval -> TODO LATER
+
+Implementation Guidelines
+
+Tournament
+Battle
+User
+Leaderboard
+ManualEval
+Notification
+SoftwareEval
+GitHubHandler
+
+API Gateway
+WebServer
+WebApp
