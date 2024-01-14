@@ -1,5 +1,6 @@
 package it.polimi.se2.codekata.codekatabattle.microservices;
 
+import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSApplication;
 import it.polimi.se2.codekata.codekatabattle.topics.TournamentTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -16,6 +17,9 @@ public class TournamentService
     @Autowired
     private ApplicationEventPublisher publisher;
 
+    @Autowired
+    private DBMSApplication DB;
+
     public ArrayList<Integer> getCurrentTournament(int UserId, String UserType)
     {
         ArrayList<Integer> tList = new ArrayList<Integer>();
@@ -25,6 +29,7 @@ public class TournamentService
 
     public void createTournament(int UserId, int UserType, String TournamentName)
     {
+
 
     }
 

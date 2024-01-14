@@ -1,4 +1,10 @@
 package it.polimi.se2.codekata.codekatabattle.DBMS;
 
-public class DBMSSource {
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class DBMSSource
+{
+
 }

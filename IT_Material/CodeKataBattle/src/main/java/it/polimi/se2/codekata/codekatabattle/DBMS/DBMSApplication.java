@@ -1,4 +1,9 @@
 package it.polimi.se2.codekata.codekatabattle.DBMS;
 
-public class DBMSApplication {
+import org.springframework.stereotype.Component;
+
+@Component
+public class DBMSApplication
+{
+
 }
