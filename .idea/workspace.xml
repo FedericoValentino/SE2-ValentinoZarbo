@@ -5,23 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07798836-d5ae-4c24-9164-175a19b4b4d9" name="Changes" comment="Todos">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SE2-ValentinoZarbo.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/Implementation Files/demo1/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/Implementation Files/demo1/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/Implementation Files/demo1/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/Implementation Files/demo1/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/Implementation Files/demo1/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/Implementation Files/demo1/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/Implementation Files/demo1/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/Implementation Files/demo1/src/main/java/com/example/demo/Demo1Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/Implementation Files/demo1/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/Implementation Files/demo1/src/test/java/com/example/demo/Demo1ApplicationTests.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/BattlePageServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/CreateBattleServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HelloServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HomeProfessorServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HomeStudentServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/LoginServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/TournamentPageServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +29,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/IT_Material/WebServer">
+      <ProjectState />
+    </projectState>
     <projectState path="$PROJECT_DIR$/IT_Material/prj files/demo1">
       <ProjectState />
     </projectState>
@@ -41,17 +44,7 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="demo1" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="demo1" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -96,31 +89,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Gradle.Build demo1.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.CodeKataBattleApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/feder34/git/SE2-ValentinoZarbo&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Gradle.Build demo1.executor": "Run",
+    "Gradle.Upgrade Gradle wrapper.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.CodeKataBattleApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Documents/SE2-ValentinoZarbo/IT_Material",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SE2-ValentinoZarbo" />
@@ -133,6 +127,27 @@
       <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.59" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.59" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment>
+        <artifact name="Gradle : it.polimi.se2.codekata : WebServer-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Gradle___it_polimi_se2_codekata___WebServer_1_0_SNAPSHOT_war" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Gradle : it.polimi.se2.codekata : WebServer-1.0-SNAPSHOT.war" />
+        </option>
       </method>
     </configuration>
   </component>
@@ -150,6 +165,7 @@
       <workItem from="1705241036582" duration="57000" />
       <workItem from="1705241098044" duration="18000" />
       <workItem from="1705241144202" duration="91000" />
+      <workItem from="1705429916620" duration="1066000" />
     </task>
     <task id="LOCAL-00001" summary="Implementation Files">
       <option name="closed" value="true" />
@@ -172,6 +188,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implementation Files" />
