@@ -1,5 +1,7 @@
 # TODOS
 
+Done means it has also bean tested. When all of a section are done integration testing should be done section per section
+
 ## Webserver
 
 ### Servlets
@@ -19,7 +21,7 @@
 * [ ] Create Battle
 * [ ] Manual Eval
 
-## Services
+## Application
 * [ ] Broker
 ### Microservices
 
@@ -31,13 +33,13 @@
 * [ ] SoftwareEvalService
 * [ ] Notification Service
 
-## Stub demo
+### Stub demo
 
-### FakeDbms
+#### FakeDbms
 
 * [ ] ApplicationDBMS
 * [ ] SourceDBMS
 
-### Fake(?)EmailServce
+#### Fake(?)EmailServce
 
 *[ ]
