@@ -3,14 +3,15 @@ import it.polimi.se2.codekata.codekatabattle.topics.BattleTopic;
 import it.polimi.se2.codekata.codekatabattle.topics.TournamentTopic;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class NotificationService
 {
 
     private void sendEmail(String text)
     {
-
+        System.out.println(text);
     }
     @EventListener
     public void tournamentTopicListener(TournamentTopic event)
