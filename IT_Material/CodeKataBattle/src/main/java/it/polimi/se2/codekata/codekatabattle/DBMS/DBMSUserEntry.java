@@ -19,11 +19,13 @@ public class DBMSUserEntry
 
     public ArrayList<Integer> Groups;
 
-    public DBMSUserEntry(int userID, String email, String password)
+    public DBMSUserEntry(int userID, String Username, String email, String password, UserType type)
     {
         this.userID = userID;
+        this.UserName = Username;
         this.email = email;
         this.password = password;
+        this.userType = type;
         this.UserTournaments = new ArrayList<>();
         this.UserBattles = new ArrayList<>();
         this.Groups = new ArrayList<>();
