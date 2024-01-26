@@ -1,4 +1,4 @@
-package it.polimi.se2.codekata.webserver;
+package it.polimi.se2.codekata.webserver.servlet;
 
 import java.io.*;
 import javax.servlet.http.*;
@@ -13,6 +13,8 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
         response.setContentType("text/html");
 
         // Hello

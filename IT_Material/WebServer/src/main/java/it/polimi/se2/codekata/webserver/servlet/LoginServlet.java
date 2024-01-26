@@ -1,4 +1,4 @@
-package it.polimi.se2.codekata.webserver;
+package it.polimi.se2.codekata.webserver.servlet;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

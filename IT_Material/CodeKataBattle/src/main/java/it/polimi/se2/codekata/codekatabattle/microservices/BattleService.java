@@ -30,6 +30,7 @@ public class BattleService
     public Pair<Integer, Integer> getGroupRules(int UserId, int BattleID)
     {
         Pair<Integer, Integer> pair = null;
+        //return : ruleset (deadlineSubs, deadlineSubm, groupMax, GroupMin)
         return pair;
     }
 

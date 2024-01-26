@@ -4,24 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07798836-d5ae-4c24-9164-175a19b4b4d9" name="Changes" comment="Todos">
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/BattlePageServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/CreateBattleServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HelloServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HomeProfessorServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HomeStudentServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/LoginServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/TournamentPageServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/index.jsp" afterDir="false" />
+    <list default="true" id="07798836-d5ae-4c24-9164-175a19b4b4d9" name="Changes" comment="Added module for webServer, todo all servlet, html pages(thymeleaf)">
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/utils/UtilsServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/microservices/BattleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/microservices/BattleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/microservices/TournamentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/microservices/TournamentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/BattlePageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/BattlePageServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/CreateBattleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/CreateBattleServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/HelloServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HomeProfessorServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/HomeProfessorServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HomeStudentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/HomeStudentServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/TournamentPageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/TournamentPageServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +69,13 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -89,32 +90,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Gradle.Build demo1.executor": "Run",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.CodeKataBattleApplication.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "17",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/User/Documents/SE2-ValentinoZarbo/IT_Material",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.Build demo1.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.CodeKataBattleApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/SE2-ValentinoZarbo/IT_Material&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SE2-ValentinoZarbo" />
@@ -137,12 +138,29 @@
           </settings>
         </artifact>
       </deployment>
-      <server-settings />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="6d5d7860-fc03-4d63-97d4-679dd83e2117" />
+      </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
       <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
@@ -165,7 +183,9 @@
       <workItem from="1705241036582" duration="57000" />
       <workItem from="1705241098044" duration="18000" />
       <workItem from="1705241144202" duration="91000" />
-      <workItem from="1705429916620" duration="1066000" />
+      <workItem from="1705429916620" duration="1757000" />
+      <workItem from="1706202635727" duration="2869000" />
+      <workItem from="1706286957556" duration="2921000" />
     </task>
     <task id="LOCAL-00001" summary="Implementation Files">
       <option name="closed" value="true" />
@@ -183,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705077960258</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added module for webServer, todo all servlet, html pages(thymeleaf)">
+      <created>1705431057120</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705431057120</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +230,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implementation Files" />
     <MESSAGE value="Todos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Todos" />
+    <MESSAGE value="Added module for webServer, todo all servlet, html pages(thymeleaf)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added module for webServer, todo all servlet, html pages(thymeleaf)" />
   </component>
 </project>

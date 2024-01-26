@@ -23,7 +23,7 @@ public class TournamentService
     public ArrayList<Integer> getCurrentTournament(int UserId, String UserType)
     {
         ArrayList<Integer> tList = new ArrayList<Integer>();
-
+    // TODO rest  json return : "{'tournaments':[{'tid': 'idtorneo','tname': 'nometorneo','isInvolved': '0 o 1',--altri tornei{},{},{}---]}
         return tList;
     }
 
@@ -49,7 +49,7 @@ public class TournamentService
     public ArrayList<Integer> getTournamentsBattles(String UserId,String UserType, String TournamentID)
     {
         ArrayList<Integer> battleList = new ArrayList<Integer>();
-
+    //todo rest return : list of battles(id,name,is_user_involved[0/1])
         return battleList;
     }
 
