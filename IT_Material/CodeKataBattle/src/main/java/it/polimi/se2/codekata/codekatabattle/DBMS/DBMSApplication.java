@@ -1,5 +1,6 @@
 package it.polimi.se2.codekata.codekatabattle.DBMS;
 
+import org.apache.catalina.User;
 import org.javatuples.Pair;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.UserType;
@@ -218,7 +219,7 @@ public class DBMSApplication
 
         if(added)
         {
-            this.BattleEntries.add(new DBMSBattleEntry(tID, bID, BattleName, new Pair<>(maxsize, minsize), assignment, new Pair<>(subsDL, submDL), testcases));
+            this.BattleEntries.add(new DBMSBattleEntry(tID, bID, BattleName, new Pair<>(minsize, maxsize), assignment, new Pair<>(subsDL, submDL), testcases));
         }
 
         return bID;
@@ -258,9 +259,43 @@ public class DBMSApplication
 
     public void addGroup(Group students, int bID)
     {
+        //first check if IDs are from actual students
+
+        for(int i = 0; i < students.getStudentsID().size(); i++)
+        {
+            boolean found = false;
+          for(DBMSUserEntry userEntry : UserEntries)
+          {
+              if (userEntry.userID == students.getStudentsID().get(i) && userEntry.userType == UserType.STUDENT && !userEntry.UserBattles.contains(bID)) {
+                  found = true;
+                  break;
+              }
+          }
+          //if that ID is not found or it's from an Educator dont do anything
+          if(!found)
+          {
+              return;
+          }
+        }
+
+
+
+        //if all is good check for the battle and if min and max are respected add to battle
         for (DBMSBattleEntry battleEntry : BattleEntries) {
-            if (battleEntry.bID == bID) {
+            if (battleEntry.bID == bID && students.getStudentsID().size() <= battleEntry.groupRule.getValue1() &&  students.getStudentsID().size() >= battleEntry.groupRule.getValue0()) {
                 battleEntry.participatingGroups.add(students);
+            }
+        }
+
+        //battle is confirmed for student, so i'm adding it to the student's battles.
+        for(int i = 0; i < students.getStudentsID().size(); i++)
+        {
+            for(DBMSUserEntry userEntry : UserEntries)
+            {
+                if (userEntry.userID == students.getStudentsID().get(i) && userEntry.userType == UserType.STUDENT)
+                {
+                    userEntry.UserBattles.add(bID);
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 package it.polimi.se2.codekata.codekatabattle.DBMS;
 
+import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.UserType;
 import org.junit.jupiter.api.Test;
 
@@ -133,6 +134,26 @@ class DBMSApplicationTest
         assert (b3 == -1);
     }
 
+    @Test
+    void addGroup()
+    {
+        appDB.addStudent("Feder1", "valefeder34@gmail.com", "pwd");
+        appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
+        appDB.addEducator("Feder0", "valefeder34@gmail.com", "pwd");
+        appDB.addTournament(2);
+
+        int b1 = appDB.addBattle(0, 2, "TEST1", "Ciao Ciao", new Date(), new Date(), 3, 2, new ArrayList<>(Arrays.asList("Ciao", "ciao")));
+
+        appDB.addGroup(new Group(Arrays.asList(0,1)), b1);
+        appDB.addGroup(new Group(Arrays.asList(0,1)), b1);
+        appDB.addGroup(new Group(Arrays.asList(1)), b1);
+
+        appDB.addGroup(new Group(Arrays.asList(0,2)), b1);
+
+        assert(appDB.BattleEntries.get(b1).participatingGroups.size() == 1);
+
+    }
+
 
     @Test
     void getScoresOfTournament() {
@@ -180,9 +201,5 @@ class DBMSApplicationTest
 
     @Test
     void getBattleDeadlines() {
-    }
-
-    @Test
-    void addGroup() {
     }
 }
