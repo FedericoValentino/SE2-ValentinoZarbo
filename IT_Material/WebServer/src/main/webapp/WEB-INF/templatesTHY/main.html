@@ -1,0 +1,60 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../Desktop/wpages%20codekata/ckbstyle.css">
+    <script src="../../../../../../../../../Desktop/wpages%20codekata/scriptckb.js"></script>
+ <script>
+      let baUr="    hhhhh";
+        const stubTournList='{"tournaments":[{"tid":"1","tname":"tourn12","isInvolved":"0"},' +
+                '{"tid":"3","tname":"tr3","isInvolved":"1"},{"tid":"2","tname":"tourn2","isInvolved":"0"}]}'
+        window.onload=function(){
+         
+            //call to rest api, get content and populate lists
+
+            const tournaments =stubTournList
+            // get tournament/ and make list of all and those where user is subscribed
+            loadTourn(JSON.parse(tournaments));
+
+        }
+   </script>
+
+</head>
+<body>
+
+    <div id="header">
+
+        <img id="logo">
+        <div class="PageName">Tournaments</div>
+        <div class="logas">ED???</div>
+        <a class="logout" href="https://www.google.com/">logout</a></div>    
+    </div>
+
+
+
+    <div id="content">
+        <div id="ptor">
+            <div class="contentHeader"> Your Tournaments</div>
+            <div class="tournList" id="persTo">
+                    <a class="tlist-item" id="t-item111">tourn1</a>
+                    <div class="tlist-item" id="t-item2">tourn1</div>
+                    <div class="tlist-item" id="t-item3">tourn1</div>
+                    <div class="tlist-item" id="t-item4">tourn1</div>
+                    <div class="tlist-item" id="t-item5">tourn1</div>
+
+
+
+            </div>
+        </div>
+
+        <div id="alltor">
+            <div class="contentHeader"> All Tournaments</div>
+
+            <div class="tournList" id="pubTo"></div>
+        </div>
+
+        <div></div>
+    </div>
+    
+
+
+
+</body></html>

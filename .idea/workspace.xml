@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07798836-d5ae-4c24-9164-175a19b4b4d9" name="Changes" comment="Added module for webServer, todo all servlet, html pages(thymeleaf)">
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/utils/UtilsServlet.java" afterDir="false" />
+    <list default="true" id="07798836-d5ae-4c24-9164-175a19b4b4d9" name="Changes" comment="servlets base base, prime pagine html(da suddividere)">
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/MainPage.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/templatesTHY/battle.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/templatesTHY/createBattle.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/templatesTHY/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/templatesTHY/tournamentPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/css/ckbstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/scriptckb.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/microservices/BattleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/microservices/BattleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/microservices/TournamentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/microservices/TournamentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/BattlePageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/BattlePageServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/CreateBattleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/CreateBattleServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/HelloServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HomeProfessorServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/HomeProfessorServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/HomeStudentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/HomeStudentServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/TournamentPageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/TournamentPageServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/TournamentsrServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/TournamentsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +48,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -90,32 +90,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Gradle.Build demo1.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.CodeKataBattleApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/SE2-ValentinoZarbo/IT_Material&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Gradle.Build demo1.executor": "Run",
+    "Gradle.Upgrade Gradle wrapper.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.CodeKataBattleApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Documents/SE2-ValentinoZarbo/IT_Material/WebServer/src/main/webapp/css",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\SE2-ValentinoZarbo\IT_Material\WebServer\src\main\webapp\css" />
+      <recent name="C:\Users\User\Documents\SE2-ValentinoZarbo\IT_Material\WebServer\src\main\webapp\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\SE2-ValentinoZarbo\IT_Material\WebServer\src\main\webapp\WEB-INF\templatesTHY" />
+      <recent name="C:\Users\User\Documents\SE2-ValentinoZarbo\IT_Material\WebServer\src\main\webapp" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SE2-ValentinoZarbo" />
@@ -185,7 +195,9 @@
       <workItem from="1705241144202" duration="91000" />
       <workItem from="1705429916620" duration="1757000" />
       <workItem from="1706202635727" duration="2869000" />
-      <workItem from="1706286957556" duration="2921000" />
+      <workItem from="1706286957556" duration="3238000" />
+      <workItem from="1706307676474" duration="665000" />
+      <workItem from="1706347235053" duration="6652000" />
     </task>
     <task id="LOCAL-00001" summary="Implementation Files">
       <option name="closed" value="true" />
@@ -210,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705431057120</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="servlets base base, prime pagine html(da suddividere)">
+      <created>1706296505826</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706296505826</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +250,7 @@
     <MESSAGE value="Implementation Files" />
     <MESSAGE value="Todos" />
     <MESSAGE value="Added module for webServer, todo all servlet, html pages(thymeleaf)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added module for webServer, todo all servlet, html pages(thymeleaf)" />
+    <MESSAGE value="servlets base base, prime pagine html(da suddividere)" />
+    <option name="LAST_COMMIT_MESSAGE" value="servlets base base, prime pagine html(da suddividere)" />
   </component>
 </project>
