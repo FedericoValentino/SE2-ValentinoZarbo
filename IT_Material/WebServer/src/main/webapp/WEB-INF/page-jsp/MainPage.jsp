@@ -12,10 +12,11 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ckbstyle.css">
     <script src="${pageContext.request.contextPath}/js/scriptckb.js"></script>
     <script>
+        const restBase="${pageContext.request.contextPath}";
         const stubTournList='{"tournaments":[{"tid":"1","tname":"tourn12","isInvolved":"0"},' +
             '{"tid":"3","tname":"tr3","isInvolved":"1"},{"tid":"2","tname":"tourn2","isInvolved":"0"}]}'
         window.onload=function(){
-
+          //todo  fetch(restBase+"/tournaments",{method:"get"}).then((response) => response.json()).then((json)=>loadTourn(JSON.parse(json)))
             //call to rest api, get content and populate lists
 
             const tournaments =stubTournList
@@ -43,7 +44,7 @@
     <div id="ptor">
         <div class="contentHeader"> Your Tournaments</div>
         <div class="tournList" id="persTo">
-            <a class="tlist-item" id="t-item111">tourn1</a>
+            <a class="tlist-item" href="TournamentPageServlet" id="t-item111">tourn1</a>
             <div class="tlist-item" id="t-item2">tourn1</div>
             <div class="tlist-item" id="t-item3">tourn1</div>
             <div class="tlist-item" id="t-item4">tourn1</div>
@@ -59,7 +60,7 @@
 
         <div class="tournList" id="pubTo"></div>
     </div>
-    <% if ((boolean) request.getSession().getAttribute("isStud")){%>
+    <% if ( request.getSession().getAttribute("isStud").equals("yes")){%>
     <div id="diversified">
 
     <p>studente</p>

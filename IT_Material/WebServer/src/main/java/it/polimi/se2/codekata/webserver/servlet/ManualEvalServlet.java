@@ -5,15 +5,19 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "TournamentPageServlet", value = "/TournamentPageServlet")
-public class TournamentPageServlet extends HttpServlet {
+@WebServlet(name = "ManualEvalServlet", value = "/ManualEvalServlet")
+public class ManualEvalServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession ss= request.getSession();
         if(ss.isNew()) {
+            response.sendRedirect(getServletContext().getContextPath()+"LoginServlet");
             return;
         }
-
+        if(ss.getAttribute("isStud").equals("yes")){
+            response.sendError(403, "students can't access this resource");
+            return;
+        }
 
         response.getWriter().append("ok");
         response.setStatus(200);
@@ -22,8 +26,7 @@ public class TournamentPageServlet extends HttpServlet {
 
 
 
-        request.getRequestDispatcher("/WEB-INF/page-jsp/tournamentPage.jsp").forward(request, response);
-
+        request.getRequestDispatcher("/WEB-INF/page-jsp/manualEval.jsp").forward(request, response);
     }
 
     @Override

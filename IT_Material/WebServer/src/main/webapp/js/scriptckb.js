@@ -1,4 +1,4 @@
-function loadTourn(tournFullList){
+function loadTourn(tournFullList, baseUrl){
     let yourT=[];
     let allT=[];
     let i=0;
@@ -12,13 +12,13 @@ function loadTourn(tournFullList){
         }
         i++;                
     });
-    setTList(allT,document.getElementById("pubTo"))
-    setTList(yourT, document.getElementById("persTo"))
+    setTList(allT,document.getElementById("pubTo"),baseUrl)
+    setTList(yourT, document.getElementById("persTo"),baseUrl)
 }
 
-function setTList(list, listElement){
+function setTList(list, listElement, baseUrl){
     list.forEach(to => {
-        listElement.innerHTML+=tournamentListItem(to);
+        listElement.innerHTML+='<a class="tlist-item" id="'+to.tid+'-item "href='+baseUrl+goToTournament(to.tid)+'>'+to.tname+'</a>';
     });
 
 }
@@ -28,22 +28,8 @@ function tournamentListItem( to){
 }
 function goToTournament(tid){
     //calls servlet for new page( tournament page)
-    return "servlet call for t"+tid
+    return "/TournamentPageServlet?"+tid;
 }
 
 
-//---------------------------------------------------------battlepage
-function fillBattleList(battles, blistElement){
-    battles.forEach(b => {
-        blistElement.innerHTML+= "<a href='"+goToBattleUrl(b)+"'; class='blist-item'> "+b.bname+"</a";
-    });
-}
-function goToBattleUrl(battle){
-    return "servlet to battlePage/"+battle.bid;
-}
-function fillLeaderBoard(leaderB, lbElment){
-    leaderB.forEach(entry => {
-        lbElment.innerHTML+= "";
-    });
-
-}
+//---------------------------------------------------------

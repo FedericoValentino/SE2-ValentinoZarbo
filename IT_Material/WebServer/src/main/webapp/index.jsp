@@ -8,7 +8,10 @@
 <body>
 <h1><%= "stub for session testing" %></h1>
 <br/>
-<a href="TournamentsServlet">Hello Servlet</a>
+<h1>Welcome Now login</h1>
+<a href="LoginServlet">Hello Servlet</a>
+
+<!--
 <div id="header">
 
   <img id="logo">
@@ -21,7 +24,7 @@
   <div>
     <div class="contentHeader"> Login</div>
 
-    <form  id="logform">
+    <form  id="logform" method="post">
       <label for="username">Username</label>
       <input name="username" id="username" type="text">
       <label for="username">password</label>
@@ -36,7 +39,7 @@
   <div >
     <div class="contentHeader"> SignUp</div>
 
-    <form id="signform">
+    <form id="signform" method="post">
       <label for="userns">Insert a username</label>
       <input name="username" id="userns" type="text">
       <label for="psw1"> type a password</label>
@@ -52,7 +55,7 @@
     </form>
   </div>
 
-</div>
+</div>-->
 
 </body>
 </html>

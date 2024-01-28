@@ -23,8 +23,8 @@ tasks.withType(JavaCompile) {
 
 dependencies {
   compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.4'
   implementation('org.thymeleaf:thymeleaf:3.0.12.RELEASE')
-
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
