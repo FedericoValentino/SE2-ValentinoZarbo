@@ -112,43 +112,32 @@ public class DBMSApplication
         return null;
     }
     //Used by Tournament Service
-    public void addTournament(int EduID)
+    public int addTournament(int EduID)
     {
+        int tID = -1;
         for (DBMSUserEntry userEntry : this.UserEntries) {
             if (userEntry.userID == EduID && userEntry.userType == UserType.EDUCATOR) {
+                tID = this.TournamentEntries.size();
                 this.TournamentEntries.add(new DBMSTournamentEntry(this.TournamentEntries.size(), EduID));
             }
         }
+        return tID;
     }
     public void grantBattleCreation(int tID, int EduID)
     {
-        for (DBMSTournamentEntry tournamentEntry : this.TournamentEntries) {
-            if (tID == tournamentEntry.creatorID) {
-                for(DBMSUserEntry userEntry : this.UserEntries)
-                {
-                    if(EduID == userEntry.userID && userEntry.userType == UserType.EDUCATOR)
-                    {
-                        tournamentEntry.collaborators.add(EduID);
-                    }
-                }
+        for (DBMSTournamentEntry tournamentEntry : this.TournamentEntries)
+        {
+            if (tID == tournamentEntry.tID) {
+                tournamentEntry.collaborators.add(EduID);
             }
         }
     }
 
     public void subscribeToTournament(int tID, int userID)
     {
-        for (DBMSUserEntry userEntry : this.UserEntries)
-        {
-            if(userID == userEntry.userID && userEntry.userType == UserType.STUDENT)
-            {
-                for (DBMSTournamentEntry tournamentEntry : this.TournamentEntries) {
-                    if (tournamentEntry.status && tournamentEntry.tID == tID) {
-                        tournamentEntry.userID.add(userID);
-                        userEntry.UserTournaments.add(tID);
-                    }
-                }
-            }
-        }
+
+        getTournamentInfo(tID).userID.add(userID);
+        getUserInfo(userID).UserTournaments.add(tID);
     }
     public ArrayList<Integer> getCurrentTournament()
     {
@@ -186,40 +175,14 @@ public class DBMSApplication
     //Used by Battle Service
     public int addBattle(int tID, int EduID, String BattleName, String assignment, Date submDL, Date subsDL, int maxsize, int minsize, ArrayList<String> testcases)
     {
-        boolean foundEdu = false;
-        //-1 means the battle hasn't been added for some reason.
-
-
-        for (DBMSTournamentEntry tournamentEntry : this.TournamentEntries) {
-            if (tournamentEntry.tID == tID) {
-                for(int collaborator : tournamentEntry.collaborators)
-                {
-                    if(collaborator == EduID)
-                    {
-                        foundEdu = true;
-                    }
-                }
-            }
-        }
-
-        if(!foundEdu)
-        {
-            return -1;
-        }
-
         int bID = -1;
         boolean added = false;
         for (DBMSTournamentEntry tournamentEntry : this.TournamentEntries) {
             if (tournamentEntry.tID == tID) {
                 bID = this.BattleEntries.size();
                 tournamentEntry.Battles.add(bID);
-                added = true;
+                this.BattleEntries.add(new DBMSBattleEntry(tID, bID, BattleName, new Pair<>(minsize, maxsize), assignment, new Pair<>(subsDL, submDL), testcases));
             }
-        }
-
-        if(added)
-        {
-            this.BattleEntries.add(new DBMSBattleEntry(tID, bID, BattleName, new Pair<>(minsize, maxsize), assignment, new Pair<>(subsDL, submDL), testcases));
         }
 
         return bID;
@@ -259,30 +222,8 @@ public class DBMSApplication
 
     public void addGroup(Group students, int bID)
     {
-        //first check if IDs are from actual students
-
-        for(int i = 0; i < students.getStudentsID().size(); i++)
-        {
-            boolean found = false;
-          for(DBMSUserEntry userEntry : UserEntries)
-          {
-              if (userEntry.userID == students.getStudentsID().get(i) && userEntry.userType == UserType.STUDENT && !userEntry.UserBattles.contains(bID)) {
-                  found = true;
-                  break;
-              }
-          }
-          //if that ID is not found or it's from an Educator dont do anything
-          if(!found)
-          {
-              return;
-          }
-        }
-
-
-
-        //if all is good check for the battle and if min and max are respected add to battle
         for (DBMSBattleEntry battleEntry : BattleEntries) {
-            if (battleEntry.bID == bID && students.getStudentsID().size() <= battleEntry.groupRule.getValue1() &&  students.getStudentsID().size() >= battleEntry.groupRule.getValue0()) {
+            if (battleEntry.bID == bID) {
                 battleEntry.participatingGroups.add(students);
             }
         }
@@ -310,5 +251,22 @@ public class DBMSApplication
     {
         this.UserEntries.add(new DBMSUserEntry(this.UserEntries.size(), UserName, email, Password, UserType.EDUCATOR));
     }
+
+    public DBMSUserEntry getUserInfo(int uID)
+    {
+        return UserEntries.get(uID);
+    }
+
+    public DBMSTournamentEntry getTournamentInfo(int tID)
+    {
+        return TournamentEntries.get(tID);
+    }
+
+    public DBMSBattleEntry getBattleInfo(int bID)
+    {
+        return BattleEntries.get(bID);
+    }
+
+
 
 }

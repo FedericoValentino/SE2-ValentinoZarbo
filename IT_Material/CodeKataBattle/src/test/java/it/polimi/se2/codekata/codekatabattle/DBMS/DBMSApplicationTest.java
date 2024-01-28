@@ -116,6 +116,7 @@ class DBMSApplicationTest
     @Test
     void addBattle()
     {
+        //TODO Remake test just for DB
         appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
         appDB.addEducator("Feder1", "valefeder34@gmail.com", "pwd");
         appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
@@ -137,6 +138,7 @@ class DBMSApplicationTest
     @Test
     void addGroup()
     {
+        //TODO Remake test just for DB
         appDB.addStudent("Feder1", "valefeder34@gmail.com", "pwd");
         appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
         appDB.addEducator("Feder0", "valefeder34@gmail.com", "pwd");
