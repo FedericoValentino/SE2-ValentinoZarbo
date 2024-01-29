@@ -28,7 +28,7 @@ class BattleServiceTest
         appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
         appDB.addEducator("Feder1", "valefeder34@gmail.com", "pwd");
         appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
-        appDB.addTournament(0);
+        appDB.addTournament(0, "Ciao");
 
         appDB.grantBattleCreation(0, 1);
 
@@ -46,7 +46,7 @@ class BattleServiceTest
         appDB.addStudent("Feder1", "valefeder34@gmail.com", "pwd");
         appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
         appDB.addEducator("Feder0", "valefeder34@gmail.com", "pwd");
-        appDB.addTournament(2);
+        appDB.addTournament(2, "Ciao");
         appDB.subscribeToTournament(0, 0);
         appDB.subscribeToTournament(0, 1);
 

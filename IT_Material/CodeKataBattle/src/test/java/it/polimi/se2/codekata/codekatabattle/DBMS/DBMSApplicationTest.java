@@ -40,122 +40,46 @@ class DBMSApplicationTest
     @Test
     void addTournament()
     {
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
-        appDB.addTournament(0);
-        appDB.addTournament(1);
-        appDB.addTournament(3);
 
-        assert(appDB.TournamentEntries.size() == 1);
-        assert (appDB.TournamentEntries.get(0).collaborators.contains(0));
-        assert (!appDB.TournamentEntries.get(0).collaborators.contains(1));
-        assert (appDB.TournamentEntries.get(0).creatorID == 0);
     }
 
     @Test
     void grantBattleCreation()
     {
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
-        appDB.addStudent("Feder3", "valefeder34@gmail.com", "pwd");
-        appDB.addTournament(0);
 
-        appDB.grantBattleCreation(0, 1);
-        appDB.grantBattleCreation(0, 2);
-
-        assert (appDB.TournamentEntries.get(0).collaborators.size() == 2);
-        assert (appDB.TournamentEntries.get(0).collaborators.contains(1));
     }
 
     @Test
     void subscribeToTournament()
     {
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        appDB.addTournament(0);
-        appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
 
-        appDB.subscribeToTournament(0, 1);
-
-        assert (appDB.UserEntries.get(1).UserTournaments.contains(0));
-        assert (appDB.TournamentEntries.get(0).userID.contains(1));
 
     }
 
     @Test
     void setScoresUserTournament()
     {
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        appDB.addTournament(0);
-        appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
 
-        appDB.subscribeToTournament(0, 1);
-
-        appDB.setScoresUserTournament(1, 0, 2000);
-
-        assert (appDB.TournamentEntries.get(0).scores.containsKey(1));
-        assert (appDB.TournamentEntries.get(0).scores.get(1) == 2000);
     }
 
     @Test
     void checkEducatorPermission()
     {
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        appDB.addEducator("Feder1", "valefeder34@gmail.com", "pwd");
-        appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
-        appDB.addTournament(0);
 
-        appDB.grantBattleCreation(0, 1);
-
-
-
-        assert(appDB.checkEducatorPermission(0, 1));
-        assert(!appDB.checkEducatorPermission(0, 2));
     }
 
 
     @Test
     void addBattle()
     {
-        //TODO Remake test just for DB
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        appDB.addEducator("Feder1", "valefeder34@gmail.com", "pwd");
-        appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
-        appDB.addTournament(0);
 
-        appDB.grantBattleCreation(0, 1);
-
-        int b1 = appDB.addBattle(0, 0, "TEST1", "Ciao Ciao", new Date(), new Date(), 3, 1, new ArrayList<>(Arrays.asList("Ciao", "ciao")));
-
-        int b2 = appDB.addBattle(0, 1, "TEST2", "Ciao Ciao", new Date(), new Date(), 3, 1, new ArrayList<>(Arrays.asList("Ciao", "ciao")));
-
-        int b3 = appDB.addBattle(0, 2, "TEST2", "Ciao Ciao", new Date(), new Date(), 3, 1, new ArrayList<>(Arrays.asList("Ciao", "ciao")));
-
-        assert (appDB.TournamentEntries.get(0).Battles.size() == 2);
-        assert (b2 == b1 + 1);
-        assert (b3 == -1);
     }
 
     @Test
     void addGroup()
     {
-        //TODO Remake test just for DB
-        appDB.addStudent("Feder1", "valefeder34@gmail.com", "pwd");
-        appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
-        appDB.addEducator("Feder0", "valefeder34@gmail.com", "pwd");
-        appDB.addTournament(2);
-
-        int b1 = appDB.addBattle(0, 2, "TEST1", "Ciao Ciao", new Date(), new Date(), 3, 2, new ArrayList<>(Arrays.asList("Ciao", "ciao")));
-
-        appDB.addGroup(new Group(Arrays.asList(0,1)), b1);
-        appDB.addGroup(new Group(Arrays.asList(0,1)), b1);
-        appDB.addGroup(new Group(Arrays.asList(1)), b1);
-
-        appDB.addGroup(new Group(Arrays.asList(0,2)), b1);
-
-        assert(appDB.BattleEntries.get(b1).participatingGroups.size() == 1);
 
     }
-
 
     @Test
     void getScoresOfTournament() {

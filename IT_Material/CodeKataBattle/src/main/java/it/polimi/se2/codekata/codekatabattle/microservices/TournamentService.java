@@ -3,6 +3,7 @@ package it.polimi.se2.codekata.codekatabattle.microservices;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSApplication;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSTournamentEntry;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSUserEntry;
+import it.polimi.se2.codekata.codekatabattle.GeneralStuff.TournamentsElement;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.UserType;
 import it.polimi.se2.codekata.codekatabattle.topics.TournamentTopic;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,20 @@ public class TournamentService
     public void createTournament(int UserId, String TournamentName)
     {
         int tID = -1;
-        if(DB.getUserInfo(UserId).userType == UserType.EDUCATOR)
+        DBMSUserEntry user = DB.getUserInfo(UserId);
+        if(user != null)
         {
-            tID = DB.addTournament(UserId);
+            if(DB.getUserInfo(UserId).userType == UserType.EDUCATOR)
+            {
+                tID = DB.addTournament(UserId, TournamentName);
+            }
         }
 
-        publishTournamentEvent(tID, true);
+
+        if(tID != -1)
+        {
+            publishTournamentEvent(tID, true);
+        }
     }
 
     public void addCollaborator(int UserId, int CollaboratorID, int tID)
@@ -47,7 +56,7 @@ public class TournamentService
     {
         if(DB.getTournamentInfo(TournamentID).creatorID == UserId && DB.getTournamentInfo(TournamentID).status)
         {
-            DB.getTournamentInfo(TournamentID).status = false;
+            DB.closeTournament(TournamentID);
         }
     }
 
@@ -66,10 +75,19 @@ public class TournamentService
         return battleList;
     }
 
-    public ArrayList<Integer> getCurrentTournament(int UserId)
+    public ArrayList<TournamentsElement> getCurrentTournament(int UserId)
     {
-        ArrayList<Integer> tList = new ArrayList<Integer>();
-        // TODO rest  json return : "{'tournaments':[{'tid': 'idtorneo','tname': 'nometorneo','isInvolved': '0 o 1',--altri tornei{},{},{}---]}
+        DBMSUserEntry userEntry = DB.getUserInfo(UserId);
+        ArrayList<TournamentsElement> tList = new ArrayList<TournamentsElement>();
+
+        ArrayList<Integer> currentT = DB.getCurrentTournament();
+
+        for(int idt : currentT)
+        {
+            DBMSTournamentEntry tournamentEntry = DB.getTournamentInfo(idt);
+            tList.add(new TournamentsElement(idt, tournamentEntry.TournamentName, userEntry.UserTournaments.contains(idt)));
+        }
+
         return tList;
     }
 

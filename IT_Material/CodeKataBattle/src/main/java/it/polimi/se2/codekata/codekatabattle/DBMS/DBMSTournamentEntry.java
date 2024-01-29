@@ -8,6 +8,8 @@ public class DBMSTournamentEntry
 {
     public int tID;
 
+    public String TournamentName;
+
     public Boolean status;
 
     public int creatorID;
@@ -19,9 +21,10 @@ public class DBMSTournamentEntry
     public ArrayList<Integer> Battles;
 
 
-    public DBMSTournamentEntry(int tID, int creatorID) {
+    public DBMSTournamentEntry(int tID, int creatorID, String tournamentName) {
         this.tID = tID;
         this.creatorID = creatorID;
+        this.TournamentName = tournamentName;
         this.collaborators = new ArrayList<>();
         this.collaborators.add(creatorID);
         this.userID = new ArrayList<>();

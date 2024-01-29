@@ -49,9 +49,7 @@ public class BattleService
 
     public Pair<Integer, Integer> getGroupRules(int UserId, int BattleID)
     {
-        Pair<Integer, Integer> pair = null;
-
-        DB.getBattleGroupRules(BattleID);
+        Pair<Integer, Integer> pair = DB.getBattleGroupRules(BattleID);
         return pair;
     }
 

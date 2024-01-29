@@ -23,8 +23,9 @@ public class DBMSApplication
         this.TournamentEntries = new ArrayList<>();
         this.BattleEntries = new ArrayList<>();
     }
-
-
+/*
+=================================================================================================================================================
+*/
     //Used by Leaderboard Service
     public Map<Integer, Integer> getScoresOfTournament(int tID)
     {
@@ -64,6 +65,9 @@ public class DBMSApplication
 
         return null;
     }
+    /*
+=================================================================================================================================================
+*/
 
     //Used by Notification Service
     public ArrayList<Integer> getAllSignedStudent()
@@ -111,14 +115,18 @@ public class DBMSApplication
         }
         return null;
     }
+
+    /*
+=================================================================================================================================================
+*/
     //Used by Tournament Service
-    public int addTournament(int EduID)
+    public int addTournament(int EduID, String TournamentName)
     {
         int tID = -1;
         for (DBMSUserEntry userEntry : this.UserEntries) {
             if (userEntry.userID == EduID && userEntry.userType == UserType.EDUCATOR) {
                 tID = this.TournamentEntries.size();
-                this.TournamentEntries.add(new DBMSTournamentEntry(this.TournamentEntries.size(), EduID));
+                this.TournamentEntries.add(new DBMSTournamentEntry(this.TournamentEntries.size(), EduID, TournamentName));
             }
         }
         return tID;
@@ -172,11 +180,19 @@ public class DBMSApplication
         return false;
     }
 
+    public void closeTournament(int tID)
+    {
+        getTournamentInfo(tID).status = false;
+    }
+
+
+/*
+=================================================================================================================================================
+*/
     //Used by Battle Service
     public int addBattle(int tID, int EduID, String BattleName, String assignment, Date submDL, Date subsDL, int maxsize, int minsize, ArrayList<String> testcases)
     {
         int bID = -1;
-        boolean added = false;
         for (DBMSTournamentEntry tournamentEntry : this.TournamentEntries) {
             if (tournamentEntry.tID == tID) {
                 bID = this.BattleEntries.size();
@@ -240,7 +256,9 @@ public class DBMSApplication
             }
         }
     }
-
+/*
+=================================================================================================================================================
+*/
 
     //Used by User Service
     public void addStudent(String UserName, String email, String Password)
@@ -251,20 +269,44 @@ public class DBMSApplication
     {
         this.UserEntries.add(new DBMSUserEntry(this.UserEntries.size(), UserName, email, Password, UserType.EDUCATOR));
     }
-
+/*
+=================================================================================================================================================
+*/
+//Used by everyone
     public DBMSUserEntry getUserInfo(int uID)
     {
-        return UserEntries.get(uID);
+        for(DBMSUserEntry userEntry : UserEntries)
+        {
+            if(userEntry.userID == uID)
+            {
+                return userEntry;
+            }
+        }
+        return null;
     }
 
     public DBMSTournamentEntry getTournamentInfo(int tID)
     {
-        return TournamentEntries.get(tID);
+        for(DBMSTournamentEntry tournamentEntry : TournamentEntries)
+        {
+            if(tournamentEntry.tID == tID)
+            {
+                return tournamentEntry;
+            }
+        }
+        return null;
     }
 
     public DBMSBattleEntry getBattleInfo(int bID)
     {
-        return BattleEntries.get(bID);
+        for(DBMSBattleEntry battleEntry : BattleEntries)
+        {
+            if(battleEntry.bID == bID)
+            {
+                return battleEntry;
+            }
+        }
+        return null;
     }
 
 
