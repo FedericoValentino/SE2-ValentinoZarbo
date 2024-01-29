@@ -117,13 +117,13 @@ body {
     justify-content: space-between;
 }
 
-.teamName {
+.lb-Name {
     width: 50%;
     border: solid blue 1px;
 
 }
 
-.TeamScore {
+.lb-Score {
     width: 50%;
     border: solid blue 1px;
 

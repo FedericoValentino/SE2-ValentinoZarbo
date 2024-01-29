@@ -10,40 +10,23 @@ import java.io.IOException;
 
 @WebServlet(name = "TournamentsServlet", value = "/TournamentsServlet")
 public class TournamentsServlet extends HttpServlet {
-    private TemplateEngine tEngine;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
         HttpSession ss= request.getSession();
-        if(ss.isNew()) {
-            response.sendRedirect(getServletContext().getContextPath()+"LoginServlet");
+        if(ss.isNew()|| ss.getAttribute("uid")==null) {
+            response.sendRedirect(getServletContext().getContextPath()+"/LoginServlet");
            return;
         }
-        //ss.setAttribute("isStud", true);
-        response.getWriter().append("ok");
+
         response.setStatus(200);
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
 
 
-
         request.getRequestDispatcher("/WEB-INF/page-jsp/MainPage.jsp").forward(request, response);
-
-
-
-
-
-/*
-        ///thymeleah vù
-        HttpSession sessione=request.getSession();
-        if(sessione.isNew()){
-            response.sendRedirect(getServletContext().getContextPath()+"");
-            return;
-        }
-        WebContext ctx = new WebContext(request, response, getServletContext(),request.getLocale());
-
-        tEngine.process("WEB-INF/templatesTHY/main.html", ctx,response.getWriter());*/
     }
 
     @Override

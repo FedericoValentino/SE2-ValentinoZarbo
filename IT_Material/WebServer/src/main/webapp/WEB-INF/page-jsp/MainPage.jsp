@@ -10,18 +10,41 @@
 <head>
     <title>tournaments main page</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ckbstyle.css">
-    <script src="${pageContext.request.contextPath}/js/scriptckb.js"></script>
+    <script src="${pageContext.request.contextPath}/js/tournamentsMain.js"></script>
+    <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
+
     <script>
-        const restBase="${pageContext.request.contextPath}";
+        function showCreateTournament() {
+        const trg=document.getElementById("crtTrgt");
+        trg.innerHTML="<label for='newName'>New tournament Name</label><input id='newName' type='text'><button onclick='createTournamentCall()'></button>"
+
+    }
+    function createTournamentCall(){
+        const load= {
+           newName: document.getElementById("newName").value,
+            uid : "${pageContext.request.session.getAttribute("uid")}"
+        }
+
+        restPostRequest("uri",JSON.stringify(load),afterCreateTournament)
+    }
+    function afterCreateTournament(JsonResponse){
+        //get new tourn id from response, go to tournament/tid page
+
+    }
+
+
         const stubTournList='{"tournaments":[{"tid":"1","tname":"tourn12","isInvolved":"0"},' +
             '{"tid":"3","tname":"tr3","isInvolved":"1"},{"tid":"2","tname":"tourn2","isInvolved":"0"}]}'
+    const servletBURL="${pageContext.request.contextPath}";
+
         window.onload=function(){
-          //todo  fetch(restBase+"/tournaments",{method:"get"}).then((response) => response.json()).then((json)=>loadTourn(JSON.parse(json)))
-            //call to rest api, get content and populate lists
+            restGetRequest("/tournament?uid=${pageContext.request.session.getAttribute("uid")}",loadTourn, servletBURL)
+
+
 
             const tournaments =stubTournList
             // get tournament/ and make list of all and those where user is subscribed
-            loadTourn(JSON.parse(tournaments));
+            //loadTourn(tournaments, restBase);
         }
     </script>
 </head>
@@ -44,7 +67,7 @@
     <div id="ptor">
         <div class="contentHeader"> Your Tournaments</div>
         <div class="tournList" id="persTo">
-            <a class="tlist-item" href="TournamentPageServlet" id="t-item111">tourn1</a>
+            <a class="tlist-item" href="TournamentPageServlet?tid=1&isInvolved=1" id="t-item111">tourn1</a>
             <div class="tlist-item" id="t-item2">tourn1</div>
             <div class="tlist-item" id="t-item3">tourn1</div>
             <div class="tlist-item" id="t-item4">tourn1</div>
@@ -66,6 +89,8 @@
     <p>studente</p>
         <%}else{%>
         <div id="tournCRForm">
+            <button onclick="showCreateTournament()">create tournament</button>
+            <div id="crtTrgt"></div>
     <p>educatore</p>
         </div>
 

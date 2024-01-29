@@ -11,6 +11,7 @@
     <title>createBattle</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ckbstyle.css">
     <script src="${pageContext.request.contextPath}/js/Battle.js"></script>
+    <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
 
     <script>
         function createBattle(){

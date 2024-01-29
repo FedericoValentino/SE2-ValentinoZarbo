@@ -10,6 +10,7 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ckbstyle.css">
+    <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
 
     <script>
         window.onload=function(){

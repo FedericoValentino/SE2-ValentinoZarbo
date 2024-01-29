@@ -19,9 +19,8 @@ public class LoginServlet extends HttpServlet {
             ss.invalidate();
             ss=request.getSession();
         }
-        //ss.setAttribute("isStud", true);
+
         response.setStatus(200);
-        //send html page w/ login page, the login form comunicate with rest api to the api gateway, and w/ response receives url for next servlet
         request.getRequestDispatcher("/WEB-INF/page-jsp/login.jsp").forward(request, response);
     }
 
@@ -30,24 +29,35 @@ public class LoginServlet extends HttpServlet {
         BufferedReader postLoad= request.getReader();
         String usname="null";
         String isSt="no";
+        String uid;
         String sjson= postLoad.readLine();
         HashMap<String, String> result = new ObjectMapper().readValue(sjson, HashMap.class);
         usname=result.get("username");
         isSt=result.get("isStud");
+        uid=result.get("uid");
+        HttpSession ses=request.getSession();
 
 
-        // request.getParameter("username");
-        //
+
+        //todo token control
+        ses.setAttribute("isStud",isSt);
+        ses.setAttribute("uid", uid );
+        ses.setAttribute("username", usname );
+        response.setStatus(200);
+
+        /*
         if(  usname.equals("a") ){//insead of this check some kind of token that client received from auth
 
             if(isSt.equals("on")){
                 isSt="yes";
             }
-            request.getSession().setAttribute("isStud",isSt);
-            response.getWriter().append("ok");
+            ses.setAttribute("isStud",isSt);
+            ses.setAttribute("uid", uid );
+            //response.getWriter().append("ok");
             response.setStatus(200);
 
         }
+*/
 
     }
 }

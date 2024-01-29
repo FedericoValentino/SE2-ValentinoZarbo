@@ -28,8 +28,9 @@
 <div id="header">
 
     <img id="logo">
-    <div class="PageName">Tournaments</div>
-    <div class="logas">ED???</div>
+    <div class="PageName">Battle</div>
+    <div class="logas"><%if(request.getSession().getAttribute("isStud").equals("yes")){ %>Student<%}else{ %> Educator<% }%></div>
+
     <a class="logout" href="https://www.google.com/">logout</a></div>
 </div>
 <div id="content">
@@ -82,7 +83,7 @@
 
     </div>
 
-    <%if(request.getSession().getAttribute("isStud").equals("yes") ) {%>
+    <%if(request.getSession().getAttribute("isStud").equals("yes") &&  request.getParameter("isInvolved").equals("true")) {%>
 
     <div id="joinButton"> <button onclick="joinBattle()">join battle</button></div>
     <% }%>

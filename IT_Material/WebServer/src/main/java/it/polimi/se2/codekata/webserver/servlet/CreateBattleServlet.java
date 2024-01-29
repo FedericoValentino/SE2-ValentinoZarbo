@@ -11,16 +11,14 @@ public class CreateBattleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession ss= request.getSession();
-        if(ss.isNew()) {
-            response.sendRedirect(getServletContext().getContextPath()+"LoginServlet");
+        if(ss.isNew()|| ss.getAttribute("uid")==null) {
+            response.sendRedirect(getServletContext().getContextPath()+"/LoginServlet");
             return;
         }
         if(ss.getAttribute("isStud").equals("yes")){
             response.sendError(403, "students can't access this resource");
             return;
         }
-
-        response.getWriter().append("ok");
         response.setStatus(200);
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");

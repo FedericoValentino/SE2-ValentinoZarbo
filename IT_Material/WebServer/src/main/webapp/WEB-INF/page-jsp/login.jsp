@@ -3,7 +3,9 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ckbstyle.css">
-  <title>JSP - Hello World</title>
+  <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
+
+  <title>LOGIN REGISTRATION</title>
 
 
   <script>
@@ -15,15 +17,7 @@
         psw:document.getElementById("psw").value,
         isStud:document.getElementById("isStud").value
       }
-
-      fetch(baseRest+"/user/login", {
-        method:"post",
-        body:JSON.stringify(loginData),
-        headers:{
-          "Content-type": "application/json; charset=UTF-8"
-        }
-      }).then((response) => response.json())
-              .then((json) => preSession(json));
+      restPostRequest("/user/login",JSON.stringify(loginData),preSession)
     }
 
     function register(){
@@ -38,23 +32,29 @@
         email:document.getElementById("email").value,
         isStud:document.getElementById("isStud1").value
       }
-
-      fetch(baseRest+"/user/register", {
-        method:"post",
-        body:JSON.stringify(regData),
-        headers:{
-          "Content-type": "application/json; charset=UTF-8"
-        }
-      }).then((response) => response.json())
-              .then((json) => preSession(json));
+      restPostRequest("/user/register",JSON.stringify(regData),preSession)
     }
     function preSession(jsonResp){
-      //check resp 200 then
-      setSession()
+      const res=JSON.parse(jsonResp);
+      let name=res.username, id=res.uid, isStud=document.getElementById("isStud").value;
+      if(isStud!=="on")
+        isStud="off"
+            //check resp 200 w/ new user Idthen
+      setSession({username:name,uid:id,isStud:isStud})
 
     }
+    function setSession(sessionInfo){
+      fetch("LoginServlet", {
+        method: "POST",
+        body: JSON.stringify(load),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        } })
+              .then((response) => response.json())
+              .then((json) => console.log(json));
+    }
 
-    function setSession(){//in reality this will be: on positive response from rest, send webB also user id to incorporate in session
+    function setSession1(){//in reality this will be: on positive response from rest, send webB also user id to incorporate in session
 
       let usname=document.getElementById("username").value;
       let isStud=document.getElementById("isStud").value;
@@ -62,7 +62,8 @@
           isStud="off"
       let load={
         username: usname,
-        isStud: isStud
+        isStud: isStud,
+        uid:"1"
       }
       fetch("LoginServlet", {
         method: "POST",

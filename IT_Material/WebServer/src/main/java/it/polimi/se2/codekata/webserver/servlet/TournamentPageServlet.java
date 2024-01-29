@@ -13,16 +13,16 @@ public class TournamentPageServlet extends HttpServlet {
         if(ss.isNew()) {
             return;
         }
+        String tournamentId= request.getParameter("tid");
+        ss.setAttribute("tid",tournamentId);
 
-
-        response.getWriter().append("ok");
         response.setStatus(200);
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
 
 
 
-        request.getRequestDispatcher("/WEB-INF/page-jsp/tournamentPage.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page-jsp/tournament.jsp").forward(request, response);
 
     }
 

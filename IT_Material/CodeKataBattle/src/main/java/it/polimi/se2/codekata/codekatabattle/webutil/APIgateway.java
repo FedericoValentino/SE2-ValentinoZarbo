@@ -24,10 +24,11 @@ public class APIgateway
     TournamentService TS;
 
 
-    @GetMapping("/tournament/")
+    @GetMapping("/tournament")
     public String getTournaments(@RequestParam("uid") int UserID)
     {
-        ArrayList<TournamentsElement> list = TS.getCurrentTournament(UserID);
+        //return "{'pino':'insegne'}";
+       ArrayList<TournamentsElement> list = TS.getCurrentTournament(UserID);
 
         JSONArray tournamentlist = new JSONArray();
 

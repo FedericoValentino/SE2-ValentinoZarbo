@@ -10,27 +10,64 @@
 <head>
     <title>Tournament xxx page</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ckbstyle.css">
-
+    <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
     <script src="${pageContext.request.contextPath}/js/Tournament.js"></script>
     <script>
 
         function joinTournament() {//todo
+            const load={
+                tid:"${pageContext.request.session.getAttribute("tid")}",
+                uid:"${pageContext.request.session.getAttribute("uid")}"
+            }
 
+            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/join",JSON.stringify(load),reload)
+        }
+        function reload(){
+            location.reload()
+        }
+    function loadPage(){
+        const bUrl="${pageContext.request.contextPath}"
+        let batStub =[{bname:"bobbo", bid: 2},{bname:"boso", bid: 3},{bname:"bbo", bid: 4}]
+        let leadBstub=[{uname:"askdl", pScore: 3},{uname:"saf", pScore: 2},{uname:"dl", pScore: 2},{uname:"askdasddl", pScore: 1}]
+        //rest call for battle list, leaderboard, and if subscribed
+        restGetRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/battle",fillBattleList,bUrl)
+        restGetRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/lbt",fillLeaderBoard,bUrl)
+
+
+        //todo rest call getx2
+        //
+        fillBattleList(batStub,bUrl);
+        fillLeaderBoard(leadBstub,bUrl)
     }
+    window.onload=function (){loadPage()}
 
-    window.onload=function (){//todo
-            let batStub =[{bname:"bobbo", bid: 2},{bname:"boso", bid: 3},{bname:"bbo", bid: 4}]
-            let leadBstub=[{uname:"askdl", teamScore: 3},{uname:"saf", teamScore: 2},{uname:"dl", teamScore: 2},{uname:"askdasddl", teamScore: 1}]
-            //rest call for battle list, leaderboard, and if subscribed
-            fillBattleList(batStub,document.getElementById("blist"));
-            fillLeaderBoard(leadBstub,document.getElementById("leaderboard"))
-        }
         function showAddCollaborator(){
-            document.getElementById("collaboratorDiv").innerHTML="";//todo
+            document.getElementById("collaboratorDiv").innerHTML="<label for='newCol'>NewCollaboratore username</label><input id='newCol' type=text>" +
+                "<button onclick='addCollaborator()'>go</button>";//todo
         }
+        function addCollaborator(){
+            const newCoUsname=document.getElementById("newCol").value;
+            const load={
+                newCollab:newCoUsname,
+                uid:${pageContext.request.session.getAttribute("uid")},
+                tid:${pageContext.request.session.getAttribute("tid")}
+            }
+            //restcall for addColl
+            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/addCollaborator",JSON.stringify(load),loadPage)
+
+
+        }
+       // function unShowAddColl(){}
         function closeTournament(){//todo
+            const load={
+                uid:${pageContext.request.session.getAttribute("uid")},
+                tid:${pageContext.request.session.getAttribute("tid")}
+            }
+            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/closeTournament",JSON.stringify(load),loadPage)
+
             //rest call to close tournament
         }
+
 
     </script>
 
@@ -59,24 +96,24 @@
         <div class="contentHeader"> leaderboard</div>
         <div class="leaderboard">
             <div class="lb-entry">
-                <div class="teamName"> NomeSq</div>
-                <div class="TeamScore">ScoreSq</div>
+                <div class="lb-Name"> Nome</div>
+                <div class="lb-Score">Score</div>
             </div>
             <div class="lb-entry">
-                <div class="teamName"> NomeSq</div>
-                <div class="TeamScore">ScoreSq</div>
+                <div class="lb-Name"> Nome</div>
+                <div class="lb-Score">Score</div>
             </div>
             <div class="lb-entry">
-                <div class="teamName"> NomeSq</div>
-                <div class="TeamScore">ScoreSq</div>
+                <div class="lb-Name"> Nome</div>
+                <div class="lb-Score">Score</div>
             </div>
             <div class="lb-entry">
-                <div class="teamName"> NomeSq</div>
-                <div class="TeamScore">ScoreSq</div>
+                <div class="lb-Name"> Nome</div>
+                <div class="lb-Score">Score</div>
             </div>
             <div class="lb-entry">
-                <div class="teamName"> NomeSq</div>
-                <div class="TeamScore">ScoreSq</div>
+                <div class="lb-Name"> Nome</div>
+                <div class="lb-Score">Score</div>
             </div>
 
         </div>
@@ -85,14 +122,13 @@
 
 
     <div id="diffCont">
-        <%  if( request.getSession().getAttribute("isStud").equals("yes") && (boolean)request.getSession().getAttribute("subscribed")){ %>
+        <%  if( request.getSession().getAttribute("isStud").equals("yes") && request.getParameter("isInvolved").equals("false")){ %>
         <div id="subscribe">
-            <a href="tournament.jsp"></a>
             <button onclick="joinTournament()"></button>
         </div>
-        <%}else{ %>
+        <%}if(!request.getSession().getAttribute("isStud").equals("yes") && request.getParameter("isInvolved").equals("true")){ %>
             <div id="addBut">
-                <a href="/CreateBattleServlet"></a>
+                <a href="${pageContext.request.contextPath}/CreateBattleServlet"></a>
                 <button onclick="showAddCollaborator()">Add COllaborator</button>
                 <div id="collaboratorDiv"></div>
             </div>

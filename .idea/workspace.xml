@@ -4,26 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07798836-d5ae-4c24-9164-175a19b4b4d9" name="Changes" comment="added most pages, missign manual eval, todo cleaning and jsp format + servlet completion and rest request and resp reception">
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/ManualEvalServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/battlePage.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/createBattle.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/manualEval.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/tournament.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/Battle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/Tournament.js" afterDir="false" />
+    <list default="true" id="07798836-d5ae-4c24-9164-175a19b4b4d9" name="Changes" comment="still missing some check on session attributes and rest call still not complete">
+      <change afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/Communication.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/webutil/APIgateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/webutil/APIgateway.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/BattlePageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/BattlePageServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/CreateBattleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/CreateBattleServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/ManualEvalServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/ManualEvalServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/TournamentPageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/TournamentPageServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/TournamentsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/TournamentsServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/MainPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/MainPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/battlePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/battlePage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/createBattle.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/createBattle.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/manualEval.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/manualEval.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/tournament.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/tournament.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/templatesTHY/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/templatesTHY/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/scriptckb.js" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/scriptckb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/css/ckbstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/css/ckbstyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/Tournament.js" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/Tournament.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/scriptckb.js" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/tournamentsMain.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +58,8 @@
       <list>
         <option value="Class" />
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="Jsp File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -101,33 +101,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Gradle.Build demo1.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.CodeKataBattleApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/SE2-ValentinoZarbo/IT_Material/WebServer/src/main/webapp/css&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.22673267&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.Build demo1.executor": "Run",
+    "Gradle.Upgrade Gradle wrapper.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.CodeKataBattleApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Documents/SE2-ValentinoZarbo/IT_Material/CodeKataBattle",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.22673267",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Documents\SE2-ValentinoZarbo\IT_Material\WebServer\src\main\webapp\css" />
@@ -153,6 +153,7 @@
       </method>
     </configuration>
     <configuration name="Tomcat 9.0.59" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.59" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="hot-swap-classes" />
       <deployment>
         <artifact name="Gradle : it.polimi.se2.codekata : WebServer-1.0-SNAPSHOT.war">
           <settings>
@@ -162,6 +163,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="6d5d7860-fc03-4d63-97d4-679dd83e2117" />
+        <option name="HTTP_PORT" value="8081" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -171,7 +173,37 @@
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="61933" />
       </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
@@ -231,7 +263,8 @@
       <workItem from="1706363197517" duration="29000" />
       <workItem from="1706365649142" duration="2562000" />
       <workItem from="1706371836086" duration="15005000" />
-      <workItem from="1706442558867" duration="13435000" />
+      <workItem from="1706442558867" duration="13514000" />
+      <workItem from="1706524182840" duration="17676000" />
     </task>
     <task id="LOCAL-00001" summary="Implementation Files">
       <option name="closed" value="true" />
@@ -270,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706354786861</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="still missing some check on session attributes and rest call still not complete">
+      <created>1706459070449</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706459070450</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,14 +333,15 @@
     <MESSAGE value="Added module for webServer, todo all servlet, html pages(thymeleaf)" />
     <MESSAGE value="servlets base base, prime pagine html(da suddividere)" />
     <MESSAGE value="added most pages, missign manual eval, todo cleaning and jsp format + servlet completion and rest request and resp reception" />
-    <option name="LAST_COMMIT_MESSAGE" value="added most pages, missign manual eval, todo cleaning and jsp format + servlet completion and rest request and resp reception" />
+    <MESSAGE value="still missing some check on session attributes and rest call still not complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="still missing some check on session attributes and rest call still not complete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/LoginServlet.java</url>
-          <line>40</line>
+          <line>60</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
