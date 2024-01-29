@@ -50,7 +50,7 @@ class BattleServiceTest
         appDB.subscribeToTournament(0, 0);
         appDB.subscribeToTournament(0, 1);
 
-        int b1 = appDB.addBattle(0, 2, "TEST1", "Ciao Ciao", new Date(), new Date(), 3, 2, new ArrayList<>(Arrays.asList("Ciao", "ciao")));
+        int b1 = appDB.addBattle(0, 2, "TEST1", "Ciao Ciao", new Date(), new Date(), 3, 2);
 
         BS.joinBattle(0, 0, b1, null, new ArrayList<>(Arrays.asList(0,1)));
         BS.joinBattle(0, 0, b1, null, new ArrayList<>(Arrays.asList(0,1)));

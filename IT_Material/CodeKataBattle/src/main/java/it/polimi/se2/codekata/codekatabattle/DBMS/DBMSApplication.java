@@ -23,10 +23,11 @@ public class DBMSApplication
         this.TournamentEntries = new ArrayList<>();
         this.BattleEntries = new ArrayList<>();
     }
-/*
-=================================================================================================================================================
-*/
-    //Used by Leaderboard Service
+    /*
+    =================================================================================================================================================
+       Used by LeaderBoardService
+    =================================================================================================================================================
+    */
     public Map<Integer, Integer> getScoresOfTournament(int tID)
     {
         for (DBMSTournamentEntry tournamentEntry : this.TournamentEntries) {
@@ -66,10 +67,10 @@ public class DBMSApplication
         return null;
     }
     /*
-=================================================================================================================================================
-*/
-
-    //Used by Notification Service
+    =================================================================================================================================================
+       Used by NotificationService
+    =================================================================================================================================================
+    */
     public ArrayList<Integer> getAllSignedStudent()
     {
         ArrayList<Integer> allIDS = new ArrayList<>();
@@ -117,9 +118,10 @@ public class DBMSApplication
     }
 
     /*
-=================================================================================================================================================
-*/
-    //Used by Tournament Service
+    =================================================================================================================================================
+       Used by TournamentService
+    =================================================================================================================================================
+    */
     public int addTournament(int EduID, String TournamentName)
     {
         int tID = -1;
@@ -186,22 +188,45 @@ public class DBMSApplication
     }
 
 
-/*
-=================================================================================================================================================
-*/
-    //Used by Battle Service
-    public int addBattle(int tID, int EduID, String BattleName, String assignment, Date submDL, Date subsDL, int maxsize, int minsize, ArrayList<String> testcases)
+    /*
+    =================================================================================================================================================
+        Used by Battle Service
+    =================================================================================================================================================
+    */
+
+    public int addBattle(int tID, int EduID, String BattleName, String assignment, Date submDL, Date subsDL, int maxsize, int minsize)
     {
         int bID = -1;
         for (DBMSTournamentEntry tournamentEntry : this.TournamentEntries) {
             if (tournamentEntry.tID == tID) {
                 bID = this.BattleEntries.size();
                 tournamentEntry.Battles.add(bID);
-                this.BattleEntries.add(new DBMSBattleEntry(tID, bID, BattleName, new Pair<>(minsize, maxsize), assignment, new Pair<>(subsDL, submDL), testcases));
+                this.BattleEntries.add(new DBMSBattleEntry(tID, bID, BattleName, new Pair<>(minsize, maxsize), assignment, new Pair<>(subsDL, submDL)));
             }
         }
 
         return bID;
+    }
+
+    public void addGroup(Group students, int bID)
+    {
+        for (DBMSBattleEntry battleEntry : BattleEntries) {
+            if (battleEntry.bID == bID) {
+                battleEntry.participatingGroups.add(students);
+            }
+        }
+
+        //battle is confirmed for student, so i'm adding it to the student's battles.
+        for(int i = 0; i < students.getStudentsID().size(); i++)
+        {
+            for(DBMSUserEntry userEntry : UserEntries)
+            {
+                if (userEntry.userID == students.getStudentsID().get(i) && userEntry.userType == UserType.STUDENT)
+                {
+                    userEntry.UserBattles.add(bID);
+                }
+            }
+        }
     }
 
     public Pair<Integer, Integer> getBattleGroupRules(int bID)
@@ -235,44 +260,28 @@ public class DBMSApplication
 
         return null;
     }
-
-    public void addGroup(Group students, int bID)
+    /*
+    =================================================================================================================================================
+       Used by UserService
+    =================================================================================================================================================
+    */
+    public int addStudent(String UserName, String email, String Password)
     {
-        for (DBMSBattleEntry battleEntry : BattleEntries) {
-            if (battleEntry.bID == bID) {
-                battleEntry.participatingGroups.add(students);
-            }
-        }
-
-        //battle is confirmed for student, so i'm adding it to the student's battles.
-        for(int i = 0; i < students.getStudentsID().size(); i++)
-        {
-            for(DBMSUserEntry userEntry : UserEntries)
-            {
-                if (userEntry.userID == students.getStudentsID().get(i) && userEntry.userType == UserType.STUDENT)
-                {
-                    userEntry.UserBattles.add(bID);
-                }
-            }
-        }
+        int id = this.UserEntries.size();
+        this.UserEntries.add(new DBMSUserEntry(id, UserName, email, Password, UserType.STUDENT));
+        return id;
     }
-/*
-=================================================================================================================================================
-*/
-
-    //Used by User Service
-    public void addStudent(String UserName, String email, String Password)
+    public int addEducator(String UserName, String email, String Password)
     {
-        this.UserEntries.add(new DBMSUserEntry(this.UserEntries.size(), UserName, email, Password, UserType.STUDENT));
+        int id = this.UserEntries.size();
+        this.UserEntries.add(new DBMSUserEntry(id, UserName, email, Password, UserType.EDUCATOR));
+        return id;
     }
-    public void addEducator(String UserName, String email, String Password)
-    {
-        this.UserEntries.add(new DBMSUserEntry(this.UserEntries.size(), UserName, email, Password, UserType.EDUCATOR));
-    }
-/*
-=================================================================================================================================================
-*/
-//Used by everyone
+    /*
+    =================================================================================================================================================
+        Used by Everyone
+    =================================================================================================================================================
+    */
     public DBMSUserEntry getUserInfo(int uID)
     {
         for(DBMSUserEntry userEntry : UserEntries)

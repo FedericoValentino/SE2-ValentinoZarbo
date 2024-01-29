@@ -17,14 +17,13 @@ public class DBMSBattleEntry
     public String Assignment;
 
     public Pair<Date, Date> deadline;
-    public ArrayList<String> testcases;
 
     public ArrayList<Group> participatingGroups;
 
     public Map<Integer, Integer> scores;
 
 
-    public DBMSBattleEntry(int tID, int bID, String battleName, Pair<Integer, Integer> groupRule, String assignment, Pair<Date, Date> deadline, ArrayList<String> testcases)
+    public DBMSBattleEntry(int tID, int bID, String battleName, Pair<Integer, Integer> groupRule, String assignment, Pair<Date, Date> deadline)
     {
         this.tID = tID;
         this.bID = bID;
@@ -32,7 +31,6 @@ public class DBMSBattleEntry
         this.groupRule = groupRule;
         this.Assignment = assignment;
         this.deadline = deadline;
-        this.testcases = testcases;
         this.participatingGroups = new ArrayList<>();
     }
 }

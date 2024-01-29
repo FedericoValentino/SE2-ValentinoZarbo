@@ -1,5 +1,6 @@
 package it.polimi.se2.codekata.codekatabattle.microservices;
 
+import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSSource;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSUserEntry;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.BattleStatus;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
@@ -29,6 +30,9 @@ public class BattleService
     @Autowired
     private DBMSApplication DB;
 
+    @Autowired
+    private DBMSSource DBS;
+
     public void createBattle(int tID, int userID, String BattleName, Pair<Integer, Integer> groupRule,
                              String assignment, Pair<Date, Date> deadline, ArrayList<String> testcases)
     {
@@ -39,7 +43,8 @@ public class BattleService
         {
             if(DB.checkEducatorPermission(tID, userID))
             {
-                bID = DB.addBattle(tID, userID, BattleName, assignment, deadline.getValue0(), deadline.getValue1(), groupRule.getValue0(), groupRule.getValue1(), testcases);
+                bID = DB.addBattle(tID, userID, BattleName, assignment, deadline.getValue0(), deadline.getValue1(), groupRule.getValue0(), groupRule.getValue1());
+                DBS.addBattleTestCases(bID, testcases);
             }
         }
 
