@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-
+//param ?tid=id
 @WebServlet(name = "TournamentPageServlet", value = "/TournamentPageServlet")
 public class TournamentPageServlet extends HttpServlet {
     @Override

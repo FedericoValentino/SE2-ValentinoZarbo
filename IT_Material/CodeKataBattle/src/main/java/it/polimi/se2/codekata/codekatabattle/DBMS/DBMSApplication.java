@@ -17,11 +17,41 @@ public class DBMSApplication
     ArrayList<DBMSTournamentEntry> TournamentEntries;
     ArrayList<DBMSBattleEntry> BattleEntries;
 
+    //iether this or load from file a preset
+    private void preGeneratedData(ArrayList<DBMSTournamentEntry> tEntries,ArrayList<DBMSUserEntry> usEntries,ArrayList<DBMSBattleEntry> bEntries){
+        String []names = {"lask","asdas","lukas"};
+         String []email= {"lask@mail.com","asdas@mail.com","lukas@mail.com"};
+         String []password= {"lask","asdas","lukas"};
+         UserType []userType= {UserType.EDUCATOR,UserType.EDUCATOR,UserType.STUDENT};
+        for (int i = 0; i < 3; i++) {
+            usEntries.add(new DBMSUserEntry(i,names[i],email[i],password[i],userType[i]));
+        }
+        String[] tournamentName={"torn1" ,"ttttew", "tartat", "TTT"};
+        int [] creatorID={1,1,2,1};
+        for (int i = 0; i < 4; i++) {
+            tEntries.add(new DBMSTournamentEntry(i,creatorID[i],tournamentName[i]));
+        }
+         int tID[]={1,1,2,1};
+         String []battleName={"b1","bb2","bbbbbr","jasdjj"};
+         String assignment="lorem ipusm specchio paura";
+         Pair<Date, Date> deadline=new Pair<>(new Date(121212),new Date(121280));
+         ArrayList<Group> participatingGroups;
+         Map<Integer, Integer> scores;
+        for (int i = 0; i < 4; i++) {
+            bEntries.add(new DBMSBattleEntry(tID[i],i,battleName[i],new Pair<>(1,4),assignment,deadline ));
+        }
+
+
+    }
+
     DBMSApplication()
     {
         this.UserEntries = new ArrayList<>();
         this.TournamentEntries = new ArrayList<>();
         this.BattleEntries = new ArrayList<>();
+
+
+        preGeneratedData(this.TournamentEntries,this.UserEntries,this.BattleEntries);
     }
     /*
     =================================================================================================================================================
@@ -71,16 +101,14 @@ public class DBMSApplication
        Used by NotificationService
     =================================================================================================================================================
     */
-    public ArrayList<Integer> getAllSignedStudent()
+    public ArrayList<Integer> getAllSignedUsers()
     {
         ArrayList<Integer> allIDS = new ArrayList<>();
 
         for(DBMSUserEntry entry : this.UserEntries)
         {
-            if(entry.userType == UserType.STUDENT)
-            {
-                allIDS.add(entry.userID);
-            }
+            allIDS.add(entry.userID);
+
         }
         return allIDS;
     }

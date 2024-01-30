@@ -15,7 +15,7 @@ public class CreateBattleServlet extends HttpServlet {
             response.sendRedirect(getServletContext().getContextPath()+"/LoginServlet");
             return;
         }
-        if(ss.getAttribute("isStud").equals("yes")){
+        if(!ss.getAttribute("isEdu").equals("yes")){
             response.sendError(403, "students can't access this resource");
             return;
         }

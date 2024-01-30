@@ -122,11 +122,11 @@
 
 
     <div id="diffCont">
-        <%  if( request.getSession().getAttribute("isStud").equals("yes") && request.getParameter("isInvolved").equals("false")){ %>
+        <%  if( !request.getSession().getAttribute("isEdu").equals("yes") && request.getParameter("isInvolved").equals("false")){ %>
         <div id="subscribe">
             <button onclick="joinTournament()"></button>
         </div>
-        <%}if(!request.getSession().getAttribute("isStud").equals("yes") && request.getParameter("isInvolved").equals("true")){ %>
+        <%}if(request.getSession().getAttribute("isEdu").equals("yes") && request.getParameter("isInvolved").equals("true")){ %>
             <div id="addBut">
                 <a href="${pageContext.request.contextPath}/CreateBattleServlet"></a>
                 <button onclick="showAddCollaborator()">Add COllaborator</button>

@@ -1,13 +1,13 @@
 function loadTourn(tournFullListJson, baseUrl){
-    const tournFullList=JSON.parse(tournFullListJson);
+    const tournFullList=(tournFullListJson);
     let yourT=[];
     let allT=[];
     let i=0;
     let j=0;
     
-    tournFullList.tournaments.forEach(t => {
+    tournFullList.forEach(t => {
         allT[i]=t;
-        if(t.isInvolved==1){
+        if(t.involved===true){
             yourT[j]=t;
             j++;
         }

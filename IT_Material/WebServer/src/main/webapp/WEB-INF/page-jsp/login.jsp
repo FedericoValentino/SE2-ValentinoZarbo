@@ -13,11 +13,11 @@
 
     function login(){
       const loginData={
-        username:document.getElementById("username").value,
-        psw:document.getElementById("psw").value,
-        isStud:document.getElementById("isStud").value
+        user:document.getElementById("username").value,
+        pwd:document.getElementById("psw").value
       }
-      restPostRequest("/user/login",JSON.stringify(loginData),preSession)
+      const damnData=new URLSearchParams(loginData);
+      restPostRequest("/user/login",damnData,preSession)
     }
 
     function register(){
@@ -26,43 +26,52 @@
         alert("passwords dont correspond")
         return;
       }
+      let edu=false
+      if(document.getElementById("isEdu1").value!=null)
+        if(document.getElementById("isEdu1").value==="on")
+          edu=true
       const regData={
-        username:document.getElementById("userns").value,
-        psw:psw1,
+        user:document.getElementById("userns").value,
+        pwd:psw1,
         email:document.getElementById("email").value,
-        isStud:document.getElementById("isStud1").value
+        edu:edu
       }
       restPostRequest("/user/register",JSON.stringify(regData),preSession)
     }
     function preSession(jsonResp){
-      const res=JSON.parse(jsonResp);
-      let name=res.username, id=res.uid, isStud=document.getElementById("isStud").value;
-      if(isStud!=="on")
-        isStud="off"
+      const res=(jsonResp);
+      if(res.status!==200){
+        alert(res.status)
+      }
+      let name=res.username, id=res.uid, isEdu=document.getElementById("isEdu").value;
+      if(isEdu!=="on")
+        isEdu="off"
             //check resp 200 w/ new user Idthen
-      setSession({username:name,uid:id,isStud:isStud})
+      setSession({username:name,uid:id+"",isEdu:isEdu})
 
     }
     function setSession(sessionInfo){
+
+
       fetch("LoginServlet", {
         method: "POST",
-        body: JSON.stringify(load),
+        body: JSON.stringify(sessionInfo),
         headers: {
           "Content-type": "application/json; charset=UTF-8"
         } })
-              .then((response) => response.json())
-              .then((json) => console.log(json));
+              .then((response) => response.text())
+              .then((json) => redirToTournament());
     }
 
     function setSession1(){//in reality this will be: on positive response from rest, send webB also user id to incorporate in session
 
       let usname=document.getElementById("username").value;
-      let isStud=document.getElementById("isStud").value;
-      if(isStud!=="on")
-          isStud="off"
+      let isEDU=document.getElementById("isEdu").value;
+      if(isEDU!=="on")
+          isEDU="off"
       let load={
         username: usname,
-        isStud: isStud,
+        isEdu: isEDU,
         uid:"1"
       }
       fetch("LoginServlet", {
@@ -76,7 +85,7 @@
 
     }
     function redirToTournament(){
-      fetch("TournamentsServlet", { method: "get"})
+      location.href="TournamentsServlet";//fetch("", { method: "get"})
     }
 
 
@@ -89,7 +98,7 @@
 <div id="header">
 
   <img id="logo">
-  <div class="PageName">Tournaments</div>
+  <div class="PageName">Login</div>
   <div class="logas">ED???</div>
 
 </div>
@@ -103,12 +112,12 @@
       <input name="username" id="username" type="text">
       <label for="psw">password</label>
       <input name="psw" id="psw" type="password">
-      <label for="isStud">are you a student?</label>
-      <input name="isStud" id="isStud"  type="checkbox">
+      <label for="isEdu">are you a student?</label>
+      <input name="isEdu" id="isEdu"  type="checkbox">
 
 <input type="submit">
     </form>
-    <button onclick="setSession()">prova</button>
+    <button onclick="login()">prova</button>
   </div>
 
   <div >
@@ -123,8 +132,8 @@
       <input name="psw2" id="psw2"  type="password">
       <label for="mail"> insert email</label>
       <input name="mail" id="mail" type="email">
-      <label for="isStud1"> are you a student ?</label>
-      <input name="isStud1" id="isStud1" type="checkbox">
+      <label for="isEdu1"> are you a student ?</label>
+      <input name="isEdu1" id="isEdu1" type="checkbox">
 
       <input type="submit">
     </form>
