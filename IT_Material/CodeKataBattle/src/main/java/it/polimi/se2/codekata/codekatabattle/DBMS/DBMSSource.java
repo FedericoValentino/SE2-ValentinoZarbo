@@ -23,4 +23,18 @@ public class DBMSSource
         Sources.add(new DBMSBattleSourceEntry(bID, groupID, SourceCode));
     }
 
+    public ArrayList<DBMSBattleSourceEntry> getSources(int bID)
+    {
+        ArrayList<DBMSBattleSourceEntry> sources = new ArrayList<>();
+        for(DBMSBattleSourceEntry entry : Sources)
+        {
+             if(entry.idB == bID)
+             {
+                 sources.add(entry);
+             }
+        }
+
+        return sources;
+    }
+
 }

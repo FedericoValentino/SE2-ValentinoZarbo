@@ -1,8 +1,10 @@
 package it.polimi.se2.codekata.codekatabattle.microservices;
 
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSApplication;
+import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSBattleEntry;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSTournamentEntry;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSUserEntry;
+import it.polimi.se2.codekata.codekatabattle.GeneralStuff.BattlesElement;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.TournamentsElement;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.UserType;
 import it.polimi.se2.codekata.codekatabattle.topics.TournamentTopic;
@@ -68,10 +70,17 @@ public class TournamentService
         }
 
     }
-    public ArrayList<Integer> getTournamentsBattles(String UserId, String TournamentID)
+    public ArrayList<BattlesElement> getTournamentsBattles(int UserId, int TournamentID)
     {
-        ArrayList<Integer> battleList = new ArrayList<Integer>();
-    //todo rest return : list of battles(id,name,is_user_involved[0/1])
+        ArrayList<BattlesElement> battleList = new ArrayList<BattlesElement>();
+        DBMSTournamentEntry tournamentEntry = DB.getTournamentInfo(TournamentID);
+
+        for(int bID : tournamentEntry.Battles)
+        {
+            DBMSBattleEntry battleEntry = DB.getBattleInfo(bID);
+            battleList.add(new BattlesElement(bID, battleEntry.BattleName, DB.getUserInfo(UserId).UserBattles.contains(bID)));
+        }
+
         return battleList;
     }
 

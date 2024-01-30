@@ -1,5 +1,6 @@
 package it.polimi.se2.codekata.codekatabattle.DBMS;
 
+import it.polimi.se2.codekata.codekatabattle.GeneralStuff.BattleStatus;
 import org.javatuples.Pair;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
 
@@ -21,6 +22,8 @@ public class DBMSBattleEntry
     public ArrayList<Group> participatingGroups;
 
     public Map<Integer, Integer> scores;
+
+    public BattleStatus status;
 
 
     public DBMSBattleEntry(int tID, int bID, String battleName, Pair<Integer, Integer> groupRule, String assignment, Pair<Date, Date> deadline)

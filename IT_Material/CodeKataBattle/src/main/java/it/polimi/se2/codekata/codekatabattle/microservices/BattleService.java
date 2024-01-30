@@ -1,6 +1,7 @@
 package it.polimi.se2.codekata.codekatabattle.microservices;
 
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSSource;
+import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSTournamentEntry;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSUserEntry;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.BattleStatus;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
@@ -12,6 +13,7 @@ import it.polimi.se2.codekata.codekatabattle.topics.TournamentTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.ParameterResolutionDelegate;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -54,25 +56,31 @@ public class BattleService
 
     public Pair<Integer, Integer> getGroupRules(int UserId, int BattleID)
     {
-        Pair<Integer, Integer> pair = DB.getBattleGroupRules(BattleID);
-        return pair;
+        if(DB.getUserInfo(UserId).UserBattles.contains(BattleID))
+        {
+            Pair<Integer, Integer> pair = DB.getBattleGroupRules(BattleID);
+            return pair;
+        }
+        return null;
     }
 
     public String getAssignmentText(int UserId, int BattleId)
     {
-
-
-        return DB.getBattleAssignement(BattleId);
+        if(DB.getUserInfo(UserId).UserBattles.contains(BattleId))
+            return DB.getBattleAssignement(BattleId);
+        else
+            return null;
     }
 
     public Pair<Date, Date> getDeadlines(int UserId, int BattleID)
     {
         Pair<Date, Date> pair = null;
-        pair = DB.getBattleDeadlines(BattleID);
+        if(DB.getUserInfo(UserId).UserBattles.contains(BattleID))
+            pair = DB.getBattleDeadlines(BattleID);
         return pair;
     }
 
-    public void joinBattle(int UserId, int tID, int BattleID, String Type, ArrayList<Integer> StudentID)
+    public void joinBattle(int UserId, int tID, int BattleID, ArrayList<Integer> StudentID)
     {
         //first check if IDs are from actual students
 
@@ -101,6 +109,33 @@ public class BattleService
         {
             Group students = new Group(StudentID);
             DB.addGroup(students, BattleID);
+        }
+    }
+
+    @Scheduled(fixedDelay = 1000)
+    private void checkBattlesDeadLine()
+    {
+        ArrayList<Integer> currentT = DB.getCurrentTournament();
+
+        for(int tID : currentT)
+        {
+            DBMSTournamentEntry tournamentEntry = DB.getTournamentInfo(tID);
+            for(int bID : tournamentEntry.Battles)
+            {
+                if(DB.getBattleInfo(bID).status != BattleStatus.FINISHED)
+                {
+                    Date time = new Date();
+                    Pair<Date, Date> deadline = DB.getBattleDeadlines(bID);
+                    if (time.compareTo(deadline.getValue0()) > 0 && time.compareTo(deadline.getValue1()) < 0) {
+                        DB.getBattleInfo(bID).status = BattleStatus.BATTLE_PHASE;
+                        publishBattleEvent(bID, BattleStatus.BATTLE_PHASE);
+                    }
+                    else if (time.compareTo(deadline.getValue1()) > 0) {
+                        DB.getBattleInfo(bID).status = BattleStatus.CONSOLIDATION_PHASE;
+                        publishBattleEvent(bID, BattleStatus.CONSOLIDATION_PHASE);
+                    }
+                }
+            }
         }
     }
 
