@@ -45,11 +45,11 @@ public class APIgateway
     @PostMapping("/user/login")
     public String login(@RequestParam("user")String Username, @RequestParam("pwd")String Password)
     {
-        Integer ID = US.login(Username, Password);
+        int ID = US.login(Username, Password);
         if(ID >= 0)
-            return "{'status' : '200' , uid : "+ID.toString();
+            return "{'status' : '200' , uid : "+ID;
         else
-            return "{'status' : '418' , uid : "+ID.toString();
+            return "{'status' : '418' , uid : "+ID;
     }
 
     @PostMapping("/user/register")
@@ -57,11 +57,11 @@ public class APIgateway
                            @RequestParam("email")String Email, @RequestParam("educator")boolean edu)
     {
         UserType type = (edu) ? UserType.EDUCATOR : UserType.STUDENT;
-        Integer ID = US.registerUser(Username, Email, Password, type);
+        int ID = US.registerUser(Username, Email, Password, type);
         if(ID >= 0)
-            return "{'status' : '200' , uid : "+ID.toString();
+            return "{'status' : '200' , uid : "+ID;
         else
-            return "{'status' : '418' , uid : "+ID.toString();
+            return "{'status' : '418' , uid : "+ID;
     }
 /*
 =================================================================================================================================================
