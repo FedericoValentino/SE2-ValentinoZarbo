@@ -9,7 +9,7 @@
 
 
   <script>
-    const baseRest="";
+    const baseServlet="${pageContext.request.contextPath}";
 
     function login(){
       const loginData={
@@ -40,10 +40,7 @@
     }
     function preSession(jsonResp){
       const res=(jsonResp);
-      if(res.status!==200){
-        alert(res.status)
-      }
-      let name=res.username, id=res.uid, isEdu=document.getElementById("isEdu").value;
+      let  id=res.uid, isEdu=document.getElementById("isEdu").value;
       if(isEdu!=="on")
         isEdu="off"
             //check resp 200 w/ new user Idthen
@@ -53,7 +50,7 @@
     function setSession(sessionInfo){
 
 
-      fetch("LoginServlet", {
+      fetch(baseServlet+"/LoginServlet", {
         method: "POST",
         body: JSON.stringify(sessionInfo),
         headers: {
@@ -63,7 +60,7 @@
               .then((json) => redirToTournament());
     }
 
-    function setSession1(){//in reality this will be: on positive response from rest, send webB also user id to incorporate in session
+    /*function setSession1(){//in reality this will be: on positive response from rest, send webB also user id to incorporate in session
 
       let usname=document.getElementById("username").value;
       let isEDU=document.getElementById("isEdu").value;
@@ -83,9 +80,9 @@
               .then((response) => response.json())
               .then((json) => console.log(json));
 
-    }
+    }*/
     function redirToTournament(){
-      location.href="TournamentsServlet";//fetch("", { method: "get"})
+      location.href=baseServlet+"/TournamentsServlet";//fetch("", { method: "get"})
     }
 
 

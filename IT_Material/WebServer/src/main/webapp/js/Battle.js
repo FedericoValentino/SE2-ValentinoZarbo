@@ -1,8 +1,10 @@
 function setStatus(stat){
+
     document.getElementById("stTxt").innerText=" "
 }
 function setAss(astxt){
-    document.getElementById("assTxt").innerText=" "
+
+    document.getElementById("assTxt").innerText=" "+astxt.rules;
 }
 function setDL(dl){
     document.getElementById("dlTxt").innerText=" "
@@ -10,13 +12,15 @@ function setDL(dl){
 function setGRules(rules){
     document.getElementById("grTxt").innerText=" "
 }
-function fillLeaderBoard(leaderB, lbElment){
+function fillLeaderBoard(leaderB){
+    const div=document.getElementById("grTxt");
+
     let nameDiv, scoreDiv
     leaderB.forEach(entry => {
         nameDiv="<div class='teamName'>"+ entry.name+"</div>"
         scoreDiv="<div class='TeamScore'>"+ entry.scoreDiv+"</div>"
 
-        lbElment.innerHTML+= nameDiv+scoreDiv;
+        div.innerHTML+= nameDiv+scoreDiv;
     });
 
 }

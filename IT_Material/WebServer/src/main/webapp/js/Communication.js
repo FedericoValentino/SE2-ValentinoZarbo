@@ -7,7 +7,12 @@ function restPostRequest(resourcePUri, formdata, consumerFun){
 
     }
     })
-.then((response) => response.json()) //2
+.then((response) =>//todo error catch
+   /* if(response.status!==200){
+        alert(response.statusText)
+        return;
+    }*/
+    response.json()) //2
        .then((jj) => {
            //console.log(jj); //3
             consumerFun(jj)

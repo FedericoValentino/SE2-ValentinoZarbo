@@ -1,11 +1,15 @@
 function fillBattleList(battles, burl){
-    const bListElement=document.getElementById("leaderboard");
+    if(battles==null)
+        return
+    const bListElement=document.getElementById("lbDiv");
     battles.forEach(b => {
-        blistElement.innerHTML+= '<a href="'+burl+'/BattlePageServlet?bid='+b.bid+ '" class="blist-item"> '+b.bname+'</a';
+        bListElement.innerHTML+= '<a href="'+burl+'/BattlePageServlet?bid='+b.bid+ '" class="blist-item"> '+b.bname+'</a';
     });
 }
 
 function fillLeaderBoard(leaderB,burl){
+    if(leaderB==null)
+        return
     let team="";
     let score="";
     const lbElment=document.getElementById("blist");

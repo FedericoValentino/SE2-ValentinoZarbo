@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07798836-d5ae-4c24-9164-175a19b4b4d9" name="Changes" comment="still missing some check on session attributes and rest call still not complete">
+    <list default="true" id="07798836-d5ae-4c24-9164-175a19b4b4d9" name="Changes" comment="done correct http connection, fixed a rest controller, implemented functionalities on client">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/DBMS/DBMSApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/DBMS/DBMSApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/microservices/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/microservices/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/webutil/APIgateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/CodeKataBattle/src/main/java/it/polimi/se2/codekata/codekatabattle/webutil/APIgateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/CreateBattleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/CreateBattleServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/ManualEvalServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/ManualEvalServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/TournamentPageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/java/it/polimi/se2/codekata/webserver/servlet/TournamentPageServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/MainPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/MainPage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/battlePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/battlePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/tournament.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/tournament.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/templatesTHY/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/templatesTHY/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/Communication.js" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/Communication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/tournamentsMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/js/tournamentsMain.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +258,7 @@
       <workItem from="1706371836086" duration="15005000" />
       <workItem from="1706442558867" duration="13514000" />
       <workItem from="1706524182840" duration="19222000" />
-      <workItem from="1706604881558" duration="14318000" />
+      <workItem from="1706604881558" duration="15413000" />
     </task>
     <task id="LOCAL-00001" summary="Implementation Files">
       <option name="closed" value="true" />
@@ -315,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706459070450</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="done correct http connection, fixed a rest controller, implemented functionalities on client">
+      <created>1706622123840</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706622123841</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +335,8 @@
     <MESSAGE value="servlets base base, prime pagine html(da suddividere)" />
     <MESSAGE value="added most pages, missign manual eval, todo cleaning and jsp format + servlet completion and rest request and resp reception" />
     <MESSAGE value="still missing some check on session attributes and rest call still not complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="still missing some check on session attributes and rest call still not complete" />
+    <MESSAGE value="done correct http connection, fixed a rest controller, implemented functionalities on client" />
+    <option name="LAST_COMMIT_MESSAGE" value="done correct http connection, fixed a rest controller, implemented functionalities on client" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

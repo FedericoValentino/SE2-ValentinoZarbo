@@ -20,7 +20,7 @@
                 uid:"${pageContext.request.session.getAttribute("uid")}"
             }
 
-            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/join",JSON.stringify(load),reload)
+            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/join",(load),reload)
         }
         function reload(){
             location.reload()
@@ -30,30 +30,34 @@
         let batStub =[{bname:"bobbo", bid: 2},{bname:"boso", bid: 3},{bname:"bbo", bid: 4}]
         let leadBstub=[{uname:"askdl", pScore: 3},{uname:"saf", pScore: 2},{uname:"dl", pScore: 2},{uname:"askdasddl", pScore: 1}]
         //rest call for battle list, leaderboard, and if subscribed
-        restGetRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/battle",fillBattleList,bUrl)
-        restGetRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/lbt",fillLeaderBoard,bUrl)
+        restGetRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/battle?uid=${pageContext.request.session.getAttribute("uid")}",fillBattleList,bUrl)
+        restGetRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/lbt",fillLeaderBoard,bUrl)
 
 
         //todo rest call getx2
         //
-        fillBattleList(batStub,bUrl);
-        fillLeaderBoard(leadBstub,bUrl)
+       // fillBattleList(batStub,bUrl);
+       // fillLeaderBoard(leadBstub,bUrl)
     }
     window.onload=function (){loadPage()}
 
         function showAddCollaborator(){
             document.getElementById("collaboratorDiv").innerHTML="<label for='newCol'>NewCollaboratore username</label><input id='newCol' type=text>" +
-                "<button onclick='addCollaborator()'>go</button>";//todo
+                "<button onclick='addCollaborator()'>go</button>";
         }
-        function addCollaborator(){
+        function addCollaborator(){//todo
             const newCoUsname=document.getElementById("newCol").value;
+            if(newCoUsname==null){
+                alert("missing collaborator username")
+                return;
+            }
             const load={
                 newCollab:newCoUsname,
                 uid:${pageContext.request.session.getAttribute("uid")},
                 tid:${pageContext.request.session.getAttribute("tid")}
             }
             //restcall for addColl
-            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/addCollaborator",JSON.stringify(load),loadPage)
+            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/addCollaborator",(load),reload)
 
 
         }
@@ -63,7 +67,7 @@
                 uid:${pageContext.request.session.getAttribute("uid")},
                 tid:${pageContext.request.session.getAttribute("tid")}
             }
-            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/closeTournament",JSON.stringify(load),loadPage)
+            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/closeTournament",(load),reload)
 
             //rest call to close tournament
         }
@@ -94,7 +98,7 @@
 
     <div id="lboard">
         <div class="contentHeader"> leaderboard</div>
-        <div class="leaderboard">
+        <div class="leaderboard" id="lbDiv">
             <div class="lb-entry">
                 <div class="lb-Name"> Nome</div>
                 <div class="lb-Score">Score</div>

@@ -11,15 +11,25 @@
     <title>Battle</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ckbstyle.css">
     <script src="${pageContext.request.contextPath}/js/Battle.js"></script>
+    <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
+
     <script>
 
             window.onload=function(){
-                const uriBattle="/tournament/{${pageContext.request.session.getAttribute("tid")}}/battle/{${pageContext.request.session.getAttribute("bid")}}"
-                restGetRequest(uriBattle+"/?uid=${pageContext.request.session.getAttribute("uid")}",loadTourn, servletBURL)
-            //REST GET battle-leaderboard, assignment, group-rules, deadlines, is user in this battle
+                const uid="${pageContext.request.session.getAttribute("uid")}"
+                const uriBattle="/tournament/${pageContext.request.session.getAttribute("tid")}/battle/${pageContext.request.session.getAttribute("bid")}"
+                restGetRequest(uriBattle+"/lbb/?uid="+uid,fillLeaderBoard, servletBURL)
+                restGetRequest(uriBattle+"/assignment/?uid="+uid,setAss, servletBURL)
+                restGetRequest(uriBattle+"/deadlines/?uid="+uid,setDL, servletBURL)
+                restGetRequest(uriBattle+"/rules/?uid="+uid,setGRules, servletBURL)
+                restGetRequest(uriBattle+"/status/?uid="+uid,setStatus, servletBURL)
+
+//todo put actual rest res
+
+                //REST GET battle-leaderboard, assignment, group-rules, deadlines, is user in this battle
             }
             function showJoinButton(){//todo
-
+                document.getElementById("").style.visibility="visible";
             }
             function joinBattle(){//todo
 
@@ -59,7 +69,7 @@
     </div>
     <div id="lboard">
         <div class="contentHeader"> leaderboard</div>
-        <div class="leaderboard">
+        <div class="leaderboard" id="blbDIV">
             <div class="lb-entry">
                 <div class="teamName"> NomeSq</div>
                 <div class="TeamScore">ScoreSq</div>
@@ -85,7 +95,7 @@
 
     </div>
 
-    <%if(!request.getSession().getAttribute("isEdu").equals("yes") &&  request.getParameter("isInvolved").equals("true")) {%>
+    <%if(!request.getSession().getAttribute("isEdu").equals("true") &&  request.getParameter("involved").equals("false")) {%>
 
     <div id="joinButton"> <button onclick="joinBattle()">join battle</button></div>
     <% }%>

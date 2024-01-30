@@ -46,10 +46,12 @@ public class APIgateway
     public String login(@RequestParam("user")String Username, @RequestParam("pwd")String Password)
     {
         int ID = US.login(Username, Password);
+        JSONObject res=new JSONObject();
         if(ID >= 0)
-            return "{'status' : '200' , uid : "+ID;
+             res.accumulate("uid",ID+"") ;
         else
-            return "{'status' : '418' , uid : "+ID;
+             res.accumulate("error","no such user found");
+        return res.toString();
     }
 
     @PostMapping("/user/register")
@@ -58,10 +60,12 @@ public class APIgateway
     {
         UserType type = (edu) ? UserType.EDUCATOR : UserType.STUDENT;
         int ID = US.registerUser(Username, Email, Password, type);
+        JSONObject res=new JSONObject();
         if(ID >= 0)
-            return "{'status' : '200' , uid : "+ID;
+            res.accumulate("uid",ID+"") ;
         else
-            return "{'status' : '418' , uid : "+ID;
+            res.accumulate("error","no such user found");
+        return res.toString();
     }
 /*
 =================================================================================================================================================
@@ -144,7 +148,7 @@ public class APIgateway
     {
         BS.createBattle(idT, uID, battleName, new Pair<>(minSize, maxsize), assignment, new Pair<>(subscriptionDeadline, submissionDeadline), new ArrayList<>(testCases));
     }
-
+    //todo add getBattleStatus
     @GetMapping("/tournament/{idT}/battle/{idB}/rules")
     public String getGroupRules(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
@@ -153,7 +157,7 @@ public class APIgateway
         return new JSONObject(rules).toString();
     }
 
-    @GetMapping("/tournament/{idT}/battle/{idB}/assignement")
+    @GetMapping("/tournament/{idT}/battle/{idB}/assignment")
     public String getAssignement(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
         String rules = BS.getAssignmentText(uID, idB);

@@ -25,17 +25,16 @@
             uid : "${pageContext.request.session.getAttribute("uid")}"
         }
 
-        restPostRequest("uri",JSON.stringify(load),afterCreateTournament)
+        restPostRequest("uri",(load),afterCreateTournament)//todo once rest operative
     }
     function afterCreateTournament(objresp){
-            location.href="TournamentPage?tid="+objresp.tid;
+            location.href="/TournamentPage?tid="+objresp.tid;
         //get new tourn id from response, go to tournament/tid page
 
     }
 
 
-        const stubTournList='[{"tid":"1","tname":"tourn12","isInvolved":"0"},' +
-            '{"tid":"3","tname":"tr3","involved":"1"},{"tid":"2","tname":"tourn2","isInvolved":"0"}]'
+
     const servletBURL="${pageContext.request.contextPath}";
 
         window.onload=function(){
@@ -43,7 +42,7 @@
 
 
 
-            const tournaments =stubTournList
+            //const tournaments =stubTournList
             // get tournament/ and make list of all and those where user is subscribed
             //loadTourn(tournaments, restBase);
         }
@@ -68,11 +67,11 @@
     <div id="ptor">
         <div class="contentHeader"> Your Tournaments</div>
         <div class="tournList" id="persTo">
-            <a class="tlist-item" href="TournamentPageServlet?tid=1&isInvolved=1" id="t-item111">tourn1</a>
-            <div class="tlist-item" id="t-item2">tourn1</div>
-            <div class="tlist-item" id="t-item3">tourn1</div>
-            <div class="tlist-item" id="t-item4">tourn1</div>
-            <div class="tlist-item" id="t-item5">tourn1</div>
+            <!-- <a class="tlist-item" href="TournamentPageServlet?tid=1&isInvolved=1" id="t-item111">tourn1</a>
+           - <div class="tlist-item" id="t-item2">tourn1</div>
+             <div class="tlist-item" id="t-item3">tourn1</div>
+             <div class="tlist-item" id="t-item4">tourn1</div>
+             <div class="tlist-item" id="t-item5">tourn1</div>-->
 
 
 

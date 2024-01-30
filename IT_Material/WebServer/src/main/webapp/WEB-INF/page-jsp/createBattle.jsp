@@ -15,8 +15,23 @@
 
     <script>
         function createBattle(){
-            //todo call send rest
-        }
+            const loadData={
+                uid: ${pageContext.request.session.getAttribute("uid")} ,
+                idT :${pageContext.request.session.getAttribute("tid")},
+                bname: document.getElementById("bName").value ,
+                minsize : document.getElementById("minG").value,
+                maxsize : document.getElementById("maxG").value,
+                assignment: document.getElementById("assTxt").value,
+                subsd : document.getElementById("subsD").value,
+                submd : document.getElementById("submD").value
+
+            }
+            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/battle/b_create",loadData,goToBattle)
+
+         }
+         function goToTournament(resp){
+            location.href="${pageContext.request.contextPath}/tournament/{${pageContext.request.session.getAttribute("tid")}}";
+         }
     </script>
 </head>
 <body>
@@ -32,6 +47,8 @@
 <div id="content">
     <form>
         <label for="bName"></label><input type="text" id="bName" name="bName">
+        <label for="assTxt"></label><input type="text" id="assTxt" name="assTxt">
+
         <div id="dlines">
             <label for="subsD"></label><input type="date" id="subsD" name="subsD">
             <label for="submD"></label><input type="date" id="submD" name="submD">

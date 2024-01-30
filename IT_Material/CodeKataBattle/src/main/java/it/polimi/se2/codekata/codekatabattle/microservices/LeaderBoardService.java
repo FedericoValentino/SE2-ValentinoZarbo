@@ -30,12 +30,12 @@ public class LeaderBoardService
     {
         return DB.getScoresOfTournament(idT);
     }
-
+//todo same as other, instead of id give usname
     public Map<Integer, Integer> getLeadBoardBattle(int idB)
     {
         return DB.getScoresOfBattle(idB);
     }
-
+//todo leaderboard must be ordered by score,
 
 
 }

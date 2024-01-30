@@ -7,7 +7,7 @@ function loadTourn(tournFullListJson, baseUrl){
     
     tournFullList.forEach(t => {
         allT[i]=t;
-        if(t.involved===true){
+        if(t.involved){
             yourT[j]=t;
             j++;
         }
@@ -19,7 +19,7 @@ function loadTourn(tournFullListJson, baseUrl){
 
 function setTList(list, listElement, baseUrl, involved){
     list.forEach(to => {
-        listElement.innerHTML+='<a class="tlist-item" id="'+to.tid+'-item "href='+goToTournament(to.tid,involved)+'>'+to.tname+'</a>';
+        listElement.innerHTML+='<a class="tlist-item" id="'+to.tid+'-item " href='+baseUrl+goToTournament(to.tid,involved)+'>'+to.tname+'</a>';
     });
 
 }

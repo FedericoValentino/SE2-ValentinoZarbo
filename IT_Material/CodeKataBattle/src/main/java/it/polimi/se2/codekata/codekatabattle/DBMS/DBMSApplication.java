@@ -19,7 +19,7 @@ public class DBMSApplication
 
     //iether this or load from file a preset
     private void preGeneratedData(ArrayList<DBMSTournamentEntry> tEntries,ArrayList<DBMSUserEntry> usEntries,ArrayList<DBMSBattleEntry> bEntries){
-        String []names = {"lask","asdas","lukas"};
+        String []names = {"lask","asdas","lukas"};//todo addd a way to populate a bit more stuff for presentation
          String []email= {"lask@mail.com","asdas@mail.com","lukas@mail.com"};
          String []password= {"lask","asdas","lukas"};
          UserType []userType= {UserType.EDUCATOR,UserType.EDUCATOR,UserType.STUDENT};
@@ -27,7 +27,7 @@ public class DBMSApplication
             usEntries.add(new DBMSUserEntry(i,names[i],email[i],password[i],userType[i]));
         }
         String[] tournamentName={"torn1" ,"ttttew", "tartat", "TTT"};
-        int [] creatorID={1,1,2,1};
+        int [] creatorID={0,1,2,1};
         for (int i = 0; i < 4; i++) {
             tEntries.add(new DBMSTournamentEntry(i,creatorID[i],tournamentName[i]));
         }
@@ -50,7 +50,7 @@ public class DBMSApplication
         this.TournamentEntries = new ArrayList<>();
         this.BattleEntries = new ArrayList<>();
 
-
+        //this is to populate the db, we will eventually need a better way(maybe a few json string)
         preGeneratedData(this.TournamentEntries,this.UserEntries,this.BattleEntries);
     }
     /*

@@ -15,6 +15,8 @@ public class BattlePageServlet extends HttpServlet {
             response.sendRedirect(getServletContext().getContextPath()+"/LoginServlet");
             return;
         }
+        String bid=request.getParameter("bid");
+        ss.setAttribute("bid",""+bid);
         response.setStatus(200);
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
