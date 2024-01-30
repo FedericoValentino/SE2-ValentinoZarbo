@@ -14,6 +14,8 @@
     <script>
 
             window.onload=function(){
+                const uriBattle="/tournament/{${pageContext.request.session.getAttribute("tid")}}/battle/{${pageContext.request.session.getAttribute("bid")}}"
+                restGetRequest(uriBattle+"/?uid=${pageContext.request.session.getAttribute("uid")}",loadTourn, servletBURL)
             //REST GET battle-leaderboard, assignment, group-rules, deadlines, is user in this battle
             }
             function showJoinButton(){//todo
@@ -29,7 +31,7 @@
 
     <img id="logo">
     <div class="PageName">Battle</div>
-    <div class="logas"><%if(request.getSession().getAttribute("isStud").equals("yes")){ %>Student<%}else{ %> Educator<% }%></div>
+    <div class="logas"><%if(request.getSession().getAttribute("isEdu").equals("yes")){ %>Student<%}else{ %> Educator<% }%></div>
 
     <a class="logout" href="https://www.google.com/">logout</a></div>
 </div>
@@ -83,7 +85,7 @@
 
     </div>
 
-    <%if(request.getSession().getAttribute("isStud").equals("yes") &&  request.getParameter("isInvolved").equals("true")) {%>
+    <%if(!request.getSession().getAttribute("isEdu").equals("yes") &&  request.getParameter("isInvolved").equals("true")) {%>
 
     <div id="joinButton"> <button onclick="joinBattle()">join battle</button></div>
     <% }%>

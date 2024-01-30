@@ -55,13 +55,13 @@
         </div>
 
         <div id="diffCont">
-            <div id="subscribe" th:if="isStud">
+            <div id="subscribe" th:if="isEdu">
                 <form method="post" action="http://localhost:8080\tournament\subscribe">
                     <input type="submit">
                 </form>
             </div>
 
-            <div id="createB" th:if="!isStud">
+            <div id="createB" th:if="!isEdu">
                 <a href=""></a>
             </div>
 

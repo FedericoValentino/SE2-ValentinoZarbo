@@ -31,7 +31,7 @@ public class UserService
 
     public int login(String user, String password)
     {
-        ArrayList<Integer> allStudents = DB.getAllSignedStudent();
+        ArrayList<Integer> allStudents = DB.getAllSignedUsers();
 
         for(int studentID : allStudents)
         {

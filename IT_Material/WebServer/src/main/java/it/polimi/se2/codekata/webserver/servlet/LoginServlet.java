@@ -28,19 +28,22 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BufferedReader postLoad= request.getReader();
         String usname="null";
-        String isSt="no";
+        String isEdu="no";
         String uid;
         String sjson= postLoad.readLine();
         HashMap<String, String> result = new ObjectMapper().readValue(sjson, HashMap.class);
         usname=result.get("username");
-        isSt=result.get("isStud");
-        uid=result.get("uid");
+        isEdu=result.get("isEdu");
+        uid= result.get("uid");
         HttpSession ses=request.getSession();
+        if(isEdu.equals("true"))//todo test if this is good with register
+            isEdu="yes";
+        else isEdu="no";
 
 
 
         //todo token control
-        ses.setAttribute("isStud",isSt);
+        ses.setAttribute("isEdu",isEdu);
         ses.setAttribute("uid", uid );
         ses.setAttribute("username", usname );
         response.setStatus(200);
@@ -51,7 +54,7 @@ public class LoginServlet extends HttpServlet {
             if(isSt.equals("on")){
                 isSt="yes";
             }
-            ses.setAttribute("isStud",isSt);
+            ses.setAttribute("isEdu",isSt);
             ses.setAttribute("uid", uid );
             //response.getWriter().append("ok");
             response.setStatus(200);

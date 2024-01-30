@@ -27,14 +27,15 @@
 
         restPostRequest("uri",JSON.stringify(load),afterCreateTournament)
     }
-    function afterCreateTournament(JsonResponse){
+    function afterCreateTournament(objresp){
+            location.href="TournamentPage?tid="+objresp.tid;
         //get new tourn id from response, go to tournament/tid page
 
     }
 
 
-        const stubTournList='{"tournaments":[{"tid":"1","tname":"tourn12","isInvolved":"0"},' +
-            '{"tid":"3","tname":"tr3","isInvolved":"1"},{"tid":"2","tname":"tourn2","isInvolved":"0"}]}'
+        const stubTournList='[{"tid":"1","tname":"tourn12","isInvolved":"0"},' +
+            '{"tid":"3","tname":"tr3","involved":"1"},{"tid":"2","tname":"tourn2","isInvolved":"0"}]'
     const servletBURL="${pageContext.request.contextPath}";
 
         window.onload=function(){
@@ -83,7 +84,7 @@
 
         <div class="tournList" id="pubTo"></div>
     </div>
-    <% if ( request.getSession().getAttribute("isStud").equals("yes")){%>
+    <% if ( !request.getSession().getAttribute("isEdu").equals("true")){%>
     <div id="diversified">
 
     <p>studente</p>
