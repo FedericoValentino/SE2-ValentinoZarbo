@@ -30,4 +30,68 @@ public class DBMSUserEntry
         this.UserBattles = new ArrayList<>();
         this.Groups = new ArrayList<>();
     }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
+
+    public ArrayList<Integer> getUserTournaments() {
+        return UserTournaments;
+    }
+
+    public void setUserTournaments(ArrayList<Integer> userTournaments) {
+        UserTournaments = userTournaments;
+    }
+
+    public ArrayList<Integer> getUserBattles() {
+        return UserBattles;
+    }
+
+    public void setUserBattles(ArrayList<Integer> userBattles) {
+        UserBattles = userBattles;
+    }
+
+    public ArrayList<Integer> getGroups() {
+        return Groups;
+    }
+
+    public void setGroups(ArrayList<Integer> groups) {
+        Groups = groups;
+    }
 }

@@ -12,4 +12,28 @@ public class DBMSBattleSourceEntry
         this.groupID = groupID;
         SourceCode = sourceCode;
     }
+
+    public int getIdB() {
+        return idB;
+    }
+
+    public void setIdB(int idB) {
+        this.idB = idB;
+    }
+
+    public int getGroupID() {
+        return groupID;
+    }
+
+    public void setGroupID(int groupID) {
+        this.groupID = groupID;
+    }
+
+    public String getSourceCode() {
+        return SourceCode;
+    }
+
+    public void setSourceCode(String sourceCode) {
+        SourceCode = sourceCode;
+    }
 }

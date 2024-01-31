@@ -14,8 +14,8 @@ function loadTourn(tournFullListJson, baseUrl){
         }
         i++;                
     });
-    setTList(allT,document.getElementById("pubTo"),baseUrl,0)
-    setTList(yourT, document.getElementById("persTo"),baseUrl,1)
+    setTList(allT,document.getElementById("pubTo"),baseUrl,"false")
+    setTList(yourT, document.getElementById("persTo"),baseUrl,"true")
 }
 
 function setTList(list, listElement, baseUrl, involved){

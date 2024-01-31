@@ -24,7 +24,7 @@
                 restGetRequest(uriBattle+"/rules/?uid="+uid,setGRules, servletBURL)
                 restGetRequest(uriBattle+"/status/?uid="+uid,setStatus, servletBURL)
 
-//todo put actual rest res
+
 
                 //REST GET battle-leaderboard, assignment, group-rules, deadlines, is user in this battle
             }
@@ -33,6 +33,9 @@
             }
             function joinBattle(){//todo
 
+            }
+            function showManual(){
+                document.getElementById("manualLink").innerHTML="<a href='${pageContext.request.contextPath}/ManualEvalServlet' >go to manual evaluation</a>"
             }
     </script>
 </head>
@@ -43,8 +46,7 @@
     <div class="PageName">Battle</div>
     <div class="logas"><%if(request.getSession().getAttribute("isEdu").equals("yes")){ %>Student<%}else{ %> Educator<% }%></div>
 
-    <a class="logout" href="https://www.google.com/">logout</a></div>
-</div>
+    <a class="logout" href="LoginServlet/">logout</a></div></div>
 <div id="content">
     <div id="assignment">
         <div class="contentHeader"> Assignment</div>
@@ -92,6 +94,7 @@
             </div>
 
         </div>
+        <div id="manualLink"></div>
 
     </div>
 

@@ -13,18 +13,43 @@
     <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
 
     <script>
+        const educID=${pageContext.request.session.getAttribute("uid")} ;
         window.onload=function(){
+            const burl="${pageContext.request.contextPath}";
             const sourceStub="";
+            const idt= ${pageContext.request.session.getAttribute("tid")},idb=${pageContext.request.session.getAttribute("idb")};
+            restGetRequest("/tournament/"+idt+"/battle/"+idb+"/evalSource",loadSourceTxt,burl)
             //get from rest call
-            loadSourceTxt(sourceStub);
+            //loadSourceTxt(sourceStub);
         }
-        function loadSourceTxt(source){
-            document.getElementById("sourceTxt").innerText=source;
+        let listOfSource;
+        function loadSourceTxt(listOfResp){
+            if(listOfResp==null || Object.values(listOfResp).length===0)
+                return;
+            listOfSource=listOfResp;
+            let i=0;
+            for (const x in listOfResp) {
+                document.getElementById("listOfSo").innerHTML+="<div class='source-item' onclick='showSource("+i+")'>GroupID="+x.gID+"</div>";
+                i++;
+            }
 
+
+        }
+        function showSource(positionInList){
+            document.getElementById("sourceTxt").innerText=listOfSource[positionInList].sources;
         }
         function sendScore(){
-            //todo rest call to send score
 
+
+            const score=document.getElementById("score").value;
+            data={ score: score,
+            uid:educID,
+            gID:${pageContext.request.getParameter("idb")}}
+            restPostRequest("/tournament/{idT}/battle/{idB}/evalSource/score",data,scoreSent)
+
+        }
+        function scoreSent(){
+            alert("score sent")
         }
 
 
@@ -36,17 +61,15 @@
     <img id="logo">
     <div class="PageName">Tournaments</div>
     <div class="logas">ED???</div>
-    <a class="logout" href="https://www.google.com/">logout</a></div>
-
+    <a class="logout" href="LoginServlet/">logout</a></div>
 </div>
 
 <div >
+    <div id="listOfSo"></div>
     <div id="sourceTxt"></div>
     <form id="evalForm" action="uri for rest service" method="post">
         <label for="score">Insert score</label>
         <input type="number" id="score" name="score">
-        <label for="subscore">Save score</label>
-        <input type="submit" id="subscore">
         <button onclick="sendScore()"> send</button>
     </form>
 </div>

@@ -32,4 +32,68 @@ public class DBMSTournamentEntry
         this.scores = new HashMap<>();
         this.Battles = new ArrayList<>();
     }
+
+    public int gettID() {
+        return tID;
+    }
+
+    public void settID(int tID) {
+        this.tID = tID;
+    }
+
+    public String getTournamentName() {
+        return TournamentName;
+    }
+
+    public void setTournamentName(String tournamentName) {
+        TournamentName = tournamentName;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public int getCreatorID() {
+        return creatorID;
+    }
+
+    public void setCreatorID(int creatorID) {
+        this.creatorID = creatorID;
+    }
+
+    public ArrayList<Integer> getCollaborators() {
+        return collaborators;
+    }
+
+    public void setCollaborators(ArrayList<Integer> collaborators) {
+        this.collaborators = collaborators;
+    }
+
+    public ArrayList<Integer> getUserID() {
+        return userID;
+    }
+
+    public void setUserID(ArrayList<Integer> userID) {
+        this.userID = userID;
+    }
+
+    public Map<Integer, Integer> getScores() {
+        return scores;
+    }
+
+    public void setScores(Map<Integer, Integer> scores) {
+        this.scores = scores;
+    }
+
+    public ArrayList<Integer> getBattles() {
+        return Battles;
+    }
+
+    public void setBattles(ArrayList<Integer> battles) {
+        Battles = battles;
+    }
 }

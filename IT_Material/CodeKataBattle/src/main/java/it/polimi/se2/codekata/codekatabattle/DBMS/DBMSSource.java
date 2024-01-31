@@ -37,4 +37,19 @@ public class DBMSSource
         return sources;
     }
 
+    public ArrayList<DBMSBattleSourceEntry> getSources() {
+        return Sources;
+    }
+
+    public void setSources(ArrayList<DBMSBattleSourceEntry> sources) {
+        Sources = sources;
+    }
+
+    public Map<Integer, ArrayList<String>> getTestCases() {
+        return testCases;
+    }
+
+    public void setTestCases(Map<Integer, ArrayList<String>> testCases) {
+        this.testCases = testCases;
+    }
 }

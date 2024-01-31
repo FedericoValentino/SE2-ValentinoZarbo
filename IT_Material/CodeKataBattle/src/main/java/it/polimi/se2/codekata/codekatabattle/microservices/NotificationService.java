@@ -37,7 +37,7 @@ public class NotificationService
     @EventListener
     public void BattleTopicListener(BattleTopic event)
     {
-        ArrayList<Integer> subscribedStudents = DB.getSubscribedStudents(DB.getBattleInfo(event.getBattleID()).tID);
+        ArrayList<Integer> subscribedStudents = DB.getSubscribedStudents(DB.getBattleInfo(event.getBattleID()).gettID());
         for(int uID : subscribedStudents)
         {
             switch(event.getBattleStatus())
@@ -77,7 +77,7 @@ public class NotificationService
     @EventListener
     public void RepoLinksListener(RepoLinksTopic event)
     {
-        ArrayList<Integer> subscribedStudents = DB.getSubscribedStudents(DB.getBattleInfo(event.getBattleID()).tID);
+        ArrayList<Integer> subscribedStudents = DB.getSubscribedStudents(DB.getBattleInfo(event.getBattleID()).gettID());
         for(int uID : subscribedStudents)
         {
             sendEmail("Clone this repository and setup workflow to start the battle!\n" + event.getLinkToRepository(), uID);

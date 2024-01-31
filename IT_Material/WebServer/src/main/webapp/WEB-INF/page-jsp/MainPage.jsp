@@ -27,8 +27,8 @@
 
         restPostRequest("/tournament/create_t",load,afterCreateTournament)//todo once rest operative
     }
-    function afterCreateTournament(objresp){
-            location.href="/TournamentPage?tid="+objresp.tid;
+    function afterCreateTournament(){
+        location.reload()
         //get new tourn id from response, go to tournament/tid page
 
     }
@@ -58,7 +58,7 @@
     <img id="logo">
     <div class="PageName">Tournaments</div>
     <div class="logas">ED???</div>
-    <a class="logout" href="https://www.google.com/">logout</a></div>
+    <a class="logout" href="LoginServlet/">logout</a></div>
 </div>
 
 

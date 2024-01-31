@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 //TODO Cercare modo per testare
 
@@ -100,7 +101,7 @@ public class APIgateway
     @PostMapping("/tournament/{idT}/addCollaborator")
     public void addCollaborator(@PathVariable("idT") int idT, @RequestParam("uid") int UserID, @RequestParam("cid") int collaboratorID)
     {
-        TS.addCollaborator(UserID, collaboratorID, idT);
+        TS.addCollaborator(UserID, collaboratorID, idT);//todo reqeust collaborator username instead of id
     }
 
     @PostMapping("/tournament/{idT}/close")
@@ -136,19 +137,23 @@ public class APIgateway
     BATTLE API
 =================================================================================================================================================
 */
-    @PostMapping("/tournament/{idT}/battle/create_b")
-    public void createBattle(@RequestParam("uid")int uID,
+    @PostMapping(value="/tournament/{idT}/battle/create_b",consumes="application/json", produces ="application/json")
+    public void createBattle(@RequestBody Map<String,String > input,@PathVariable("idT")int idt)
+            /*@RequestParam("uid")int uID,
                              @PathVariable("idT") int idT,
                              @RequestParam("bname")String battleName,
                              @RequestParam("minsize") int minSize,
                              @RequestParam("maxSize")int maxsize,
                              @RequestParam("assignment")String assignment,
-                             @RequestParam("subsd")Date subscriptionDeadline,
-                             @RequestParam("submd")Date submissionDeadline,
-                             @RequestBody List<String> testCases)
+                             @RequestParam("subsd")String subscriptionDeadline,
+                             @RequestParam("submd")String submissionDeadline)//,
+                            // @RequestBody List<String> testCases)*/
     {
-        BS.createBattle(idT, uID, battleName, new Pair<>(minSize, maxsize), assignment, new Pair<>(subscriptionDeadline, submissionDeadline), new ArrayList<>(testCases));
-    }
+        Pair<Integer,Integer> gl=new Pair<>(Integer.parseInt(input.get("minSize")),Integer.parseInt(input.get("maxsize")));
+        Pair<Date,Date>dl=new Pair<>(new Date(),new Date());
+        BS.createBattle(idt,Integer.parseInt(input.get("uid")),input.get("bname"),gl,input.get("assignment"),dl,new ArrayList<>());
+        //BS.createBattle(idT, uID, battleName, new Pair<>(minSize, maxsize), assignment, new Pair<>(subscriptionDeadline, submissionDeadline), new ArrayList<>());
+    }//todo move post paramaeter to body, eventually create class for every type where usefull
 
     @GetMapping("tournament/{idT}/battle/{idB}/status")
     public String getBattleStatus(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)

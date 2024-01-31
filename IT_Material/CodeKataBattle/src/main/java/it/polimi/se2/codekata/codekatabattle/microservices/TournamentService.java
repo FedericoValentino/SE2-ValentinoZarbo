@@ -94,7 +94,11 @@ public class TournamentService
         for(int idt : currentT)
         {
             DBMSTournamentEntry tournamentEntry = DB.getTournamentInfo(idt);
-            tList.add(new TournamentsElement(idt, tournamentEntry.TournamentName, userEntry.UserTournaments.contains(idt)));
+            boolean involved;
+            if(userEntry.userType.equals(UserType.EDUCATOR))
+                involved=tournamentEntry.collaborators.contains(UserId);
+            else involved=tournamentEntry.userID.contains(UserId);
+            tList.add(new TournamentsElement(idt, tournamentEntry.TournamentName, involved));
         }
 
         return tList;

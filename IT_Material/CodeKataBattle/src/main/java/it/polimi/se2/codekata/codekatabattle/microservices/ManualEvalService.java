@@ -23,7 +23,7 @@ public class ManualEvalService
 
     public ArrayList<DBMSBattleSourceEntry> getSourcesForEval(int uID, int bID)
     {
-        DBMSTournamentEntry tournamentEntry = DB.getTournamentInfo(DB.getBattleInfo(bID).tID);
+        DBMSTournamentEntry tournamentEntry = DB.getTournamentInfo(DB.getBattleInfo(bID).gettID());
 
         if(tournamentEntry.collaborators.contains(uID))
             return DBS.getSources(bID);
@@ -33,7 +33,7 @@ public class ManualEvalService
 
     public void addManualScore(int uID, int score, int groupID, int bID)
     {
-        DBMSTournamentEntry tournamentEntry = DB.getTournamentInfo(DB.getBattleInfo(bID).tID);
+        DBMSTournamentEntry tournamentEntry = DB.getTournamentInfo(DB.getBattleInfo(bID).gettID());
 
         if(tournamentEntry.collaborators.contains(uID))
             publisher.publishEvent(new ScoresTopic(groupID, score, bID));

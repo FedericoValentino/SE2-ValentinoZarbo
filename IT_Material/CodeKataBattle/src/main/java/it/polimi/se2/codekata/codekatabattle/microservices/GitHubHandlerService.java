@@ -30,7 +30,7 @@ public class GitHubHandlerService
     }
 
     @EventListener
-    private void githubPingListener()
+    private void githubPingListener(int ping)//this parameter is here just sa that the app builds
     {
         String GitHubSources = "";//theoretical download of sources from github
         int gID = 0; //theoretical search for githubRepo - gID in DB

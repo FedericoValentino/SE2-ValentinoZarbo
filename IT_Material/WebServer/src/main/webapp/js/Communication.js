@@ -9,11 +9,20 @@ function restPostRequest(resourcePUri, data, consumerFun){
     }).then(stopThemPromise, function (error){
         alert(error)
     })
+
     function stopThemPromise(promiseResponse){
-        if(promiseResponse.body!=null) {
-            promiseResponse.json().then((damnit)=>consumerFun(damnit))
+        if(promiseResponse.body!=null ) {
+                promiseResponse.text().then(function (txt){
+                    try {
+                        consumerFun( JSON.parse(txt));
+                    }catch (e){consumerFun()}
+                },consumerFun)
+
+               // promiseResponse.json().then((damnit)=>consumerFun(damnit))
+
         }else consumerFun();
     }
+
 /*
 .then((response) =>{//todo error catch
     if(response.body!=null){
@@ -24,7 +33,16 @@ function restPostRequest(resourcePUri, data, consumerFun){
 
        .catch( (error)=> alert("com error")+error);*/
 }
+function restPostBodyRequest(resourcePUri, data, consumerFun){
+    fetch("http://localhost:8080" + resourcePUri, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-type": "application/json"
 
+        }
+    }).then(r  =>alert(r.statusText))
+}
 function restGetRequest(resourcePUri,consumerFun, servletBurl){
     fetch("http://localhost:8080"+resourcePUri,{
         method:"get",

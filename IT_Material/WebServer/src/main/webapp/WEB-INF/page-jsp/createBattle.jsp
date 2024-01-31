@@ -15,18 +15,27 @@
 
     <script>
         function createBattle(){
+            const bname= document.getElementById("bName").value ,
+                minsize = document.getElementById("minG").value,
+                maxsize = document.getElementById("maxG").value,
+                assignment= document.getElementById("assTxt").value,
+                subsd = document.getElementById("subsD").value,
+                submd = document.getElementById("submD").value;
             const loadData={
+
                 uid: ${pageContext.request.session.getAttribute("uid")} ,
                 idT :${pageContext.request.session.getAttribute("tid")},
-                bname: document.getElementById("bName").value ,
-                minsize : document.getElementById("minG").value,
-                maxsize : document.getElementById("maxG").value,
-                assignment: document.getElementById("assTxt").value,
-                subsd : document.getElementById("subsD").value,
-                submd : document.getElementById("submD").value
+                bname: bname,
+                minsize : minsize,
+                maxsize : maxsize,
+                assignment: assignment,
+                subsd : subsd,
+                submd : submd
 
             }
-            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/battle/b_create",loadData,goToTournament)
+           // const formdata=new FormData(document.getElementById("maybe"))
+            restPostBodyRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/battle/create_b",loadData,goToTournament)
+            //restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/battle/create_b",loadData,goToTournament)
 
          }
          function goToTournament(resp){
@@ -38,16 +47,15 @@
 <div id="header">
 
     <img id="logo">
-    <div class="PageName">Tournaments</div>
+    <div class="PageName">CREATE BATTLE</div>
     <div class="logas">ED???</div>
-    <a class="logout" href="https://www.google.com/">logout</a></div>
-
+    <a class="logout" href="LoginServlet/">logout</a></div>
 </div>
 
 <div id="content">
-    <form>
-        <label for="bName"></label><input type="text" id="bName" name="bName">
-        <label for="assTxt"></label><input type="text" id="assTxt" name="assTxt">
+    <form id="maybe">
+        <label for="bName">BATTLE NAME</label><input type="text" id="bName" name="bName">
+        <label for="assTxt">ASSIGNMENT TEXT</label><input type="text" id="assTxt" name="assTxt">
 
         <div id="dlines">
             <label for="subsD"></label><input type="date" id="subsD" name="subsD">
@@ -59,7 +67,7 @@
         </div>
 
 
-        <input type="file" id="testC" name="testC">
+        <!--<input type="file" id="testC" name="testC">-->
         <button onclick="createBattle()">create</button>
 
 

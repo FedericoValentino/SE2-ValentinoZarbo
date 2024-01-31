@@ -57,17 +57,17 @@
                 idT:${pageContext.request.session.getAttribute("tid")}
             }
             //restcall for addColl
-            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/addCollaborator",(load),reload)
+            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/addCollaborator",(load),reload)
 
 
         }
        // function unShowAddColl(){}
         function closeTournament(){//todo
             const load={
-                uid:${pageContext.request.session.getAttribute("uid")},
-                idT:${pageContext.request.session.getAttribute("tid")}
+                uid:${pageContext.request.session.getAttribute("uid")}
+
             }
-            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/closeTournament",(load),reload)
+            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/close",(load),reload)
 
             //rest call to close tournament
         }
@@ -84,8 +84,7 @@
     <img id="logo">
     <div class="PageName">Tournament</div>
     <div class="logas">ED???</div>
-    <a class="logout" href="https://www.google.com/">logout</a></div>
-</div>
+    <a class="logout" href="LoginServlet/">logout</a></div></div>
 <div id="content">
 
     <div id="battles">
@@ -132,7 +131,7 @@
         </div>
         <%}if(request.getSession().getAttribute("isEdu").equals("yes") && request.getParameter("isInvolved").equals("true")){ %>
             <div id="addBut">
-                <a href="${pageContext.request.contextPath}/CreateBattleServlet"></a>
+                <a id="bcreate" href="${pageContext.request.contextPath}/CreateBattleServlet">create battle</a>
                 <button onclick="showAddCollaborator()">Add COllaborator</button>
                 <div id="collaboratorDiv"></div>
             </div>
