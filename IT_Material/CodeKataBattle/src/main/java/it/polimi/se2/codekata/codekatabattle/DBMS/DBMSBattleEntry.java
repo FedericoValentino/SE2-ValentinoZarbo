@@ -6,6 +6,7 @@ import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class DBMSBattleEntry
@@ -35,6 +36,8 @@ public class DBMSBattleEntry
         this.Assignment = assignment;
         this.deadline = deadline;
         this.participatingGroups = new ArrayList<>();
+        this.scores=new HashMap<>();
+        this.status=BattleStatus.REGISTRATION_PHASE;
     }
 
     public int gettID() {

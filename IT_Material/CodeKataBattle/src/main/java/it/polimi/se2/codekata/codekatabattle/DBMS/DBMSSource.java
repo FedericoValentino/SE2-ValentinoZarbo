@@ -4,6 +4,7 @@ package it.polimi.se2.codekata.codekatabattle.DBMS;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @Component
@@ -13,6 +14,10 @@ public class DBMSSource
 
     private Map<Integer, ArrayList<String>> testCases;
 
+    DBMSSource(){
+        this.Sources=new ArrayList<>();
+        this.testCases= new HashMap<>();
+    }
     public void addBattleTestCases(int idB, ArrayList<String> testCases)
     {
         this.testCases.put(idB, testCases);

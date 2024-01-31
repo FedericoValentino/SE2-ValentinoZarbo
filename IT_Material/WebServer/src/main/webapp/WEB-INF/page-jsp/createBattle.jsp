@@ -39,7 +39,7 @@
 
          }
          function goToTournament(resp){
-            location.href="${pageContext.request.contextPath}/tournament/{${pageContext.request.session.getAttribute("tid")}}";
+            location.href="${pageContext.request.contextPath}/TournamentsServlet?tid?${pageContext.request.session.getAttribute("tid")}";
          }
     </script>
 </head>
@@ -54,25 +54,25 @@
 
 <div id="content">
     <form id="maybe">
-        <label for="bName">BATTLE NAME</label><input type="text" id="bName" name="bName">
-        <label for="assTxt">ASSIGNMENT TEXT</label><input type="text" id="assTxt" name="assTxt">
+        <label for="bName">BATTLE NAME</label><input placeholder="asdafasfa" type="text" id="bName" name="bName">
+        <label for="assTxt">ASSIGNMENT TEXT</label><input placeholder=" asdadffffff" type="text" id="assTxt" name="assTxt">
 
         <div id="dlines">
-            <label for="subsD"></label><input type="date" id="subsD" name="subsD">
-            <label for="submD"></label><input type="date" id="submD" name="submD">
+            <label for="subsD"></label><input type="date" placeholder="2000-21-2" id="subsD" name="subsD">
+            <label for="submD"></label><input type="date" placeholder="2000-21-2" id="submD" name="submD">
         </div>
         <div id="grules">
-            <label for="minG"></label><input type="number" id="minG" name="minG">
-            <label for="maxG"></label><input type="number" id="maxG" name="maxG">
+            <label for="minG"></label><input type="number" placeholder="2" id="minG" name="minG">
+            <label for="maxG"></label><input type="number" placeholder="3" id="maxG" name="maxG">
         </div>
-
+    </form>
 
         <!--<input type="file" id="testC" name="testC">-->
         <button onclick="createBattle()">create</button>
 
 
 
-    </form>
+
 </div>
 </body>
 </html>

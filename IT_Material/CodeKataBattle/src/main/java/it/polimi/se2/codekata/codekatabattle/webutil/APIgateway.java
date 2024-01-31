@@ -1,5 +1,6 @@
 package it.polimi.se2.codekata.codekatabattle.webutil;
 
+import com.fasterxml.jackson.core.io.JsonStringEncoder;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSBattleSourceEntry;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.BattlesElement;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.SourcesElement;
@@ -149,16 +150,20 @@ public class APIgateway
                              @RequestParam("submd")String submissionDeadline)//,
                             // @RequestBody List<String> testCases)*/
     {
-        Pair<Integer,Integer> gl=new Pair<>(Integer.parseInt(input.get("minSize")),Integer.parseInt(input.get("maxsize")));
+        int g1=Integer.parseInt(input.get("minsize"));
+        int g2=Integer.parseInt(input.get("maxsize"));
+        Pair<Integer,Integer> gl=new Pair<>(g1,g2);
         Pair<Date,Date>dl=new Pair<>(new Date(),new Date());
-        BS.createBattle(idt,Integer.parseInt(input.get("uid")),input.get("bname"),gl,input.get("assignment"),dl,new ArrayList<>());
+        ArrayList<String > fakeCase=new ArrayList<>();
+        fakeCase.add("boh");
+        BS.createBattle(idt,Integer.parseInt(input.get("uid")),input.get("bname"),gl,input.get("assignment"),dl,fakeCase);
         //BS.createBattle(idT, uID, battleName, new Pair<>(minSize, maxsize), assignment, new Pair<>(subscriptionDeadline, submissionDeadline), new ArrayList<>());
     }//todo move post paramaeter to body, eventually create class for every type where usefull
 
     @GetMapping("tournament/{idT}/battle/{idB}/status")
     public String getBattleStatus(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
-        return new JSONObject(BS.getBattleStatus(uID, idB)).toString();
+        return  "{\"statusTxt\":\"" +BS.getBattleStatus(uID, idB).toString()+ "\"}";
     }
 
     @GetMapping("/tournament/{idT}/battle/{idB}/rules")
@@ -172,9 +177,9 @@ public class APIgateway
     @GetMapping("/tournament/{idT}/battle/{idB}/assignment")
     public String getAssignement(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
-        String rules = BS.getAssignmentText(uID, idB);
+        String assignmentText = BS.getAssignmentText(uID, idB);
 
-        return new JSONObject(rules).toString();
+        return "{\"assignment\":\"" +assignmentText+ "\"}";
     }
 
     @GetMapping("/tournament/{idT}/battle/{idB}/deadlines")

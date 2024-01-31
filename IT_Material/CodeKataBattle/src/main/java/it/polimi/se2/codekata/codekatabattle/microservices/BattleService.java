@@ -73,7 +73,7 @@ public class BattleService
         if(DB.getUserInfo(UserId).UserBattles.contains(BattleId))
             return DB.getBattleAssignement(BattleId);
         else
-            return null;
+            return null;//todo instead of returning null send an error if possible
     }
 
     public Pair<Date, Date> getDeadlines(int UserId, int BattleID)

@@ -14,15 +14,15 @@
     <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
 
     <script>
-
+            const servletBURL="${pageContext.request.contextPath}";
             window.onload=function(){
                 const uid="${pageContext.request.session.getAttribute("uid")}"
                 const uriBattle="/tournament/${pageContext.request.session.getAttribute("tid")}/battle/${pageContext.request.session.getAttribute("bid")}"
-                restGetRequest(uriBattle+"/lbb/?uid="+uid,fillLeaderBoard, servletBURL)
-                restGetRequest(uriBattle+"/assignment/?uid="+uid,setAss, servletBURL)
-                restGetRequest(uriBattle+"/deadlines/?uid="+uid,setDL, servletBURL)
-                restGetRequest(uriBattle+"/rules/?uid="+uid,setGRules, servletBURL)
-                restGetRequest(uriBattle+"/status/?uid="+uid,setStatus, servletBURL)
+                restGetRequest(uriBattle+"/lbb?uid="+uid,fillLeaderBoard, servletBURL)
+                restGetRequest(uriBattle+"/assignment?uid="+uid,setAss, servletBURL)
+                restGetRequest(uriBattle+"/deadlines?uid="+uid,setDL, servletBURL)
+                restGetRequest(uriBattle+"/rules?uid="+uid,setGRules, servletBURL)
+                restGetRequest(uriBattle+"/status?uid="+uid,setStatus, servletBURL)
 
 
 
@@ -80,25 +80,13 @@
                 <div class="teamName"> NomeSq</div>
                 <div class="TeamScore">ScoreSq</div>
             </div>
-            <div class="lb-entry">
-                <div class="teamName"> NomeSq</div>
-                <div class="TeamScore">ScoreSq</div>
-            </div>
-            <div class="lb-entry">
-                <div class="teamName"> NomeSq</div>
-                <div class="TeamScore">ScoreSq</div>
-            </div>
-            <div class="lb-entry">
-                <div class="teamName"> NomeSq</div>
-                <div class="TeamScore">ScoreSq</div>
-            </div>
 
         </div>
         <div id="manualLink"></div>
 
     </div>
 
-    <%if(!request.getSession().getAttribute("isEdu").equals("true") &&  request.getParameter("involved").equals("false")) {%>
+    <%if(!request.getSession().getAttribute("isEdu").equals("yes") &&  request.getParameter("isInvolved").equals("false")) {%>
 
     <div id="joinButton"> <button onclick="joinBattle()">join battle</button></div>
     <% }%>

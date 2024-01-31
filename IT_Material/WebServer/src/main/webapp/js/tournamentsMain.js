@@ -14,13 +14,20 @@ function loadTourn(tournFullListJson, baseUrl){
         }
         i++;                
     });
-    setTList(allT,document.getElementById("pubTo"),baseUrl,"false")
-    setTList(yourT, document.getElementById("persTo"),baseUrl,"true")
+    setTListNotInv(allT,document.getElementById("pubTo"),baseUrl)
+    setTListInvolved(yourT, document.getElementById("persTo"),baseUrl)
 }
 
-function setTList(list, listElement, baseUrl, involved){
+function setTListInvolved(list, listElement, baseUrl){
     list.forEach(to => {
-        listElement.innerHTML+='<a class="tlist-item" id="'+to.tid+'-item " href='+baseUrl+goToTournament(to.tid,involved)+'>'+to.tname+'</a>';
+        listElement.innerHTML+='<a class="tlist-item" id="'+to.tid+'-item " href='+baseUrl+goToTournament(to.tid,"true")+'>'+to.tname+'</a>';
+    });
+
+}
+
+function setTListNotInv(list, listElement, baseUrl){
+    list.forEach(to => {
+        listElement.innerHTML+='<p class="tlist-item" id="'+to.tid+'-item " >'+to.tname+'</p>';
     });
 
 }

@@ -24,12 +24,14 @@ public class DBMSApplication
          String []password= {"lask","asdas","lukas"};
          UserType []userType= {UserType.EDUCATOR,UserType.EDUCATOR,UserType.STUDENT};
         for (int i = 0; i < 3; i++) {
-            usEntries.add(new DBMSUserEntry(i,names[i],email[i],password[i],userType[i]));
+            if(userType[i].equals(UserType.EDUCATOR))
+                addEducator(names[i],email[i],password[i]);
+            else addStudent(names[i],email[i],password[i]);
         }
         String[] tournamentName={"torn1" ,"ttttew", "tartat", "TTT"};
         int [] creatorID={0,1,2,1};
         for (int i = 0; i < 4; i++) {
-            tEntries.add(new DBMSTournamentEntry(i,creatorID[i],tournamentName[i]));
+            addTournament(creatorID[i],tournamentName[i]);
         }
          int tID[]={1,1,2,1};
          String []battleName={"b1","bb2","bbbbbr","jasdjj"};
@@ -38,7 +40,7 @@ public class DBMSApplication
          ArrayList<Group> participatingGroups;
          Map<Integer, Integer> scores;
         for (int i = 0; i < 4; i++) {
-            bEntries.add(new DBMSBattleEntry(tID[i],i,battleName[i],new Pair<>(1,4),assignment,deadline ));
+            this.addBattle(tID[i],creatorID[i],battleName[i],assignment,deadline.getValue0(),deadline.getValue1(),1,4);
         }
 
 
