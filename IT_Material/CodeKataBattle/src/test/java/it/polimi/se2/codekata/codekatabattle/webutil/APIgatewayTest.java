@@ -18,26 +18,5 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class APIgatewayTest
 {
-    @Autowired
-    APIgateway AG;
 
-    @Autowired
-    DBMSApplication appDB;
-
-    @Autowired
-    TournamentService TS;
-
-    @Autowired
-    private TestRestTemplate restTemplate;
-
-
-    @Test
-    public void register() throws URISyntaxException
-    {
-    }
-
-    @Test
-    public void login()
-    {
-    }
 }

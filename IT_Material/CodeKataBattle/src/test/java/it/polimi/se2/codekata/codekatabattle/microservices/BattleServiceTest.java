@@ -60,4 +60,6 @@ class BattleServiceTest
 
     }
 
+    //Write a test for the method
+
 }

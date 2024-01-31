@@ -17,14 +17,12 @@ public class UserService
     public int registerUser(String username, String mail, String password, UserType type)
     {
         int finalID = -1;
-        switch(type)
+        if(username != null && mail != null && password != null && type != null)
         {
-            case STUDENT:
-                finalID = DB.addStudent(username, mail, password);
-                break;
-            case EDUCATOR:
-                finalID = DB.addEducator(username, mail, password);
-                break;
+            finalID = switch (type) {
+                case STUDENT -> DB.addStudent(username, mail, password);
+                case EDUCATOR -> DB.addEducator(username, mail, password);
+            };
         }
         return finalID;
     }

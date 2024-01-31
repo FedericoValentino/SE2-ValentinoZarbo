@@ -43,7 +43,7 @@ public class LeaderBoardService
 
         Collections.sort(temp, Comparator.comparing(p -> p.getValue1()));
 
-        leadeboard = temp.stream().toList();
+        leadeboard = temp.stream().toList().reversed();
 
         return leadeboard;
     }
@@ -62,7 +62,7 @@ public class LeaderBoardService
         }
         Collections.sort(temp, Comparator.comparing(p -> p.getValue1()));
 
-        leadeboard = temp.stream().toList();
+        leadeboard = temp.stream().toList().reversed();
         return leadeboard;
     }
 

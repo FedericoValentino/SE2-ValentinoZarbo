@@ -2,6 +2,7 @@ package it.polimi.se2.codekata.codekatabattle.microservices;
 
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSSource;
 import it.polimi.se2.codekata.codekatabattle.topics.CommitsTopic;
+import it.polimi.se2.codekata.codekatabattle.topics.GenericTopic;
 import it.polimi.se2.codekata.codekatabattle.topics.RepoLinksTopic;
 import it.polimi.se2.codekata.codekatabattle.topics.RepositoryTopic;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class GitHubHandlerService
     }
 
     @EventListener
-    private void githubPingListener(int ping)//this parameter is here just sa that the app builds
+    private void githubPingListener(GenericTopic event)
     {
         String GitHubSources = "";//theoretical download of sources from github
         int gID = 0; //theoretical search for githubRepo - gID in DB
