@@ -5,6 +5,13 @@ import it.polimi.se2.codekata.codekatabattle.microservices.TournamentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,22 +27,17 @@ class APIgatewayTest
     @Autowired
     TournamentService TS;
 
+    @Autowired
+    private TestRestTemplate restTemplate;
+
 
     @Test
-    void getTournaments()
+    public void register() throws URISyntaxException
     {
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
+    }
 
-        TS.createTournament(0, "Ciao");
-        TS.createTournament(0, "Bao");
-        TS.createTournament(0, "Cao");
-        TS.createTournament(0, "XIAO");
-
-        TS.subscribeTournament(1, 0);
-        TS.subscribeTournament(1, 2);
-
-        System.out.println(AG.getTournaments(1));
-
+    @Test
+    public void login()
+    {
     }
 }

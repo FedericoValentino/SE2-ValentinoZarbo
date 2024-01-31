@@ -5,6 +5,7 @@ import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSTournamentEntry;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSUserEntry;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.BattleStatus;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
+import it.polimi.se2.codekata.codekatabattle.topics.RepositoryTopic;
 import org.javatuples.Pair;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSApplication;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.UserType;
@@ -50,8 +51,11 @@ public class BattleService
             }
         }
 
-        if(bID >= 0)
+        if(bID >= 0) {
             publishBattleEvent(bID, BattleStatus.REGISTRATION_PHASE);
+            publisher.publishEvent(new RepositoryTopic(bID));
+        }
+
     }
 
     public Pair<Integer, Integer> getGroupRules(int UserId, int BattleID)
@@ -78,6 +82,13 @@ public class BattleService
         if(DB.getUserInfo(UserId).UserBattles.contains(BattleID))
             pair = DB.getBattleDeadlines(BattleID);
         return pair;
+    }
+
+    public BattleStatus getBattleStatus(int UserId, int BattleID)
+    {
+        if(DB.getUserInfo(UserId).UserBattles.contains(BattleID))
+            return DB.getBattleInfo(BattleID).status;
+        return null;
     }
 
     public void joinBattle(int UserId, int tID, int BattleID, ArrayList<Integer> StudentID)

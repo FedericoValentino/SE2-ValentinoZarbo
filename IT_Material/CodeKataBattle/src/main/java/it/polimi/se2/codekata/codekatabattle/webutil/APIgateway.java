@@ -148,7 +148,13 @@ public class APIgateway
     {
         BS.createBattle(idT, uID, battleName, new Pair<>(minSize, maxsize), assignment, new Pair<>(subscriptionDeadline, submissionDeadline), new ArrayList<>(testCases));
     }
-    //todo add getBattleStatus
+
+    @GetMapping("tournament/{idT}/battle/{idB}/status")
+    public String getBattleStatus(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
+    {
+        return new JSONObject(BS.getBattleStatus(uID, idB)).toString();
+    }
+
     @GetMapping("/tournament/{idT}/battle/{idB}/rules")
     public String getGroupRules(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
