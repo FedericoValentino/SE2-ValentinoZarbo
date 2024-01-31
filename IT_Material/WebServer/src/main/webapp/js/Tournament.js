@@ -8,7 +8,7 @@ function fillBattleList(battles, burl){
 }
 
 function fillLeaderBoard(leaderB,burl){
-    if(leaderB==null)
+    if(leaderB==null || Object.values( leaderB).length===0)
         return
     let team="";
     let score="";

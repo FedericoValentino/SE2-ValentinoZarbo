@@ -26,7 +26,7 @@
                 submd : document.getElementById("submD").value
 
             }
-            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/battle/b_create",loadData,goToBattle)
+            restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/battle/b_create",loadData,goToTournament)
 
          }
          function goToTournament(resp){

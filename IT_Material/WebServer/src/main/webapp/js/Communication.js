@@ -1,30 +1,28 @@
-function restPostRequest(resourcePUri, formdata, consumerFun){
-
+function restPostRequest(resourcePUri, data, consumerFun){
+    const sendData=new URLSearchParams(data)
     fetch("http://localhost:8080"+resourcePUri,{
         method:"POST",
-        body:formdata,
+        body:sendData,
         headers:{
 
     }
+    }).then(stopThemPromise, function (error){
+        alert(error)
     })
-.then((response) =>//todo error catch
-   /* if(response.status!==200){
-        alert(response.statusText)
-        return;
-    }*/
-    response.json()) //2
-       .then((jj) => {
-           //console.log(jj); //3
-            consumerFun(jj)
-       });
+    function stopThemPromise(promiseResponse){
+        if(promiseResponse.body!=null) {
+            promiseResponse.json().then((damnit)=>consumerFun(damnit))
+        }else consumerFun();
+    }
+/*
+.then((response) =>{//todo error catch
+    if(response.body!=null){
+        const rr=response.json()
+        consumerFun(rr)
+    }
+    else consumerFun() }) //2
 
-    /*const doFun = () => {
-        res.then((a) => {
-            consumerFun(a);
-        });
-    };
-
-    doFun();*/
+       .catch( (error)=> alert("com error")+error);*/
 }
 
 function restGetRequest(resourcePUri,consumerFun, servletBurl){

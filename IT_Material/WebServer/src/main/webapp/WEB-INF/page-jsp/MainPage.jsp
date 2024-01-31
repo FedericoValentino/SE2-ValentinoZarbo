@@ -16,16 +16,16 @@
     <script>
         function showCreateTournament() {
         const trg=document.getElementById("crtTrgt");
-        trg.innerHTML="<label for='newName'>New tournament Name</label><input id='newName' type='text'><button onclick='createTournamentCall()'></button>"
+        trg.innerHTML="<label for='newName'>New tournament Name</label><input id='newName' type='text'><button onclick='createTournamentCall()'>create</button>"
 
     }
     function createTournamentCall(){
         const load= {
-           newName: document.getElementById("newName").value,
-            uid : "${pageContext.request.session.getAttribute("uid")}"
+           tname: document.getElementById("newName").value,
+            uid: ${pageContext.request.session.getAttribute("uid")}
         }
 
-        restPostRequest("uri",(load),afterCreateTournament)//todo once rest operative
+        restPostRequest("/tournament/create_t",load,afterCreateTournament)//todo once rest operative
     }
     function afterCreateTournament(objresp){
             location.href="/TournamentPage?tid="+objresp.tid;
@@ -83,7 +83,7 @@
 
         <div class="tournList" id="pubTo"></div>
     </div>
-    <% if ( !request.getSession().getAttribute("isEdu").equals("true")){%>
+    <% if ( !request.getSession().getAttribute("isEdu").equals("yes")){%>
     <div id="diversified">
 
     <p>studente</p>

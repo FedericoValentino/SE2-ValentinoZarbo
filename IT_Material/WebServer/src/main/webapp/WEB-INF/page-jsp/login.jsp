@@ -10,14 +10,16 @@
 
   <script>
     const baseServlet="${pageContext.request.contextPath}";
-
+    let educ;
     function login(){
       const loginData={
         user:document.getElementById("username").value,
-        pwd:document.getElementById("psw").value
+        pwd:document.getElementById("psw").value,
+        educator:document.getElementById("isEdu").value
       }
-      const damnData=new URLSearchParams(loginData);
-      restPostRequest("/user/login",damnData,preSession)
+      educ=document.getElementById("isEdu").value
+      //const damnData=new URLSearchParams(loginData);
+      restPostRequest("/user/login",loginData,preSession)
     }
 
     function register(){
@@ -34,13 +36,15 @@
         user:document.getElementById("userns").value,
         pwd:psw1,
         email:document.getElementById("email").value,
-        edu:edu
+        educator:edu
       }
+      educ=document.getElementById("isEdu1").value
       restPostRequest("/user/register",JSON.stringify(regData),preSession)
     }
     function preSession(jsonResp){
       const res=(jsonResp);
-      let  id=res.uid, isEdu=document.getElementById("isEdu").value;
+      let  id=res.uid, isEdu=educ
+
       if(isEdu!=="on")
         isEdu="off"
             //check resp 200 w/ new user Idthen
@@ -109,7 +113,7 @@
       <input name="username" id="username" type="text">
       <label for="psw">password</label>
       <input name="psw" id="psw" type="password">
-      <label for="isEdu">are you a student?</label>
+      <label for="isEdu">are you an educator?</label>
       <input name="isEdu" id="isEdu"  type="checkbox">
 
 <input type="submit">
@@ -129,7 +133,7 @@
       <input name="psw2" id="psw2"  type="password">
       <label for="mail"> insert email</label>
       <input name="mail" id="mail" type="email">
-      <label for="isEdu1"> are you a student ?</label>
+      <label for="isEdu1"> are you an educator ?</label>
       <input name="isEdu1" id="isEdu1" type="checkbox">
 
       <input type="submit">

@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
         isEdu=result.get("isEdu");
         uid= result.get("uid");
         HttpSession ses=request.getSession();
-        if(isEdu.equals("true"))//todo test if this is good with register
+        if(isEdu.equals("on"))//todo test if this is good with register
             isEdu="yes";
         else isEdu="no";
 

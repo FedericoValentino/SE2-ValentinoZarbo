@@ -76,6 +76,7 @@ public class APIgateway
     @GetMapping("/tournament")
     public String getTournaments(@RequestParam("uid") int UserID)
     {
+        //todo doesnt returna true for involved for educators
         //return "{'pino':'insegne'}";
        ArrayList<TournamentsElement> list = TS.getCurrentTournament(UserID);
 

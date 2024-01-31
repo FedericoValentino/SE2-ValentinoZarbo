@@ -16,11 +16,11 @@
 
         function joinTournament() {//todo
             const load={
-                tid:"${pageContext.request.session.getAttribute("tid")}",
+                idT:"${pageContext.request.session.getAttribute("tid")}",
                 uid:"${pageContext.request.session.getAttribute("uid")}"
             }
 
-            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/join",(load),reload)
+            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/subscribe",(load),reload)
         }
         function reload(){
             location.reload()
@@ -54,7 +54,7 @@
             const load={
                 newCollab:newCoUsname,
                 uid:${pageContext.request.session.getAttribute("uid")},
-                tid:${pageContext.request.session.getAttribute("tid")}
+                idT:${pageContext.request.session.getAttribute("tid")}
             }
             //restcall for addColl
             restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/addCollaborator",(load),reload)
@@ -65,7 +65,7 @@
         function closeTournament(){//todo
             const load={
                 uid:${pageContext.request.session.getAttribute("uid")},
-                tid:${pageContext.request.session.getAttribute("tid")}
+                idT:${pageContext.request.session.getAttribute("tid")}
             }
             restPostRequest("/tournament/{${pageContext.request.session.getAttribute("tid")}}/closeTournament",(load),reload)
 
@@ -82,7 +82,7 @@
 <div id="header">
 
     <img id="logo">
-    <div class="PageName">Tournaments</div>
+    <div class="PageName">Tournament</div>
     <div class="logas">ED???</div>
     <a class="logout" href="https://www.google.com/">logout</a></div>
 </div>

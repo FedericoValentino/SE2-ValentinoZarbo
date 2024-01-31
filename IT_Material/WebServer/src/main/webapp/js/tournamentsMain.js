@@ -1,11 +1,12 @@
 function loadTourn(tournFullListJson, baseUrl){
-    const tournFullList=(tournFullListJson);
+    if(tournFullListJson==null || Object.values(tournFullListJson).length===0)
+        return
     let yourT=[];
     let allT=[];
     let i=0;
     let j=0;
-    
-    tournFullList.forEach(t => {
+
+    tournFullListJson.forEach(t => {
         allT[i]=t;
         if(t.involved){
             yourT[j]=t;
