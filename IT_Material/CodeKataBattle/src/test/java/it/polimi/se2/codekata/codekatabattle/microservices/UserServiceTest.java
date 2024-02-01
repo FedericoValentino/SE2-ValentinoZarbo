@@ -23,14 +23,9 @@ class UserServiceTest
     @Test
     void registerUserTest()
     {
-        //Test if the method registerUser returns the correct id of the user
-        //Test if the method registerUser returns -1 if the username is null
-        //Test if the method registerUser returns -1 if the email is null
-        //Test if the method registerUser returns -1 if the password is null
-        //Test if the method registerUser returns -1 if the type is null
 
         //Test if the method registerUser returns the correct id of the user
-        int id = US.registerUser("test", "test", "test", UserType.STUDENT);
+        int id = US.registerUser("test1", "test", "test", UserType.STUDENT);
         assertTrue(id >= 0);
 
 

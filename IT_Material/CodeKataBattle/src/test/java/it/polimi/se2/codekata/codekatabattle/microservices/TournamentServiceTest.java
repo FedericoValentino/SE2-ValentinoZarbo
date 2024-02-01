@@ -20,55 +20,58 @@ class TournamentServiceTest
     @Test
     void addTournament()
     {
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
+        int edu = appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
+        int stud = appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
 
-        TS.createTournament(0, "Ciao");
-        TS.createTournament(1, "Ciao");
-        TS.createTournament(2, "Ciao");
+        int tID = TS.createTournament(edu, "Ciao");
+        int tID2 = TS.createTournament(stud, "Ciao");
+        int tID3 = TS.createTournament(-1, "Ciao");
 
 
-        assert(appDB.getTournamentInfo(0).collaborators.contains(0));
-        assert(!appDB.getTournamentInfo(0).collaborators.contains(1));
-        assert(appDB.getTournamentInfo(0).creatorID == 0);
+        assert(tID != -1);
+        assert(tID2 == -1);
+        assert(tID3 == -1);
+        assert(appDB.getTournamentInfo(tID).collaborators.contains(edu));
+        assert(!appDB.getTournamentInfo(tID).collaborators.contains(stud));
+        assert(appDB.getTournamentInfo(tID).creatorID == edu);
     }
 
     @Test
     void addCollaborator()
     {
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
-        appDB.addStudent("Feder3", "valefeder34@gmail.com", "pwd");
-        TS.createTournament(0, "Ciao");
+        int edu = appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
+        int edu1 = appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
+        int stud = appDB.addStudent("Feder3", "valefeder34@gmail.com", "pwd");
+        int idT = TS.createTournament(edu, "Ciao");
 
-        TS.addCollaborator(0, 1, 0);
-        TS.addCollaborator(0, 2, 0);
+        TS.addCollaborator(edu, edu1, idT);
+        TS.addCollaborator(edu, stud, idT);
 
-        DBMSTournamentEntry t = appDB.getTournamentInfo(0);
+        DBMSTournamentEntry t = appDB.getTournamentInfo(idT);
 
         assert (t.collaborators.size() == 2);
-        assert (t.collaborators.contains(1));
+        assert (t.collaborators.contains(edu1));
     }
 
     @Test
     void closeTournament()
     {
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
+        int edu = appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
+        int edu2 = appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
 
-        TS.createTournament(0, "Ciao");
+        int tID = TS.createTournament(edu, "Ciao");
 
-        TS.addCollaborator(0, 1, 0);
+        TS.addCollaborator(edu, edu2, tID);
 
-        TS.closeTournament(1, 0);
+        TS.closeTournament(edu2, tID);
 
-        DBMSTournamentEntry t = appDB.getTournamentInfo(0);
+        DBMSTournamentEntry t = appDB.getTournamentInfo(tID);
 
         assert (t.status);
 
-        TS.closeTournament(0, 0);
+        TS.closeTournament(edu, tID);
 
-        t = appDB.getTournamentInfo(0);
+        t = appDB.getTournamentInfo(tID);
 
         assert (!t.status);
 
@@ -78,18 +81,20 @@ class TournamentServiceTest
     @Test
     void subscribeToTournament()
     {
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
-        appDB.addStudent("Feder3", "valefeder34@gmail.com", "pwd");
-        TS.createTournament(0, "Ciao");
+        int edu = appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
+        int edu2 = appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
+        int stud = appDB.addStudent("Feder3", "valefeder34@gmail.com", "pwd");
+        int tID = TS.createTournament(edu, "Ciao");
 
-        TS.subscribeTournament(2, 0);
+        TS.subscribeTournament(stud, tID);
+        TS.subscribeTournament(edu2, tID);
 
-        DBMSTournamentEntry t = appDB.getTournamentInfo(0);
-        DBMSUserEntry u = appDB.getUserInfo(2);
+        DBMSTournamentEntry t = appDB.getTournamentInfo(tID);
+        DBMSUserEntry u = appDB.getUserInfo(stud);
 
-        assert (u.UserTournaments.contains(0));
-        assert (t.userID.contains(2));
+        assert (u.UserTournaments.contains(tID));
+        assert (t.userID.contains(stud));
+        assert (!t.userID.contains(edu2));
     }
 
 }

@@ -28,7 +28,7 @@ public class TournamentService
 
 
 
-    public void createTournament(int UserId, String TournamentName)
+    public int createTournament(int UserId, String TournamentName)
     {
         int tID = -1;
         DBMSUserEntry user = DB.getUserInfo(UserId);
@@ -45,6 +45,8 @@ public class TournamentService
         {
             publishTournamentEvent(tID, true);
         }
+
+        return tID;
     }
 
     public void addCollaborator(int UserId, int CollaboratorID, int tID)
@@ -72,6 +74,7 @@ public class TournamentService
     }
     public ArrayList<BattlesElement> getTournamentsBattles(int UserId, int TournamentID)
     {
+        //TODO add support for isInvolvedCreator
         ArrayList<BattlesElement> battleList = new ArrayList<BattlesElement>();
         DBMSTournamentEntry tournamentEntry = DB.getTournamentInfo(TournamentID);
 

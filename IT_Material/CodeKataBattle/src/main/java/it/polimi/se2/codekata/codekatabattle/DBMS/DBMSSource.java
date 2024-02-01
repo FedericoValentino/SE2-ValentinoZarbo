@@ -14,9 +14,12 @@ public class DBMSSource
 
     private Map<Integer, ArrayList<String>> testCases;
 
+    private Map<Integer, String> linksToBattles;
+
     DBMSSource(){
         this.Sources=new ArrayList<>();
         this.testCases= new HashMap<>();
+        this.linksToBattles = new HashMap<>();
     }
     public void addBattleTestCases(int idB, ArrayList<String> testCases)
     {
@@ -40,6 +43,10 @@ public class DBMSSource
         }
 
         return sources;
+    }
+
+    public Map<Integer, String> getLinksToBattles() {
+        return linksToBattles;
     }
 
     public ArrayList<DBMSBattleSourceEntry> getSources() {

@@ -19,65 +19,106 @@ class DBMSApplicationTest
     void addStudentTest()
     {
 
-        appDB.addStudent("Feder", "valefeder34@gmail.com", "pwd");
-        assert(appDB.UserEntries.get(0).UserName.equals("Feder"));
-        assert(appDB.UserEntries.get(0).email.equals("valefeder34@gmail.com"));
-        assert(appDB.UserEntries.get(0).password.equals("pwd"));
-        assert(appDB.UserEntries.get(0).userType == UserType.STUDENT);
+        int stud = appDB.addStudent("Feder", "valefeder34@gmail.com", "pwd");
+        assert(appDB.UserEntries.get(stud).UserName.equals("Feder"));
+        assert(appDB.UserEntries.get(stud).email.equals("valefeder34@gmail.com"));
+        assert(appDB.UserEntries.get(stud).password.equals("pwd"));
+        assert(appDB.UserEntries.get(stud).userType == UserType.STUDENT);
     }
 
     @Test
     void addEducatorTest()
     {
 
-        appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        assert(appDB.UserEntries.get(0).UserName.equals("Feder"));
-        assert(appDB.UserEntries.get(0).email.equals("valefeder34@gmail.com"));
-        assert(appDB.UserEntries.get(0).password.equals("pwd"));
-        assert(appDB.UserEntries.get(0).userType == UserType.EDUCATOR);
+        int edu = appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
+        assert(appDB.UserEntries.get(edu).UserName.equals("Feder"));
+        assert(appDB.UserEntries.get(edu).email.equals("valefeder34@gmail.com"));
+        assert(appDB.UserEntries.get(edu).password.equals("pwd"));
+        assert(appDB.UserEntries.get(edu).userType == UserType.EDUCATOR);
     }
 
     @Test
     void addTournament()
     {
-
+        int edu = appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
+        int tID = appDB.addTournament(edu, "Test");
+        assert(appDB.getTournamentInfo(tID).creatorID == edu);
+        assert(appDB.getTournamentInfo(tID).collaborators.contains(edu));
     }
 
     @Test
     void grantBattleCreation()
     {
+        int edu = appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
+        int edu2 = appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
+        int tID = appDB.addTournament(edu, "Test");
+        appDB.grantBattleCreation(tID, edu2);
+        assert(appDB.getTournamentInfo(tID).creatorID == edu);
+        assert(appDB.getTournamentInfo(tID).collaborators.contains(edu));
+        assert(appDB.getTournamentInfo(tID).collaborators.contains(edu2));
 
     }
 
     @Test
     void subscribeToTournament()
     {
-
-
+        int edu = appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
+        int stud = appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
+        int tID = appDB.addTournament(edu, "Test");
+        appDB.subscribeToTournament(tID, stud);
+        assert(appDB.getTournamentInfo(tID).userID.contains(stud));
     }
 
     @Test
     void setScoresUserTournament()
     {
+        int edu = appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
+        int stud = appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
+        int tID = appDB.addTournament(edu, "Test");
+        appDB.subscribeToTournament(tID, stud);
+        appDB.setScoresUserTournament(stud, tID, 10);
+        assert (appDB.getTournamentInfo(tID).scores.get(stud) == 10);
 
     }
 
     @Test
     void checkEducatorPermission()
     {
-
+        int edu = appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
+        int edu2 = appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
+        int tID = appDB.addTournament(edu, "Test");
+        appDB.grantBattleCreation(tID, edu2);
+        assert(appDB.checkEducatorPermission(tID, edu));
+        assert(appDB.checkEducatorPermission(tID, edu2));
     }
 
 
     @Test
     void addBattle()
     {
+        int edu = appDB.addEducator("Feder0", "valefeder34@gmail.com", "pwd");
+        int tID = appDB.addTournament(edu, "Ciao");
 
+        int b1 = appDB.addBattle(tID, edu, "TEST1", "Ciao Ciao", new Date(), new Date(), 3, 2);
+
+        assert(appDB.getBattlesOfTournament(tID).size() == 1);
+        assert(appDB.getBattlesOfTournament(tID).contains(b1));
     }
 
     @Test
     void addGroup()
     {
+        int edu = appDB.addEducator("Feder0", "valefeder34@gmail.com", "pwd");
+        int stud = appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
+        int tID = appDB.addTournament(edu, "Ciao");
+
+        int b1 = appDB.addBattle(tID, edu, "TEST1", "Ciao Ciao", new Date(), new Date(), 3, 1);
+
+        appDB.addGroup(new Group(Arrays.asList(stud)), b1);
+
+        assert(appDB.getBattleInfo(b1).participatingGroups.size() == 1);
+        assert(appDB.getBattleInfo(b1).participatingGroups.get(0).getStudentsID().contains(stud));
+
 
     }
 

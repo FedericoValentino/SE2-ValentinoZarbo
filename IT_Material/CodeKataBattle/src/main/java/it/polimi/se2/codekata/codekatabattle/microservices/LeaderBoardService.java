@@ -48,7 +48,7 @@ public class LeaderBoardService
         return leadeboard;
     }
 
-    public List<Pair<Integer, Integer>>  getLeadBoardBattle(int idB)
+    public List<Pair<Integer, Integer>>  getLeaderBoardBattle(int idB)
     {
 
         List<Pair<Integer, Integer>> leadeboard;

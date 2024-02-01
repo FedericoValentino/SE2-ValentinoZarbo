@@ -1,6 +1,7 @@
 package it.polimi.se2.codekata.codekatabattle.microservices;
 
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSApplication;
+import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSUserEntry;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
@@ -17,8 +18,17 @@ public class UserService
     public int registerUser(String username, String mail, String password, UserType type)
     {
         int finalID = -1;
+
+
         if(username != null && mail != null && password != null && type != null)
         {
+            for(int uID : DB.getAllSignedUsers())
+            {
+                if(username.equals(DB.getUserInfo(uID).UserName))
+                {
+                    return finalID;
+                }
+            }
             finalID = switch (type) {
                 case STUDENT -> DB.addStudent(username, mail, password);
                 case EDUCATOR -> DB.addEducator(username, mail, password);

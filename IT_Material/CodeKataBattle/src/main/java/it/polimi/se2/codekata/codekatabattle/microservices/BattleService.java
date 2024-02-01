@@ -36,7 +36,7 @@ public class BattleService
     @Autowired
     private DBMSSource DBS;
 
-    public void createBattle(int tID, int userID, String BattleName, Pair<Integer, Integer> groupRule,
+    public int createBattle(int tID, int userID, String BattleName, Pair<Integer, Integer> groupRule,
                              String assignment, Pair<Date, Date> deadline, ArrayList<String> testcases)
     {
         ArrayList<Integer> currentTournaments = DB.getCurrentTournament();
@@ -55,6 +55,8 @@ public class BattleService
             publishBattleEvent(bID, BattleStatus.REGISTRATION_PHASE);
             publisher.publishEvent(new RepositoryTopic(bID));
         }
+
+        return bID;
 
     }
 
@@ -95,13 +97,13 @@ public class BattleService
     {
         //first check if IDs are from actual students
 
-        for(int i = 0; i < StudentID.size(); i++)
+        for(int student : StudentID)
         {
             boolean found = false;
             for(int user : DB.getSubscribedStudents(tID))
             {
                 DBMSUserEntry userEntry = DB.getUserInfo(user);
-                if (user == StudentID.get(i) && userEntry.userType == UserType.STUDENT && !userEntry.UserBattles.contains(BattleID)) {
+                if (user == student && userEntry.userType == UserType.STUDENT && !userEntry.UserBattles.contains(BattleID)) {
                     found = true;
                     break;
                 }

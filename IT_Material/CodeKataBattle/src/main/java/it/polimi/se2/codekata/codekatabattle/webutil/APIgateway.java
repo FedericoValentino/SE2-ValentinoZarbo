@@ -78,8 +78,6 @@ public class APIgateway
     @GetMapping("/tournament")
     public String getTournaments(@RequestParam("uid") int UserID)
     {
-        //todo doesnt returna true for involved for educators
-        //return "{'pino':'insegne'}";
        ArrayList<TournamentsElement> list = TS.getCurrentTournament(UserID);
 
         JSONArray tournamentlist = new JSONArray();
@@ -213,7 +211,7 @@ public class APIgateway
     @GetMapping("/tournament/{idT}/battle/{idB}/lbb")
     public String getLeaderBoardBattle(@PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
-        JSONObject leaderboard = new JSONObject(LBS.getLeadBoardBattle(idB));
+        JSONObject leaderboard = new JSONObject(LBS.getLeaderBoardBattle(idB));
 
         return leaderboard.toString();
     }
