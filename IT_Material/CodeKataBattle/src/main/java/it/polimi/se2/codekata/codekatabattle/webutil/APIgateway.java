@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 //TODO Cercare modo per testare
-
+@CrossOrigin
 @RestController
 public class APIgateway
 {
@@ -178,7 +178,7 @@ public class APIgateway
     {
         Pair<Integer, Integer> rules = BS.getGroupRules(uID, idB, idT);
 
-        return "{\"minsize\":"+rules.getValue0()+",\"maxsize\":"+rules.getValue1()+"}";
+        return "{\"minsize\":\""+rules.getValue0()+"\",\"maxsize\":\""+rules.getValue1()+"\"}";
     }
 
     @GetMapping("/tournament/{idT}/battle/{idB}/assignment")
@@ -195,7 +195,7 @@ public class APIgateway
     {
         Pair<Date, Date> deadlines = BS.getDeadlines(uID, idB, idT);
 
-        return "{\"subs\":"+deadlines.getValue0()+",\"subm\":"+deadlines.getValue1()+"}";
+        return "{\"subs\":\""+deadlines.getValue0()+"\",\"subm\":\""+deadlines.getValue1()+"\"}";
     }
 
     @PostMapping("/tournament/{idT}/battle/{idB}/join")

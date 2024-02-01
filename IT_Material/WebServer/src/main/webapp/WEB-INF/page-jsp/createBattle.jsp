@@ -47,7 +47,7 @@
 <div id="header">
 
     <img id="logo">
-    <div class="PageName">CREATE BATTLE</div>
+    <div class="PageName"><a href="TournamentsServlet">Main page</a> >> CREATE BATTLE</div>
     <div class="logas"><% if ( request.getSession().getAttribute("isEdu").equals("false")){%>Logged as Student <%}else{ %>Logged as Educator<%} %></div>
     <a class="logout" href="LoginServlet">logout</a></div>
 </div>

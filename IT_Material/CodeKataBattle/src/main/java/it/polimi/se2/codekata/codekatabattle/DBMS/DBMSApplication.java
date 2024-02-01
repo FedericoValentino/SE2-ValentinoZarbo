@@ -228,7 +228,7 @@ public class DBMSApplication
     =================================================================================================================================================
     */
 
-    public int addBattle(int tID, int EduID, String BattleName, String assignment, Date submDL, Date subsDL, int maxsize, int minsize)
+    public int addBattle(int tID, int EduID, String BattleName, String assignment, Date submDL, Date subsDL, int minsize, int maxsize)
     {
         int bID = -1;
         for (DBMSTournamentEntry tournamentEntry : this.TournamentEntries) {

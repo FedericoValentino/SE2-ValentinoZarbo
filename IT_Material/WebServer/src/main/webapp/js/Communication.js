@@ -30,7 +30,7 @@ function restPostRequest(resourcePUri, data, consumerFun){
 function restPostBodyRequest(resourcePUri, data, consumerFun){
     fetch("http://localhost:8080" + resourcePUri, {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(data),//todo handle cors policy with option post sent
         headers: {
             "Content-type": "application/json"
 

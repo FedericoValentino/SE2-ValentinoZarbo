@@ -24,23 +24,46 @@
                 restGetRequest(uriBattle+"/rules?uid="+uid,setGRules, servletBURL)
                 restGetRequest(uriBattle+"/status?uid="+uid,setStatus, servletBURL)
 
+                afterAllLoad();
 
 
                 //REST GET battle-leaderboard, assignment, group-rules, deadlines, is user in this battle
             }
-            function showJoinButton(){//todo
+            function showJoinButton(minsize, maxsize){//todo
+                let divJoin="<div class='inputlist'>"
+                for (let i = 0; i < maxsize-1; i++) {
+                    divJoin+="<lable for='otherStud"+(i+1)+"' >Add student to group</lable><input class='joinStudents' type='text' id='otherStud"+(i+1)+"' >"
 
-                document.getElementById("joinButton").innerHTML="<div class='inputlist'></div>"
+                }
+                divJoin+="<button onclick='joinBattle("+minsize+","+maxsize+")'>join battle</button></div>"
+                document.getElementById("joinButton").innerHTML=divJoin
             }
-            function joinBattle(){//todo
+            function joinBattle(minsize, maxsize){//todo
+                let memmbers=[];
+                let v;
+                for (let i = 0; i < maxsize-1; i++) {
+                    v=document.getElementById("otherStud"+(i+1)+"").value;
+                    if(v!=null && v!=="")
+                         memmbers.push(v);
+                }
+                if(memmbers.length<minsize-1 || memmbers.length>maxsize-1)
+                    {alert("doesnt respect group rules, max:"+maxsize+", min:"+minsize+", current group:"+(memmbers.length+1))
+                    return
+                    }
                 const data={
-                    members:[],
+                    members:memmbers,
                     uid:"${pageContext.request.session.getAttribute("uid")}"
                 }
-                restPostRequest("/tournament/{idT}/battle/{idB}/join",data,location.reload)
+                restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/battle/${pageContext.request.session.getAttribute("bid")}/join",data,goToTournament())
+            }
+            function goToTournament(){
+                location.href="${pageContext.request.contextPath}/TournamentPageServlet?tid=${pageContext.request.session.getAttribute("tid")}&isInvolved=true"
             }
             function showManual(){
                 document.getElementById("manualLink").innerHTML="<a href='${pageContext.request.contextPath}/ManualEvalServlet' >go to manual evaluation</a>"
+            }
+            function showJoinDiv(){
+                document.getElementById("joinButton").style.visibility="visible";
             }
     </script>
 </head>
@@ -48,7 +71,7 @@
 <div id="header">
 
     <img id="logo">
-    <div class="PageName">Battle</div>
+    <div class="PageName"><a href="TournamentsServlet">Main page</a> >>Battle</div>
     <div class="logas"><% if ( request.getSession().getAttribute("isEdu").equals("false")){%>Logged as Student <%}else{ %>Logged as Educator<%} %>
     </div>
 
@@ -94,8 +117,10 @@
 
     <%if(!request.getSession().getAttribute("isEdu").equals("true") &&  request.getParameter("isInvolved").equals("false")) {%>
 
-    <div id="joinButton"> <button onclick="showJoinButton()">join battle</button></div>
-    <% }%>
+    <div id="joinButton" style="visibility: hidden"> </div>
+    <% } if (!request.getSession().getAttribute("isEdu").equals("true") && request.getParameter("isInvolved").equals("true")) { %>
+        <div>Already joined this battle</div>
+    <% } %>
 </div>
 </body>
 </html>

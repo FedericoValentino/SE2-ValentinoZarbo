@@ -20,7 +20,7 @@
                 uid:"${pageContext.request.session.getAttribute("uid")}"
             }
 
-            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/subscribe",(load),goMain())
+            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/subscribe",(load),goMain)
         }
         function reload(){
             location.reload()
@@ -36,7 +36,10 @@
         const inv="${pageContext.request.getParameter("isInvolved")}";
         if(inv==="true")
              restGetRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/battle?uid=${pageContext.request.session.getAttribute("uid")}",fillBattleList,bUrl)
-        else document.getElementById("battles").style.visibility="hidden"
+        else {
+            document.getElementById("battles").innerHTML="<div class='contentHeader'> To see the battles join the tournament</div>"
+
+        }
         restGetRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/lbt",fillLeaderBoard,bUrl)
 
 
@@ -72,7 +75,7 @@
                 uid:${pageContext.request.session.getAttribute("uid")}
 
             }
-            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/close",(load),reload)
+            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/close",(load),goMain)
 
             //rest call to close tournament
         }
@@ -87,7 +90,7 @@
 <div id="header">
 
     <img id="logo">
-    <div class="PageName">Tournament</div>
+    <div class="PageName"><a href="TournamentsServlet">Main page</a> >> Tournament</div>
     <div class="logas"><% if ( request.getSession().getAttribute("isEdu").equals("false")){%>Logged as Student <%}else{ %>Logged as Educator<%} %></div>
     <a class="logout" href="LoginServlet">logout</a></div></div>
 <div id="content">
