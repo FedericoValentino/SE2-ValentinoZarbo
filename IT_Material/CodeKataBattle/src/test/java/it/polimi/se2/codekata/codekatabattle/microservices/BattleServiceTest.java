@@ -2,6 +2,7 @@ package it.polimi.se2.codekata.codekatabattle.microservices;
 
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSApplication;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
+import it.polimi.se2.codekata.codekatabattle.Utility;
 import org.javatuples.Pair;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,9 @@ class BattleServiceTest
     @Test
     void addBattle()
     {
-        int edu = appDB.addEducator("Feder", "valefeder34@gmail.com", "pwd");
-        int edu1 = appDB.addEducator("Feder1", "valefeder34@gmail.com", "pwd");
-        int edu2 = appDB.addEducator("Feder2", "valefeder34@gmail.com", "pwd");
+        int edu = appDB.addEducator(Utility.getRandomUsername(), "valefeder34@gmail.com", "pwd");
+        int edu1 = appDB.addEducator(Utility.getRandomUsername(), "valefeder34@gmail.com", "pwd");
+        int edu2 = appDB.addEducator(Utility.getRandomUsername(), "valefeder34@gmail.com", "pwd");
         int idT = appDB.addTournament(edu, "Ciao");
 
         appDB.grantBattleCreation(idT, edu1);
@@ -43,9 +44,9 @@ class BattleServiceTest
     @Test
     void joinBattle()
     {
-        int stud1 = appDB.addStudent("Feder1", "valefeder34@gmail.com", "pwd");
-        int stud2 = appDB.addStudent("Feder2", "valefeder34@gmail.com", "pwd");
-        int edu = appDB.addEducator("Feder0", "valefeder34@gmail.com", "pwd");
+        int stud1 = appDB.addStudent(Utility.getRandomUsername(), "valefeder34@gmail.com", "pwd");
+        int stud2 = appDB.addStudent(Utility.getRandomUsername(), "valefeder34@gmail.com", "pwd");
+        int edu = appDB.addEducator(Utility.getRandomUsername(), "valefeder34@gmail.com", "pwd");
         int idT = appDB.addTournament(edu, "Ciao");
         appDB.subscribeToTournament(idT, stud1);
         appDB.subscribeToTournament(idT, stud2);

@@ -1,6 +1,7 @@
 package it.polimi.se2.codekata.codekatabattle.DBMS;
 
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
+import it.polimi.se2.codekata.codekatabattle.Utility;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,7 +27,7 @@ class DBMSSourceTest
     @Test
     void addBattleTestCases()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
 
         int tID = appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(tID, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);
@@ -40,10 +41,10 @@ class DBMSSourceTest
     void saveGroupSources()
     {
 
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
-        int studentID2 = appDB.addStudent("student2", "email", "password");
-        int studentID3 = appDB.addStudent("student3", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID2 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID3 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(0, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);

@@ -3,6 +3,7 @@ package it.polimi.se2.codekata.codekatabattle.microservices;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSApplication;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSBattleEntry;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
+import it.polimi.se2.codekata.codekatabattle.Utility;
 import it.polimi.se2.codekata.codekatabattle.topics.ScoresTopic;
 import org.javatuples.Pair;
 import org.junit.jupiter.api.Test;
@@ -29,9 +30,9 @@ class LeaderBoardServiceTest
     @Test
     void getLeaderBoardTournament()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
-        int studentID2 = appDB.addStudent("student2", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID2 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         appDB.addTournament(educatorID, "Test");
 
@@ -51,10 +52,10 @@ class LeaderBoardServiceTest
     @Test
     void ScoringTopicListener()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
-        int studentID2 = appDB.addStudent("student2", "email", "password");
-        int studentID3 = appDB.addStudent("student3", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID2 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID3 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(0, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);
@@ -76,10 +77,10 @@ class LeaderBoardServiceTest
     @Test
     void getLeaderBoardBattle()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
-        int studentID2 = appDB.addStudent("student2", "email", "password");
-        int studentID3 = appDB.addStudent("student3", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID2 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID3 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(0, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);

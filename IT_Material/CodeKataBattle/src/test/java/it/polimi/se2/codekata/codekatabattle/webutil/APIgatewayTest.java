@@ -3,7 +3,10 @@ package it.polimi.se2.codekata.codekatabattle.webutil;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSApplication;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.UserType;
+import it.polimi.se2.codekata.codekatabattle.Utility;
 import it.polimi.se2.codekata.codekatabattle.microservices.TournamentService;
+import it.polimi.se2.codekata.codekatabattle.topics.CommitsTopic;
+import it.polimi.se2.codekata.codekatabattle.topics.GithubPingTopic;
 import it.polimi.se2.codekata.codekatabattle.topics.ScoresTopic;
 import org.javatuples.Pair;
 import org.junit.jupiter.api.Test;
@@ -39,11 +42,11 @@ class APIgatewayTest
     @Test
     void register()
     {
-        String result = AG.register("testRegisterUser", "test", "test", false);
+        String result = AG.register("testRegisterUser0", "test", "test", false);
         final Pattern pattern = Pattern.compile("\\{\"uid\":\"[0-9]+\"\\}", Pattern.CASE_INSENSITIVE);
         final Matcher matcher = pattern.matcher(result);
 
-        String result2 = AG.register("testRegisterUser", "test", "test", false);
+        String result2 = AG.register("testRegisterUser0", "test", "test", false);
 
 
 
@@ -54,13 +57,12 @@ class APIgatewayTest
     @Test
     void login()
     {
-        String resultRegister = AG.register("testRegisterUser", "test", "test", false);
-        final Pattern pattern = Pattern.compile("\\{\"uid\":\"[0-9]+\"\\}", Pattern.CASE_INSENSITIVE);
-        String resultLogin = AG.login("testRegisterUser","test");
+        String resultRegister = AG.register("testRegisterUser2", "test", "test", false);
+        final Pattern pattern = Pattern.compile("\\{\"isEdu\":\"(true|false)\",\"uid\":\"[0-9]+\"\\}", Pattern.CASE_INSENSITIVE);
+        String resultLogin = AG.login("testRegisterUser2","test");
         final Matcher matcher = pattern.matcher(resultLogin);
 
         assert(matcher.matches());
-        assert(resultLogin.equals(resultRegister));
     }
 
     @Test
@@ -83,10 +85,10 @@ class APIgatewayTest
     @Test
     void getTournamentBattles()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
-        int studentID2 = appDB.addStudent("student2", "email", "password");
-        int studentID3 = appDB.addStudent("student3", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID2 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID3 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         int tID = appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(tID, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);
@@ -111,8 +113,8 @@ class APIgatewayTest
     @Test
     void getBattleStatus()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         int tID = appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(tID, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);
@@ -128,8 +130,8 @@ class APIgatewayTest
     @Test
     void getGroupRules()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         int tID = appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(tID, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);
@@ -146,8 +148,8 @@ class APIgatewayTest
     @Test
     void getAssignment()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         int tID = appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(tID, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);
@@ -164,8 +166,8 @@ class APIgatewayTest
     @Test
     void getDeadlines()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         int tID = appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(tID, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);
@@ -185,9 +187,9 @@ class APIgatewayTest
     @Test
     void getLeaderBoardTournament()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
-        int studentID2 = appDB.addStudent("student2", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID2 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         int tID = appDB.addTournament(educatorID, "Test");
 
@@ -214,10 +216,10 @@ class APIgatewayTest
     @Test
     void getLeaderBoardBattle()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
-        int studentID2 = appDB.addStudent("student2", "email", "password");
-        int studentID3 = appDB.addStudent("student3", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID2 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID3 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         int tID = appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(tID, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);
@@ -246,6 +248,45 @@ class APIgatewayTest
         final Matcher matcher = pattern.matcher(result);
 
         assert(matcher.matches());
+    }
+
+    @Test
+    void getSourcesForEval()
+    {
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID2 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID3 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+
+        int tID = appDB.addTournament(educatorID, "Test");
+        int bID = appDB.addBattle(tID, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);
+
+        appDB.subscribeToTournament(tID, studentID1);
+        appDB.subscribeToTournament(tID, studentID2);
+        appDB.subscribeToTournament(tID, studentID3);
+
+        appDB.addGroup(new Group(List.of(studentID1)), bID);
+        appDB.addGroup(new Group(List.of(studentID2)), bID);
+        appDB.addGroup(new Group(List.of(studentID3)), bID);
+
+        assert(appDB.getBattleInfo(bID).participatingGroups.size() == 3);
+
+        publisher.publishEvent(new GithubPingTopic(0, bID, "CIAO"));
+        publisher.publishEvent(new GithubPingTopic(1, bID, "CIAO"));
+        publisher.publishEvent(new GithubPingTopic(2, bID, "CIAO"));
+
+
+        String result = AG.getSourcesForEval(tID, bID, educatorID);
+
+        String regex = "\\[\\{\"sources\":\"[^\"]+\",\"group\":\\d+\\}(?:,\\{\"sources\":\"[^\"]+\",\"group\":\\d+\\})*\\]";
+
+
+
+        final Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        final Matcher matcher = pattern.matcher(result);
+
+        assert(matcher.matches());
+
     }
 
 

@@ -3,6 +3,7 @@ package it.polimi.se2.codekata.codekatabattle.microservices;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSApplication;
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSSource;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
+import it.polimi.se2.codekata.codekatabattle.Utility;
 import it.polimi.se2.codekata.codekatabattle.topics.GithubPingTopic;
 import org.javatuples.Pair;
 import org.junit.jupiter.api.Test;
@@ -40,10 +41,10 @@ class GitHubHandlerServiceTest
     @Test
     void gitHubPingListener()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
-        int studentID2 = appDB.addStudent("student2", "email", "password");
-        int studentID3 = appDB.addStudent("student3", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID2 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID3 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(0, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);
@@ -67,7 +68,7 @@ class GitHubHandlerServiceTest
     @Test
     void RepositoryListener()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
 
         int tID = TS.createTournament(educatorID, "Test");
         int bID = BS.createBattle(tID, educatorID, "TestB", new Pair<>(1, 4), "Assignment", new Pair<>(new Date(), new Date()), new ArrayList<>(Arrays.asList("ciao")));

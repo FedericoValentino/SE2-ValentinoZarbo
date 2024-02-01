@@ -261,7 +261,9 @@ public class APIgateway
 
         for(DBMSBattleSourceEntry entry : sources)
         {
-            JSONObject obj = new JSONObject(new SourcesElement(entry.groupID, entry.SourceCode));
+            JSONObject obj = new JSONObject();
+            obj.accumulate("group", entry.groupID);
+            obj.accumulate("sources", entry.SourceCode);
             sourcesJson.put(obj);
         }
         return sourcesJson.toString();

@@ -2,6 +2,7 @@ package it.polimi.se2.codekata.codekatabattle.microservices;
 
 import it.polimi.se2.codekata.codekatabattle.DBMS.DBMSApplication;
 import it.polimi.se2.codekata.codekatabattle.GeneralStuff.Group;
+import it.polimi.se2.codekata.codekatabattle.Utility;
 import it.polimi.se2.codekata.codekatabattle.topics.GithubPingTopic;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +30,10 @@ class ManualEvalServiceTest
     @Test
     void addManualScore()
     {
-        int educatorID = appDB.addEducator("educator", "email", "password");
-        int studentID1 = appDB.addStudent("student1", "email", "password");
-        int studentID2 = appDB.addStudent("student2", "email", "password");
-        int studentID3 = appDB.addStudent("student3", "email", "password");
+        int educatorID = appDB.addEducator(Utility.getRandomUsername(), "email", "password");
+        int studentID1 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID2 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
+        int studentID3 = appDB.addStudent(Utility.getRandomUsername(), "email", "password");
 
         int tID = appDB.addTournament(educatorID, "Test");
         int bID = appDB.addBattle(tID, educatorID, "TestB", "Assignment", new Date(), new Date(), 4, 1);
