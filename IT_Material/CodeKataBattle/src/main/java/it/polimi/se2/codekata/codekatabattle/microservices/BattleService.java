@@ -59,10 +59,18 @@ public class BattleService
         return bID;
 
     }
+    private boolean canAccessBattleInfo(int UserId, int BattleID, int tid){
+        DBMSUserEntry user =DB.getUserInfo(UserId);
+        if(user.userType.equals(UserType.EDUCATOR)){
+            return user.UserBattles.contains(BattleID);
+        }else{
+            return user.UserTournaments.contains(tid) && DB.getTournamentInfo(tid).Battles.contains(BattleID);
+        }
+    }
 
-    public Pair<Integer, Integer> getGroupRules(int UserId, int BattleID)
+    public Pair<Integer, Integer> getGroupRules(int UserId, int BattleID, int tid)
     {
-        if(DB.getUserInfo(UserId).UserBattles.contains(BattleID))
+        if(canAccessBattleInfo(UserId,BattleID,tid))
         {
             Pair<Integer, Integer> pair = DB.getBattleGroupRules(BattleID);
             return pair;
@@ -70,33 +78,39 @@ public class BattleService
         return null;
     }
 
-    public String getAssignmentText(int UserId, int BattleId)
+    public String getAssignmentText(int UserId, int BattleId, int tid)
     {
-        if(DB.getUserInfo(UserId).UserBattles.contains(BattleId))
+        if(canAccessBattleInfo(UserId,BattleId,tid))
             return DB.getBattleAssignement(BattleId);
         else
             return null;//todo instead of returning null send an error if possible
     }
 
-    public Pair<Date, Date> getDeadlines(int UserId, int BattleID)
+    public Pair<Date, Date> getDeadlines(int UserId, int BattleID, int tid)
     {
         Pair<Date, Date> pair = null;
-        if(DB.getUserInfo(UserId).UserBattles.contains(BattleID))
+        if(canAccessBattleInfo(UserId,BattleID,tid))
             pair = DB.getBattleDeadlines(BattleID);
         return pair;
     }
 
-    public BattleStatus getBattleStatus(int UserId, int BattleID)
+    public BattleStatus getBattleStatus(int UserId, int BattleID, int tid)
     {
-        if(DB.getUserInfo(UserId).UserBattles.contains(BattleID))
+        if(canAccessBattleInfo(UserId,BattleID,tid))
             return DB.getBattleInfo(BattleID).status;
         return null;
     }
 
-    public void joinBattle(int UserId, int tID, int BattleID, ArrayList<Integer> StudentID)
+    public void joinBattle(int UserId, int tID, int BattleID, ArrayList<String> usersNames)
     {
         //first check if IDs are from actual students
-
+        ArrayList<Integer> StudentID=new ArrayList<>(usersNames.size());
+        for (String usname :
+                usersNames) {
+            StudentID.add(DB.getUserByName(usname).getUserID());
+        }
+        if(!StudentID.contains(UserId))
+            StudentID.add(UserId);
         for(int student : StudentID)
         {
             boolean found = false;
@@ -151,6 +165,7 @@ public class BattleService
             }
         }
     }
+
 
     private void publishBattleEvent(int bID, BattleStatus status)
     {

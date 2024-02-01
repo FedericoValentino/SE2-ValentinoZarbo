@@ -48,9 +48,18 @@ public class APIgateway
     public String login(@RequestParam("user")String Username, @RequestParam("pwd")String Password)
     {
         int ID = US.login(Username, Password);
+        String isEdu="";
+        if(US.isEducator(ID)) {
+            isEdu = "true";
+        }
+        else {
+            isEdu = "false";
+        }
         JSONObject res=new JSONObject();
-        if(ID >= 0)
-             res.accumulate("uid",ID+"") ;
+        if(ID >= 0) {
+            res.accumulate("uid", ID + "");
+            res.accumulate("isEdu",isEdu);
+        }
         else
              res.accumulate("error","no such user found");
         return res.toString();
@@ -98,9 +107,9 @@ public class APIgateway
     }
 
     @PostMapping("/tournament/{idT}/addCollaborator")
-    public void addCollaborator(@PathVariable("idT") int idT, @RequestParam("uid") int UserID, @RequestParam("cid") int collaboratorID)
+    public void addCollaborator(@PathVariable("idT") int idT, @RequestParam("uid") int UserID, @RequestParam("cUsername") String collaboratorName)
     {
-        TS.addCollaborator(UserID, collaboratorID, idT);//todo reqeust collaborator username instead of id
+        TS.addCollaborator(UserID, collaboratorName, idT);//todo reqeust collaborator username instead of id
     }
 
     @PostMapping("/tournament/{idT}/close")
@@ -161,13 +170,13 @@ public class APIgateway
     @GetMapping("tournament/{idT}/battle/{idB}/status")
     public String getBattleStatus(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
-        return  "{\"statusTxt\":\"" +BS.getBattleStatus(uID, idB).toString()+ "\"}";
+        return  "{\"statusTxt\":\"" +BS.getBattleStatus(uID, idB,idT).toString()+ "\"}";
     }
 
     @GetMapping("/tournament/{idT}/battle/{idB}/rules")
     public String getGroupRules(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
-        Pair<Integer, Integer> rules = BS.getGroupRules(uID, idB);
+        Pair<Integer, Integer> rules = BS.getGroupRules(uID, idB, idT);
 
         return new JSONObject(rules).toString();
     }
@@ -175,7 +184,8 @@ public class APIgateway
     @GetMapping("/tournament/{idT}/battle/{idB}/assignment")
     public String getAssignement(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
-        String assignmentText = BS.getAssignmentText(uID, idB);
+
+        String assignmentText = BS.getAssignmentText(uID, idB, idT);
 
         return "{\"assignment\":\"" +assignmentText+ "\"}";
     }
@@ -183,14 +193,14 @@ public class APIgateway
     @GetMapping("/tournament/{idT}/battle/{idB}/deadlines")
     public String getDeadlines(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
-        Pair<Date, Date> rules = BS.getDeadlines(uID, idB);
+        Pair<Date, Date> rules = BS.getDeadlines(uID, idB, idT);
 
         return new JSONObject(rules).toString();
     }
 
     @PostMapping("/tournament/{idT}/battle/{idB}/join")
     public void joinBattle(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB,
-                             @RequestParam(required = false) List<Integer> members)
+                             @RequestParam(required = false, value = "members") List<String> members)
     {
         BS.joinBattle(uID, idT, idB, new ArrayList<>(members));
     }

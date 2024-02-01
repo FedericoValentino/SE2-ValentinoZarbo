@@ -14,7 +14,7 @@ public class ManualEvalServlet extends HttpServlet {
             response.sendRedirect(getServletContext().getContextPath()+"/LoginServlet");
             return;
         }
-        if(!ss.getAttribute("isEdu").equals("yes")){
+        if(!ss.getAttribute("isEdu").equals("true")){
             response.sendError(403, "students can't access this resource");
             return;
         }

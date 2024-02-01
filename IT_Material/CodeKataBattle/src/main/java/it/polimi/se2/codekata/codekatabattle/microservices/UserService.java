@@ -51,5 +51,8 @@ public class UserService
 
         return -1;
     }
+    public boolean isEducator(int userID){
+        return (DB.getUserInfo(userID).userType.equals(UserType.EDUCATOR));
+    }
 
 }

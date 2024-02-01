@@ -29,10 +29,15 @@
                 //REST GET battle-leaderboard, assignment, group-rules, deadlines, is user in this battle
             }
             function showJoinButton(){//todo
-                document.getElementById("").style.visibility="visible";
+
+                document.getElementById("joinButton").innerHTML="<div class='inputlist'></div>"
             }
             function joinBattle(){//todo
-
+                const data={
+                    members:[],
+                    uid:"${pageContext.request.session.getAttribute("uid")}"
+                }
+                restPostRequest("/tournament/{idT}/battle/{idB}/join",data,location.reload)
             }
             function showManual(){
                 document.getElementById("manualLink").innerHTML="<a href='${pageContext.request.contextPath}/ManualEvalServlet' >go to manual evaluation</a>"
@@ -44,9 +49,10 @@
 
     <img id="logo">
     <div class="PageName">Battle</div>
-    <div class="logas"><%if(request.getSession().getAttribute("isEdu").equals("yes")){ %>Student<%}else{ %> Educator<% }%></div>
+    <div class="logas"><% if ( request.getSession().getAttribute("isEdu").equals("false")){%>Logged as Student <%}else{ %>Logged as Educator<%} %>
+    </div>
 
-    <a class="logout" href="LoginServlet/">logout</a></div></div>
+    <a class="logout" href="LoginServlet">logout</a></div></div>
 <div id="content">
     <div id="assignment">
         <div class="contentHeader"> Assignment</div>
@@ -86,9 +92,9 @@
 
     </div>
 
-    <%if(!request.getSession().getAttribute("isEdu").equals("yes") &&  request.getParameter("isInvolved").equals("false")) {%>
+    <%if(!request.getSession().getAttribute("isEdu").equals("true") &&  request.getParameter("isInvolved").equals("false")) {%>
 
-    <div id="joinButton"> <button onclick="joinBattle()">join battle</button></div>
+    <div id="joinButton"> <button onclick="showJoinButton()">join battle</button></div>
     <% }%>
 </div>
 </body>

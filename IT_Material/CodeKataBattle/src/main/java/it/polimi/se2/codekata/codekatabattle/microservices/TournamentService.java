@@ -49,8 +49,9 @@ public class TournamentService
         return tID;
     }
 
-    public void addCollaborator(int UserId, int CollaboratorID, int tID)
+    public void addCollaborator(int UserId, String usernameCollab, int tID)
     {
+        int CollaboratorID=DB.getUserByName(usernameCollab).getUserID();
         if(DB.getUserInfo(UserId).userType == UserType.EDUCATOR && DB.getTournamentInfo(tID).creatorID == UserId && DB.getUserInfo(CollaboratorID).userType == UserType.EDUCATOR)
         {
             DB.grantBattleCreation(tID, CollaboratorID);

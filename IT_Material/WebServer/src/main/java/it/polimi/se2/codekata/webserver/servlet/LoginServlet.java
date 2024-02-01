@@ -33,12 +33,13 @@ public class LoginServlet extends HttpServlet {
         String sjson= postLoad.readLine();
         HashMap<String, String> result = new ObjectMapper().readValue(sjson, HashMap.class);
        // usname=result.get("username");
-        isEdu=result.get("isEdu");
+
         uid= result.get("uid");
         HttpSession ses=request.getSession();
-        if(isEdu.equals("on"))//todo test if this is good with register
+        isEdu=result.get("isEdu");
+        /*if((.equals("true")))//todo test if this is good with register
             isEdu="yes";
-        else isEdu="no";
+        else isEdu="no";*/
 
 
 

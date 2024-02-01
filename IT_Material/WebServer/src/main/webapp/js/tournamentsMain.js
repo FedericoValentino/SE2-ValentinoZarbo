@@ -16,7 +16,7 @@ function loadTourn(tournFullListJson, baseUrl){
     });
     setTListNotInv(allT,document.getElementById("pubTo"),baseUrl)
     setTListInvolved(yourT, document.getElementById("persTo"),baseUrl)
-}
+}//todo check close and add collab, subscribe, join battle and collaborator stuff
 
 function setTListInvolved(list, listElement, baseUrl){
     list.forEach(to => {
@@ -27,7 +27,7 @@ function setTListInvolved(list, listElement, baseUrl){
 
 function setTListNotInv(list, listElement, baseUrl){
     list.forEach(to => {
-        listElement.innerHTML+='<p class="tlist-item" id="'+to.tid+'-item " >'+to.tname+'</p>';
+        listElement.innerHTML+='<a class="tlist-item" id="'+to.tid+'-item " href='+baseUrl+goToTournament(to.tid,"false")+'>'+to.tname+'</a>';
     });
 
 }

@@ -57,8 +57,9 @@
 
     <img id="logo">
     <div class="PageName">Tournaments</div>
-    <div class="logas">ED???</div>
-    <a class="logout" href="LoginServlet/">logout</a></div>
+    <div class="logas">    <% if ( request.getSession().getAttribute("isEdu").equals("false")){%>Logged as Student <%}else{ %>Logged as Educator<%} %>
+    </div>
+    <a class="logout" href="LoginServlet">logout</a></div>
 </div>
 
 
@@ -83,15 +84,15 @@
 
         <div class="tournList" id="pubTo"></div>
     </div>
-    <% if ( !request.getSession().getAttribute("isEdu").equals("yes")){%>
+    <% if ( request.getSession().getAttribute("isEdu").equals("false")){%>
     <div id="diversified">
 
-    <p>studente</p>
+    <p>studente ${pageContext.request.session.getAttribute("isEdu")}</p>
         <%}else{%>
         <div id="tournCRForm">
             <button onclick="showCreateTournament()">create tournament</button>
             <div id="crtTrgt"></div>
-    <p>educatore</p>
+    <p>educatore ${pageContext.request.session.getAttribute("isEdu")}</p>
         </div>
 
         <%} %>

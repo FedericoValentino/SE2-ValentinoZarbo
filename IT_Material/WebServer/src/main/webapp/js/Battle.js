@@ -12,8 +12,13 @@ function setAss(astxt){
 function setDL(dl){
     document.getElementById("dlTxt").innerText="subscription deadline: "+dl.value1+"submission  deadline: "+dl.value0
 }
+let grule=[]
 function setGRules(rules){
     document.getElementById("grTxt").innerText=" mingrop:"+rules.value1+" maxgroup:"+ rules.value0
+    grule[0]=rules.value1
+    grule[1]=rules.value0
+    setInput
+
 }
 function fillLeaderBoard(leaderB){
     if(leaderB==null ||Object.values( leaderB).length===0)

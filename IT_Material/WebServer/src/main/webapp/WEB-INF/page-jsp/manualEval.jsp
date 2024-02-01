@@ -59,9 +59,9 @@
 <div id="header">
 
     <img id="logo">
-    <div class="PageName">Tournaments</div>
-    <div class="logas">ED???</div>
-    <a class="logout" href="LoginServlet/">logout</a></div>
+    <div class="PageName">Manual eval</div>
+    <div class="logas"><% if ( request.getSession().getAttribute("isEdu").equals("false")){%>Logged as Student <%}else{ %>Logged as Educator<%} %></div>
+    <a class="logout" href="LoginServlet">logout</a></div>
 </div>
 
 <div >

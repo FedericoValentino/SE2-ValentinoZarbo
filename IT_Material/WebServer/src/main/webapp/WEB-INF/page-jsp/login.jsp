@@ -14,10 +14,10 @@
     function login(){
       const loginData={
         user:document.getElementById("username").value,
-        pwd:document.getElementById("psw").value,
-        educator:document.getElementById("isEdu").value
+        pwd:document.getElementById("psw").value
+       // educator:document.getElementById("isEdu").checked
       }
-      educ=document.getElementById("isEdu").value
+      //educ=document.getElementById("isEdu").checked
       //const damnData=new URLSearchParams(loginData);
       restPostRequest("/user/login",loginData,preSession)
     }
@@ -38,15 +38,17 @@
         email:document.getElementById("email").value,
         educator:edu
       }
-      educ=document.getElementById("isEdu1").value
+      educ=document.getElementById("isEdu1").checked
       restPostRequest("/user/register",JSON.stringify(regData),preSession)
     }
     function preSession(jsonResp){
       const res=(jsonResp);
-      let  id=res.uid, isEdu=educ
+      let  id=res.uid, isEdu=res.isEdu;
+      if(res.hasOwnProperty("error")){
+        alert("error logging in")
+        return
+      }
 
-      if(isEdu!=="on")
-        isEdu="off"
             //check resp 200 w/ new user Idthen
       setSession({username:name,uid:id+"",isEdu:isEdu})
 
@@ -64,27 +66,6 @@
               .then((json) => redirToTournament());
     }
 
-    /*function setSession1(){//in reality this will be: on positive response from rest, send webB also user id to incorporate in session
-
-      let usname=document.getElementById("username").value;
-      let isEDU=document.getElementById("isEdu").value;
-      if(isEDU!=="on")
-          isEDU="off"
-      let load={
-        username: usname,
-        isEdu: isEDU,
-        uid:"1"
-      }
-      fetch("LoginServlet", {
-        method: "POST",
-        body: JSON.stringify(load),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8"
-        } })
-              .then((response) => response.json())
-              .then((json) => console.log(json));
-
-    }*/
     function redirToTournament(){
       location.href=baseServlet+"/TournamentsServlet";//fetch("", { method: "get"})
     }
@@ -100,7 +81,7 @@
 
   <img id="logo">
   <div class="PageName">Login</div>
-  <div class="logas">ED???</div>
+  <div class="logas"></div>
 
 </div>
 
@@ -113,8 +94,8 @@
       <input name="username" id="username" type="text">
       <label for="psw">password</label>
       <input name="psw" id="psw" type="password">
-      <label for="isEdu">are you an educator?</label>
-      <input name="isEdu" id="isEdu"  type="checkbox">
+     <!-- <label for="isEdu">are you an educator?</label>
+      <input name="isEdu" id="isEdu"  type="checkbox">-->
 
 <input type="submit">
     </form>

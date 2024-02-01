@@ -20,17 +20,23 @@
                 uid:"${pageContext.request.session.getAttribute("uid")}"
             }
 
-            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/subscribe",(load),reload)
+            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/subscribe",(load),goMain())
         }
         function reload(){
             location.reload()
+        }
+        function goMain(){
+            location.href="${pageContext.request.contextPath}/TournamentsServlet";
         }
     function loadPage(){
         const bUrl="${pageContext.request.contextPath}"
         let batStub =[{bname:"bobbo", bid: 2},{bname:"boso", bid: 3},{bname:"bbo", bid: 4}]
         let leadBstub=[{uname:"askdl", pScore: 3},{uname:"saf", pScore: 2},{uname:"dl", pScore: 2},{uname:"askdasddl", pScore: 1}]
         //rest call for battle list, leaderboard, and if subscribed
-        restGetRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/battle?uid=${pageContext.request.session.getAttribute("uid")}",fillBattleList,bUrl)
+        const inv="${pageContext.request.getParameter("isInvolved")}";
+        if(inv==="true")
+             restGetRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/battle?uid=${pageContext.request.session.getAttribute("uid")}",fillBattleList,bUrl)
+        else document.getElementById("battles").style.visibility="hidden"
         restGetRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/lbt",fillLeaderBoard,bUrl)
 
 
@@ -52,9 +58,8 @@
                 return;
             }
             const load={
-                newCollab:newCoUsname,
-                uid:${pageContext.request.session.getAttribute("uid")},
-                idT:${pageContext.request.session.getAttribute("tid")}
+                cUsername:newCoUsname,
+                uid:${pageContext.request.session.getAttribute("uid")}
             }
             //restcall for addColl
             restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/addCollaborator",(load),reload)
@@ -83,8 +88,8 @@
 
     <img id="logo">
     <div class="PageName">Tournament</div>
-    <div class="logas">ED???</div>
-    <a class="logout" href="LoginServlet/">logout</a></div></div>
+    <div class="logas"><% if ( request.getSession().getAttribute("isEdu").equals("false")){%>Logged as Student <%}else{ %>Logged as Educator<%} %></div>
+    <a class="logout" href="LoginServlet">logout</a></div></div>
 <div id="content">
 
     <div id="battles">
@@ -125,11 +130,11 @@
 
 
     <div id="diffCont">
-        <%  if( !request.getSession().getAttribute("isEdu").equals("yes") && request.getParameter("isInvolved").equals("false")){ %>
+        <%  if( request.getSession().getAttribute("isEdu").equals("false") && request.getParameter("isInvolved").equals("false")){ %>
         <div id="subscribe">
-            <button onclick="joinTournament()"></button>
+            <button onclick="joinTournament()">join tournament</button>
         </div>
-        <%}if(request.getSession().getAttribute("isEdu").equals("yes") && request.getParameter("isInvolved").equals("true")){ %>
+        <%}if(request.getSession().getAttribute("isEdu").equals("true") && request.getParameter("isInvolved").equals("true")){ %>
             <div id="addBut">
                 <a id="bcreate" href="${pageContext.request.contextPath}/CreateBattleServlet">create battle</a>
                 <button onclick="showAddCollaborator()">Add COllaborator</button>
