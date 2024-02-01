@@ -70,12 +70,12 @@ public class BattleService
 
     public Pair<Integer, Integer> getGroupRules(int UserId, int BattleID, int tid)
     {
+        Pair<Integer, Integer> pair = new Pair<>(-1, -1);
         if(canAccessBattleInfo(UserId,BattleID,tid))
         {
-            Pair<Integer, Integer> pair = DB.getBattleGroupRules(BattleID);
-            return pair;
+            pair = DB.getBattleGroupRules(BattleID);
         }
-        return null;
+        return pair;
     }
 
     public String getAssignmentText(int UserId, int BattleId, int tid)
@@ -88,7 +88,7 @@ public class BattleService
 
     public Pair<Date, Date> getDeadlines(int UserId, int BattleID, int tid)
     {
-        Pair<Date, Date> pair = null;
+        Pair<Date, Date> pair = new Pair<>(new Date(0), new Date(0));
         if(canAccessBattleInfo(UserId,BattleID,tid))
             pair = DB.getBattleDeadlines(BattleID);
         return pair;
@@ -98,7 +98,7 @@ public class BattleService
     {
         if(canAccessBattleInfo(UserId,BattleID,tid))
             return DB.getBattleInfo(BattleID).status;
-        return null;
+        return BattleStatus.CANT_SHOW;
     }
 
     public void joinBattle(int UserId, int tID, int BattleID, ArrayList<String> usersNames)

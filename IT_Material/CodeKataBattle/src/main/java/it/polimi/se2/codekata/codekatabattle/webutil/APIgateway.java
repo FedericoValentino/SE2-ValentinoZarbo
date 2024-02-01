@@ -178,7 +178,7 @@ public class APIgateway
     {
         Pair<Integer, Integer> rules = BS.getGroupRules(uID, idB, idT);
 
-        return new JSONObject(rules).toString();
+        return "{\"minsize\":"+rules.getValue0()+",\"maxsize\":"+rules.getValue1()+"}";
     }
 
     @GetMapping("/tournament/{idT}/battle/{idB}/assignment")
@@ -193,9 +193,9 @@ public class APIgateway
     @GetMapping("/tournament/{idT}/battle/{idB}/deadlines")
     public String getDeadlines(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
-        Pair<Date, Date> rules = BS.getDeadlines(uID, idB, idT);
+        Pair<Date, Date> deadlines = BS.getDeadlines(uID, idB, idT);
 
-        return new JSONObject(rules).toString();
+        return "{\"subs\":"+deadlines.getValue0()+",\"subm\":"+deadlines.getValue1()+"}";
     }
 
     @PostMapping("/tournament/{idT}/battle/{idB}/join")
@@ -213,17 +213,37 @@ public class APIgateway
     @GetMapping("/tournament/{idT}/lbt")
     public String getLeaderBoardTournament(@PathVariable("idT") int idT)
     {
-        JSONObject leaderboard = new JSONObject(LBS.getLeaderBoardTournament(idT));
+        List<Pair<String, Integer>> leaderboard = LBS.getLeaderBoardTournament(idT);
 
-        return leaderboard.toString();
+        JSONArray leaderboardJson = new JSONArray();
+
+        for(Pair<String, Integer> position : leaderboard)
+        {
+            JSONObject obj = new JSONObject();
+            obj.accumulate("user", position.getValue0());
+            obj.accumulate("score", position.getValue1());
+            leaderboardJson.put(obj);
+        }
+
+        return leaderboardJson.toString();
     }
 
     @GetMapping("/tournament/{idT}/battle/{idB}/lbb")
     public String getLeaderBoardBattle(@PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
-        JSONObject leaderboard = new JSONObject(LBS.getLeaderBoardBattle(idB));
+        List<Pair<Integer, Integer>> leaderboard = LBS.getLeaderBoardBattle(idB);
 
-        return leaderboard.toString();
+        JSONArray leaderboardJson = new JSONArray();
+
+        for(Pair<Integer, Integer> position : leaderboard)
+        {
+            JSONObject obj = new JSONObject();
+            obj.accumulate("group", position.getValue0());
+            obj.accumulate("score", position.getValue1());
+            leaderboardJson.put(obj);
+        }
+
+        return leaderboardJson.toString();
     }
 
 /*

@@ -52,9 +52,9 @@ class BattleServiceTest
 
         int b1 = appDB.addBattle(idT, 2, "TEST1", "Ciao Ciao", new Date(), new Date(), 3, 2);
 
-        BS.joinBattle(stud1, idT, b1, new ArrayList<>(Arrays.asList(stud1,stud2)));
-        BS.joinBattle(stud1, idT, b1, new ArrayList<>(Arrays.asList(stud1,stud2)));
-        BS.joinBattle(stud2, idT, b1, new ArrayList<>(Arrays.asList(stud2)));
+        BS.joinBattle(stud1, idT, b1, new ArrayList<>(Arrays.asList(appDB.getUserInfo(stud1).UserName,appDB.getUserInfo(stud2).UserName)));
+        BS.joinBattle(stud1, idT, b1, new ArrayList<>(Arrays.asList(appDB.getUserInfo(stud1).UserName,appDB.getUserInfo(stud2).UserName)));
+        BS.joinBattle(stud2, idT, b1, new ArrayList<>(Arrays.asList(appDB.getUserInfo(stud2).UserName)));
 
         assert(appDB.getGroups(b1).size() == 1);
         assert(appDB.getBattleInfo(b1).participatingGroups.get(0).getStudentsID().contains(stud1));

@@ -44,8 +44,8 @@ class TournamentServiceTest
         appDB.addStudent("Feder3", "valefeder34@gmail.com", "pwd");
         TS.createTournament(0, "Ciao");
 
-        TS.addCollaborator(0, 1, 0);
-        TS.addCollaborator(0, 2, 0);
+        TS.addCollaborator(0, "Feder2", 0);
+        TS.addCollaborator(0, "Feder3", 0);
 
         DBMSTournamentEntry t = appDB.getTournamentInfo(0);
 
@@ -61,7 +61,7 @@ class TournamentServiceTest
 
         TS.createTournament(0, "Ciao");
 
-        TS.addCollaborator(0, 1, 0);
+        TS.addCollaborator(0, "Feder2", 0);
 
         TS.closeTournament(1, 0);
 

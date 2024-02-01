@@ -5,5 +5,6 @@ public enum BattleStatus
     REGISTRATION_PHASE,
     BATTLE_PHASE,
     CONSOLIDATION_PHASE,
-    FINISHED
+    FINISHED,
+    CANT_SHOW
 }
