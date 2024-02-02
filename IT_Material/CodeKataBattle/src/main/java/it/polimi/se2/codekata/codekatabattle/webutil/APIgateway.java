@@ -72,8 +72,11 @@ public class APIgateway
         UserType type = (edu) ? UserType.EDUCATOR : UserType.STUDENT;
         int ID = US.registerUser(Username, Email, Password, type);
         JSONObject res=new JSONObject();
-        if(ID >= 0)
-            res.accumulate("uid",ID+"") ;
+
+        if(ID >= 0) {
+            res.accumulate("uid", ID + "");
+            res.accumulate("isEdu", US.isEducator(ID)+"");
+        }
         else
             res.accumulate("error","no such user found");
         return res.toString();

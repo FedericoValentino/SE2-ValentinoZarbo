@@ -30,7 +30,7 @@
                 //REST GET battle-leaderboard, assignment, group-rules, deadlines, is user in this battle
             }
             function showJoinButton(minsize, maxsize){//todo
-                let divJoin="<div class='inputlist'>"
+                let divJoin="<div class='inputList'>"
                 for (let i = 0; i < maxsize-1; i++) {
                     divJoin+="<lable for='otherStud"+(i+1)+"' >Add student to group</lable><input class='joinStudents' type='text' id='otherStud"+(i+1)+"' >"
 
@@ -117,7 +117,7 @@
 
     <%if(!request.getSession().getAttribute("isEdu").equals("true") &&  request.getParameter("isInvolved").equals("false")) {%>
 
-    <div id="joinButton" style="visibility: hidden"> </div>
+    <div id="joinButton" class="inputList" style="visibility: hidden"> </div>
     <% } if (!request.getSession().getAttribute("isEdu").equals("true") && request.getParameter("isInvolved").equals("true")) { %>
         <div>Already joined this battle</div>
     <% } %>

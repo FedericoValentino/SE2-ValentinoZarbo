@@ -17,12 +17,17 @@
         function showCreateTournament() {
         const trg=document.getElementById("crtTrgt");
         trg.innerHTML="<label for='newName'>New tournament Name</label><input id='newName' type='text'><button onclick='createTournamentCall()'>create</button>"
-
+        document.getElementById("showCreateT").style.visibility="hidden";
     }
     function createTournamentCall(){
         const load= {
            tname: document.getElementById("newName").value,
             uid: ${pageContext.request.session.getAttribute("uid")}
+        }
+        if(load.tname===""){
+            alert("please insert a tournament name")
+           // document.getElementById("showCreateT").style.visibility="hidden";
+            return;
         }
 
         restPostRequest("/tournament/create_t",load,afterCreateTournament)//todo once rest operative
@@ -40,11 +45,6 @@
         window.onload=function(){
             restGetRequest("/tournament?uid=${pageContext.request.session.getAttribute("uid")}",loadTourn, servletBURL)
 
-
-
-            //const tournaments =stubTournList
-            // get tournament/ and make list of all and those where user is subscribed
-            //loadTourn(tournaments, restBase);
         }
     </script>
 </head>
@@ -68,12 +68,6 @@
     <div id="ptor">
         <div class="contentHeader"> Your Tournaments</div>
         <div class="tournList" id="persTo">
-            <!-- <a class="tlist-item" href="TournamentPageServlet?tid=1&isInvolved=1" id="t-item111">tourn1</a>
-           - <div class="tlist-item" id="t-item2">tourn1</div>
-             <div class="tlist-item" id="t-item3">tourn1</div>
-             <div class="tlist-item" id="t-item4">tourn1</div>
-             <div class="tlist-item" id="t-item5">tourn1</div>-->
-
 
 
         </div>
@@ -85,23 +79,20 @@
         <div class="tournList" id="pubTo"></div>
     </div>
     <% if ( request.getSession().getAttribute("isEdu").equals("false")){%>
-    <div id="diversified">
 
-    <p>studente ${pageContext.request.session.getAttribute("isEdu")}</p>
+
+
         <%}else{%>
         <div id="tournCRForm">
-            <button onclick="showCreateTournament()">create tournament</button>
-            <div id="crtTrgt"></div>
-    <p>educatore ${pageContext.request.session.getAttribute("isEdu")}</p>
+            <div class="inputList">
+                <button id="showCreateT" onclick="showCreateTournament()">create tournament</button>
+                <div id="crtTrgt"></div>
+            </div>
+
+
         </div>
 
         <%} %>
-    </div>
 </div>
-
-
-
-
-
 </body>
 </html>

@@ -29,17 +29,16 @@
         return;
       }
       let edu=false
-      if(document.getElementById("isEdu1").value!=null)
-        if(document.getElementById("isEdu1").value==="on")
-          edu=true
+      if(document.getElementById("isEdu1").checked)
+        edu=true
       const regData={
         user:document.getElementById("userns").value,
         pwd:psw1,
-        email:document.getElementById("email").value,
+        email:document.getElementById("mail").value,
         educator:edu
       }
       educ=document.getElementById("isEdu1").checked
-      restPostRequest("/user/register",JSON.stringify(regData),preSession)
+      restPostRequest("/user/register",regData,preSession)
     }
     function preSession(jsonResp){
       const res=(jsonResp);
@@ -89,23 +88,22 @@
   <div>
     <div class="contentHeader"> Login</div>
 
-    <form  id="logform" method="post" >
+    <div  class="inputList"  >
       <label for="username">Username</label>
       <input name="username" id="username" type="text">
       <label for="psw">password</label>
       <input name="psw" id="psw" type="password">
      <!-- <label for="isEdu">are you an educator?</label>
       <input name="isEdu" id="isEdu"  type="checkbox">-->
+     <button onclick="login()">login</button>
+    </div>
 
-<input type="submit">
-    </form>
-    <button onclick="login()">prova</button>
-  </div>
+</div>
 
   <div >
     <div class="contentHeader"> SignUp</div>
 
-    <form id="signform" method="post">
+    <div class="inputList" method="post">
       <label for="userns">Insert a username</label>
       <input name="username" id="userns" type="text">
       <label for="psw1"> type a password</label>
@@ -116,9 +114,9 @@
       <input name="mail" id="mail" type="email">
       <label for="isEdu1"> are you an educator ?</label>
       <input name="isEdu1" id="isEdu1" type="checkbox">
+      <button onclick="register()">register</button>
+    </div>
 
-      <input type="submit">
-    </form>
   </div>
 
 </div>

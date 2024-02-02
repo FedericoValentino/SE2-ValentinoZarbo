@@ -33,6 +33,12 @@
                 submd : submd
 
             }
+            for (const key in loadData) {
+                if(loadData[key]==null || loadData[key]===""){
+                    alert("please fill every input before creating a battle")
+                    return;
+                }
+            }
            // const formdata=new FormData(document.getElementById("maybe"))
             restPostBodyRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/battle/create_b",loadData,goToTournament)
             //restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/battle/create_b",loadData,goToTournament)
@@ -49,11 +55,12 @@
     <img id="logo">
     <div class="PageName"><a href="TournamentsServlet">Main page</a> >> CREATE BATTLE</div>
     <div class="logas"><% if ( request.getSession().getAttribute("isEdu").equals("false")){%>Logged as Student <%}else{ %>Logged as Educator<%} %></div>
-    <a class="logout" href="LoginServlet">logout</a></div>
+    <a class="logout" href="LoginServlet">logout</a>
 </div>
 
 <div id="content">
-    <form id="maybe">
+    <div>
+    <div class="inputList" id="maybe">
         <label for="bName">BATTLE NAME</label><input placeholder="asdafasfa" type="text" id="bName" name="bName">
         <label for="assTxt">ASSIGNMENT TEXT</label><input placeholder=" asdadffffff" type="text" id="assTxt" name="assTxt">
 
@@ -65,10 +72,11 @@
             <label for="minG"></label><input type="number" placeholder="2" id="minG" name="minG">
             <label for="maxG"></label><input type="number" placeholder="3" id="maxG" name="maxG">
         </div>
-    </form>
+    </div>
 
         <!--<input type="file" id="testC" name="testC">-->
         <button onclick="createBattle()">create</button>
+    </div>
 
 
 

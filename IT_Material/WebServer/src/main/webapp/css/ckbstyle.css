@@ -1,6 +1,12 @@
 body {
     margin: 0;
 }
+button{
+    background: cadetblue;
+    color: antiquewhite;
+    cursor: pointer;
+    font-size: large;
+}
 
 #header {
     position: fixed;
@@ -12,6 +18,21 @@ body {
     justify-content: space-between;
     align-items: center;
 
+}
+#joinButton{
+    display: grid;
+    grid-auto-columns: min-content;
+}
+.inputList{
+    display: grid;
+    grid-auto-columns: min-content;
+    padding: 3vh;
+}
+#createBLink{
+    font-size: larger;
+    background: cadetblue;
+    color: antiquewhite;
+    padding: 3px;
 }
 
 #content {
@@ -60,7 +81,8 @@ body {
     height: 25%;
     padding: 3px;
     font-size: x-large;
-    background: grey;
+    background: cadetblue;
+    color: bisque;
     border: solid blue 1px;
     cursor: pointer;
 
@@ -86,7 +108,8 @@ body {
     height: 25%;
     padding: 3px;
     font-size: x-large;
-    background: grey;
+    background: cadetblue;
+    color: bisque;
     border: solid blue 1px;
     cursor: pointer;
 
@@ -106,14 +129,17 @@ body {
 
 }
 
+#assTxt{
+    text-align: center;
+}
 .lb-entry {
     display: flex;
     width: auto;
     height: 25%;
     font-size: x-large;
-    background: grey;
+    background: dimgray;
+    color: bisque;
     border: solid blue 1px;
-    cursor: pointer;
     justify-content: space-between;
 }
 

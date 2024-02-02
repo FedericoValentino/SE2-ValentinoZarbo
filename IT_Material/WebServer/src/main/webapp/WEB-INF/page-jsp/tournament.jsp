@@ -51,8 +51,9 @@
     window.onload=function (){loadPage()}
 
         function showAddCollaborator(){
+            document.getElementById("buttonAddCol").style.visibility="hidden"
             document.getElementById("collaboratorDiv").innerHTML="<label for='newCol'>NewCollaboratore username</label><input id='newCol' type=text>" +
-                "<button onclick='addCollaborator()'>go</button>";
+                "<button onclick='addCollaborator()'>add collaborator to tournament</button>";
         }
         function addCollaborator(){//todo
             const newCoUsname=document.getElementById("newCol").value;
@@ -138,12 +139,13 @@
             <button onclick="joinTournament()">join tournament</button>
         </div>
         <%}if(request.getSession().getAttribute("isEdu").equals("true") && request.getParameter("isInvolved").equals("true")){ %>
-            <div id="addBut">
-                <a id="bcreate" href="${pageContext.request.contextPath}/CreateBattleServlet">create battle</a>
-                <button onclick="showAddCollaborator()">Add COllaborator</button>
+            <div id="addBut" class="inputList">
+                <a id="createBLink" href="${pageContext.request.contextPath}/CreateBattleServlet">create battle</a>
+                <button id="buttonAddCol" onclick="showAddCollaborator()">Add Collaborator</button>
                 <div id="collaboratorDiv"></div>
+                <button onclick="closeTournament()">close tournament</button>
+
             </div>
-        <button onclick="closeTournament()">close tournament</button>
         <%} %>
 
     </div>

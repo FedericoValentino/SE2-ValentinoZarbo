@@ -29,11 +29,11 @@ public class DBMSApplication
             else addStudent(names[i],email[i],password[i]);
         }
         String[] tournamentName={"torn1" ,"ttttew", "tartat", "TTT"};
-        int [] creatorID={0,1,2,1};
+        int [] creatorID={0,1,0,1};
         for (int i = 0; i < 4; i++) {
             addTournament(creatorID[i],tournamentName[i]);
         }
-         int tID[]={1,1,2,1};
+         int[] tID ={1,1,2,1};
          String []battleName={"b1","bb2","bbbbbr","jasdjj"};
          String assignment="lorem ipusm specchio paura";
          Pair<Date, Date> deadline=new Pair<>(new Date(121212),new Date(121280));
