@@ -13,12 +13,14 @@
     <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
 
     <script>
+        const restBaseUrl="${pageContext.request.session.getAttribute("restApiUrl")}"
+
         const educID=${pageContext.request.session.getAttribute("uid")} ;
         window.onload=function(){
             const burl="${pageContext.request.contextPath}";
             const sourceStub="";
             const idt= ${pageContext.request.session.getAttribute("tid")},idb=${pageContext.request.session.getAttribute("idb")};
-            restGetRequest("/tournament/"+idt+"/battle/"+idb+"/evalSource",loadSourceTxt,burl)
+            restGetRequest(restBaseUrl+"/tournament/"+idt+"/battle/"+idb+"/evalSource",loadSourceTxt,burl)
             //get from rest call
             //loadSourceTxt(sourceStub);
         }
@@ -45,7 +47,7 @@
             data={ score: score,
             uid:educID,
             gID:${pageContext.request.getParameter("idb")}}
-            restPostRequest("/tournament/{idT}/battle/{idB}/evalSource/score",data,scoreSent)
+            restPostRequest(restBaseUrl+"/tournament/{idT}/battle/{idB}/evalSource/score",data,scoreSent)
 
         }
         function scoreSent(){

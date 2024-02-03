@@ -14,6 +14,8 @@
     <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
 
     <script>
+        const restBaseUrl="${pageContext.request.session.getAttribute("restApiUrl")}"
+
         function createBattle(){
             const bname= document.getElementById("bName").value ,
                 minsize = document.getElementById("minG").value,

@@ -14,15 +14,17 @@
     <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
 
     <script>
-            const servletBURL="${pageContext.request.contextPath}";
+        const restBaseUrl="${pageContext.request.session.getAttribute("restApiUrl")}"
+
+        const servletBURL="${pageContext.request.contextPath}";
             window.onload=function(){
                 const uid="${pageContext.request.session.getAttribute("uid")}"
                 const uriBattle="/tournament/${pageContext.request.session.getAttribute("tid")}/battle/${pageContext.request.session.getAttribute("bid")}"
-                restGetRequest(uriBattle+"/lbb?uid="+uid,fillLeaderBoard, servletBURL)
-                restGetRequest(uriBattle+"/assignment?uid="+uid,setAss, servletBURL)
-                restGetRequest(uriBattle+"/deadlines?uid="+uid,setDL, servletBURL)
-                restGetRequest(uriBattle+"/rules?uid="+uid,setGRules, servletBURL)
-                restGetRequest(uriBattle+"/status?uid="+uid,setStatus, servletBURL)
+                restGetRequest(restBaseUrl+uriBattle+"/lbb?uid="+uid,fillLeaderBoard, servletBURL)
+                restGetRequest(restBaseUrl+uriBattle+"/assignment?uid="+uid,setAss, servletBURL)
+                restGetRequest(restBaseUrl+uriBattle+"/deadlines?uid="+uid,setDL, servletBURL)
+                restGetRequest(restBaseUrl+uriBattle+"/rules?uid="+uid,setGRules, servletBURL)
+                restGetRequest(restBaseUrl+uriBattle+"/status?uid="+uid,setStatus, servletBURL)
 
                 afterAllLoad();
 
@@ -54,7 +56,7 @@
                     members:memmbers,
                     uid:"${pageContext.request.session.getAttribute("uid")}"
                 }
-                restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/battle/${pageContext.request.session.getAttribute("bid")}/join",data,goToTournament())
+                restPostRequest(restBaseUrl+"/tournament/${pageContext.request.session.getAttribute("tid")}/battle/${pageContext.request.session.getAttribute("bid")}/join",data,goToTournament())
             }
             function goToTournament(){
                 location.href="${pageContext.request.contextPath}/TournamentPageServlet?tid=${pageContext.request.session.getAttribute("tid")}&isInvolved=true"
