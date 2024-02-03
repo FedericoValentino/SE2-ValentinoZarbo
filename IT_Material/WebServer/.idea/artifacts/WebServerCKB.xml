@@ -2,7 +2,7 @@
   <artifact type="war" name="WebServerCKB">
     <output-path>$PROJECT_DIR$/out/artifacts/WebServerCKB</output-path>
     <root id="archive" name="WebServerCKB.war">
-      <element id="module-output" name="WebServer.main" />
+      <element id="artifact" artifact-name="Gradle : it.polimi.se2.codekata : WebServer-1.0-SNAPSHOT.war (exploded)" />
     </root>
   </artifact>
 </component>
