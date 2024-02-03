@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WebServerCKB">
+    <output-path>$PROJECT_DIR$/out/artifacts/WebServerCKB</output-path>
+    <root id="archive" name="WebServerCKB.war">
+      <element id="module-output" name="WebServer.main" />
+    </root>
+  </artifact>
+</component>
