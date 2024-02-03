@@ -16,10 +16,7 @@
       const loginData={
         user:document.getElementById("username").value,
         pwd:document.getElementById("psw").value
-       // educator:document.getElementById("isEdu").checked
       }
-      //educ=document.getElementById("isEdu").checked
-      //const damnData=new URLSearchParams(loginData);
       restPostRequest(restBaseUrl+"/user/login",loginData,preSession)
     }
 
@@ -39,7 +36,7 @@
         educator:edu
       }
       educ=document.getElementById("isEdu1").checked
-      restPostRequest("/user/register",regData,preSession)
+      restPostRequest(restBaseUrl+"/user/register",regData,preSession)
     }
     function preSession(jsonResp){
       const res=(jsonResp);
@@ -67,7 +64,7 @@
     }
 
     function redirToTournament(){
-      location.href=baseServlet+"/TournamentsServlet";//fetch("", { method: "get"})
+      location.href=baseServlet+"/TournamentsServlet";
     }
 
 
@@ -92,8 +89,6 @@
       <input name="username" id="username" type="text">
       <label for="psw">password</label>
       <input name="psw" id="psw" type="password">
-     <!-- <label for="isEdu">are you an educator?</label>
-      <input name="isEdu" id="isEdu"  type="checkbox">-->
      <button onclick="login()">login</button>
     </div>
 

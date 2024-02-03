@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
         }
         String restApiGatewayUrl="http://localhost:8080";
         try{
-            restApiGatewayUrl= System.getProperty("APIGATEWAY_URL");
+            restApiGatewayUrl= System.getenv("APIGATEWAY_URL");
         }catch (Exception e){log("APIGATEWAY_URL not set, using http://localhost:8080 as default");}
         ss.setAttribute("restApiUrl",restApiGatewayUrl);
         response.setStatus(200);

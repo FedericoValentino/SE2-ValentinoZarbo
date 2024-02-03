@@ -25,11 +25,7 @@
                 restGetRequest(restBaseUrl+uriBattle+"/deadlines?uid="+uid,setDL, servletBURL)
                 restGetRequest(restBaseUrl+uriBattle+"/rules?uid="+uid,setGRules, servletBURL)
                 restGetRequest(restBaseUrl+uriBattle+"/status?uid="+uid,setStatus, servletBURL)
-
-                afterAllLoad();
-
-
-                //REST GET battle-leaderboard, assignment, group-rules, deadlines, is user in this battle
+                                //REST GET battle-leaderboard, assignment, group-rules, deadlines, is user in this battle
             }
             function showJoinButton(minsize, maxsize){//todo
                 let divJoin="<div class='inputList'>"

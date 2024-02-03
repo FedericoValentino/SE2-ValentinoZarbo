@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 28/01/2024
-  Time: 15:16
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,8 +15,6 @@
             const sourceStub="";
             const idt= ${pageContext.request.session.getAttribute("tid")},idb=${pageContext.request.session.getAttribute("idb")};
             restGetRequest(restBaseUrl+"/tournament/"+idt+"/battle/"+idb+"/evalSource",loadSourceTxt,burl)
-            //get from rest call
-            //loadSourceTxt(sourceStub);
         }
         let listOfSource;
         function loadSourceTxt(listOfResp){

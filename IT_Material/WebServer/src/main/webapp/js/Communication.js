@@ -30,7 +30,7 @@ function restPostRequest(resourcePUri, data, consumerFun){
 function restPostBodyRequest(resourcePUri, data, consumerFun){
     fetch( resourcePUri, {
         method: "POST",
-        body: JSON.stringify(data),//todo handle cors policy with option post sent
+        body: JSON.stringify(data),
         headers: {
             "Content-type": "application/json"
 
@@ -47,9 +47,6 @@ function restPostBodyRequest(resourcePUri, data, consumerFun){
                     consumerFun()
                 }
             }, consumerFun)
-
-            // promiseResponse.json().then((damnit)=>consumerFun(damnit))
-
         } else consumerFun();
     }
 }

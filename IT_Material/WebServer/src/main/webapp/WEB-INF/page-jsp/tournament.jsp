@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 27/01/2024
-  Time: 15:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -31,9 +24,6 @@
         }
     function loadPage(){
         const bUrl="${pageContext.request.contextPath}"
-        let batStub =[{bname:"bobbo", bid: 2},{bname:"boso", bid: 3},{bname:"bbo", bid: 4}]
-        let leadBstub=[{uname:"askdl", pScore: 3},{uname:"saf", pScore: 2},{uname:"dl", pScore: 2},{uname:"askdasddl", pScore: 1}]
-        //rest call for battle list, leaderboard, and if subscribed
         const inv="${pageContext.request.getParameter("isInvolved")}";
         if(inv==="true")
              restGetRequest(restBaseUrl+"/tournament/${pageContext.request.session.getAttribute("tid")}/battle?uid=${pageContext.request.session.getAttribute("uid")}",fillBattleList,bUrl)
@@ -44,10 +34,6 @@
         restGetRequest(restBaseUrl+"/tournament/${pageContext.request.session.getAttribute("tid")}/lbt",fillLeaderBoard,bUrl)
 
 
-        //todo rest call getx2
-        //
-       // fillBattleList(batStub,bUrl);
-       // fillLeaderBoard(leadBstub,bUrl)
     }
     window.onload=function (){loadPage()}
 

@@ -20,25 +20,8 @@ function loadTourn(tournFullListJson, baseUrl){
     //setTListInvolved(yourT, document.getElementById("persTo"),baseUrl)
 }//todo check close and add collab, subscribe, join battle and collaborator stuff
 
-function setTListInvolved(list, listElement, baseUrl, involved){
-    list.forEach(to => {
-        listElement.innerHTML+='<a class="tlist-item" id="'+to.tid+'-item " href='+baseUrl+goToTournament(to.tid,""+involved)+'>'+to.tname+'</a>';
-    });
-
-}
 function setSingleT(to,listElement, baseUrl , involved){
     listElement.innerHTML+='<a class="tlist-item" id="'+to.tid+'-item " href='+baseUrl+goToTournament(to.tid,""+involved)+'>'+to.tname+'</a>';
-
-}
-function setSingleTNotInvolved(to,listElement, baseUrl){
-    listElement.innerHTML+='<a class="tlist-item" id="'+to.tid+'-item " href='+baseUrl+goToTournament(to.tid,"false")+'>'+to.tname+'</a>';
-
-}
-
-function setTListNotInv(list, listElement, baseUrl){
-    list.forEach(to => {
-        listElement.innerHTML+='<a class="tlist-item" id="'+to.tid+'-item " href='+baseUrl+goToTournament(to.tid,"false")+'>'+to.tname+'</a>';
-    });
 
 }
 function goToTournament(tid, involved){

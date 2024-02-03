@@ -26,10 +26,7 @@ function setGRules(rules){
 
 
 }
-function afterAllLoad(){
-    if(status==="REGISTRATION_PHASE")
-        showJoinButton(grule[0],grule[1]);
-}
+
 function fillLeaderBoard(leaderB){
     if(leaderB==null ||Object.values( leaderB).length===0)
          return;
