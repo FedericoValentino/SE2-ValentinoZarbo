@@ -10,6 +10,7 @@
 
   <script>
     const baseServlet="${pageContext.request.contextPath}";
+    const restBaseUrl="${pageContext.request.session.getAttribute("restApiUrl")}"
     let educ;
     function login(){
       const loginData={
@@ -19,7 +20,7 @@
       }
       //educ=document.getElementById("isEdu").checked
       //const damnData=new URLSearchParams(loginData);
-      restPostRequest("/user/login",loginData,preSession)
+      restPostRequest(restBaseUrl+"/user/login",loginData,preSession)
     }
 
     function register(){
@@ -73,9 +74,7 @@
   </script>
 </head>
 <body>
-<h1><%= "stub for session testing" %></h1>
-<br/>
-<a href="TournamentsServlet">Hello Servlet</a>
+
 <div id="header">
 
   <img id="logo">

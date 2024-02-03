@@ -1,6 +1,6 @@
 function restPostRequest(resourcePUri, data, consumerFun){
     const sendData=new URLSearchParams(data)
-    fetch("http://localhost:8080"+resourcePUri,{
+    fetch(resourcePUri,{
         method:"POST",
         body:sendData,
         headers:{
@@ -28,7 +28,7 @@ function restPostRequest(resourcePUri, data, consumerFun){
 
 
 function restPostBodyRequest(resourcePUri, data, consumerFun){
-    fetch("http://localhost:8080" + resourcePUri, {
+    fetch( resourcePUri, {
         method: "POST",
         body: JSON.stringify(data),//todo handle cors policy with option post sent
         headers: {
@@ -56,7 +56,7 @@ function restPostBodyRequest(resourcePUri, data, consumerFun){
 
 
 function restGetRequest(resourcePUri,consumerFun, servletBurl){
-    fetch("http://localhost:8080"+resourcePUri,{
+    fetch(resourcePUri,{
         method:"get",
         headers:{
             "Content-type":"application/x-www-form-urlencoded"

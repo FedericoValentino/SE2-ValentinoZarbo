@@ -14,6 +14,8 @@
     <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
 
     <script>
+        const restBaseUrl="${pageContext.request.session.getAttribute("restApiUrl")}"
+
         function showCreateTournament() {
         const trg=document.getElementById("crtTrgt");
         trg.innerHTML="<label for='newName'>New tournament Name</label><input id='newName' type='text'><button onclick='createTournamentCall()'>create</button>"
@@ -30,7 +32,7 @@
             return;
         }
 
-        restPostRequest("/tournament/create_t",load,afterCreateTournament)//todo once rest operative
+        restPostRequest(restBaseUrl+"/tournament/create_t",load,afterCreateTournament)//todo once rest operative
     }
     function afterCreateTournament(){
         location.reload()
@@ -43,7 +45,7 @@
     const servletBURL="${pageContext.request.contextPath}";
 
         window.onload=function(){
-            restGetRequest("/tournament?uid=${pageContext.request.session.getAttribute("uid")}",loadTourn, servletBURL)
+            restGetRequest(restBaseUrl+"/tournament?uid=${pageContext.request.session.getAttribute("uid")}",loadTourn, servletBURL)
 
         }
     </script>

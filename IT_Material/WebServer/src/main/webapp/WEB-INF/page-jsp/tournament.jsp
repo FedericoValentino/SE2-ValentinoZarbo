@@ -13,6 +13,7 @@
     <script src="${pageContext.request.contextPath}/js/Communication.js"></script>
     <script src="${pageContext.request.contextPath}/js/Tournament.js"></script>
     <script>
+        const restBaseUrl="${pageContext.request.session.getAttribute("restApiUrl")}"
 
         function joinTournament() {//todo
             const load={
@@ -20,7 +21,7 @@
                 uid:"${pageContext.request.session.getAttribute("uid")}"
             }
 
-            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/subscribe",(load),goMain)
+            restPostRequest(restBaseUrl+"/tournament/${pageContext.request.session.getAttribute("tid")}/subscribe",(load),goMain)
         }
         function reload(){
             location.reload()
@@ -35,12 +36,12 @@
         //rest call for battle list, leaderboard, and if subscribed
         const inv="${pageContext.request.getParameter("isInvolved")}";
         if(inv==="true")
-             restGetRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/battle?uid=${pageContext.request.session.getAttribute("uid")}",fillBattleList,bUrl)
+             restGetRequest(restBaseUrl+"/tournament/${pageContext.request.session.getAttribute("tid")}/battle?uid=${pageContext.request.session.getAttribute("uid")}",fillBattleList,bUrl)
         else {
             document.getElementById("battles").innerHTML="<div class='contentHeader'> To see the battles join the tournament</div>"
 
         }
-        restGetRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/lbt",fillLeaderBoard,bUrl)
+        restGetRequest(restBaseUrl+"/tournament/${pageContext.request.session.getAttribute("tid")}/lbt",fillLeaderBoard,bUrl)
 
 
         //todo rest call getx2
@@ -66,7 +67,7 @@
                 uid:${pageContext.request.session.getAttribute("uid")}
             }
             //restcall for addColl
-            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/addCollaborator",(load),reload)
+            restPostRequest(restBaseUrl+"/tournament/${pageContext.request.session.getAttribute("tid")}/addCollaborator",(load),reload)
 
 
         }
@@ -76,7 +77,7 @@
                 uid:${pageContext.request.session.getAttribute("uid")}
 
             }
-            restPostRequest("/tournament/${pageContext.request.session.getAttribute("tid")}/close",(load),goMain)
+            restPostRequest(restBaseUrl+"/tournament/${pageContext.request.session.getAttribute("tid")}/close",(load),goMain)
 
             //rest call to close tournament
         }

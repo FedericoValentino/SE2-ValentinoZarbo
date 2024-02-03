@@ -19,7 +19,11 @@ public class LoginServlet extends HttpServlet {
             ss.invalidate();
             ss=request.getSession();
         }
-
+        String restApiGatewayUrl="http://localhost:8080";
+        try{
+            restApiGatewayUrl= System.getProperty("APIGATEWAY_URL");
+        }catch (Exception e){log("APIGATEWAY_URL not set, using http://localhost:8080 as default");}
+        ss.setAttribute("restApiUrl",restApiGatewayUrl);
         response.setStatus(200);
         request.getRequestDispatcher("/WEB-INF/page-jsp/login.jsp").forward(request, response);
     }
@@ -27,8 +31,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BufferedReader postLoad= request.getReader();
-        //String usname="null";
-        String isEdu="no";
+        String isEdu="false";
         String uid;
         String sjson= postLoad.readLine();
         HashMap<String, String> result = new ObjectMapper().readValue(sjson, HashMap.class);
