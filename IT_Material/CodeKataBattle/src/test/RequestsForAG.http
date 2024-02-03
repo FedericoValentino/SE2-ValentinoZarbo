@@ -1,4 +1,4 @@
-POST http://localhost:8080/user/register?user=feder&pwd=123&email=lol@gmail.com&educator=true
+POST http://localhost:9090/user/register?user=feder&pwd=123&email=lol@gmail.com&educator=true
 ###uid=3
 POST http://localhost:8080/user/login?user=feder&pwd=123
 ###
