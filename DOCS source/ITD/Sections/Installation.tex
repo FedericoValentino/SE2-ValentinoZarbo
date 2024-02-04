@@ -1,0 +1,69 @@
+\subsection{Requirements}
+\begin{itemize}
+    \item Java SE JDK 21(OracleJDK, OpenJDK)
+    \item Apache Tomcat Server v9.0
+\end{itemize}
+\section{Microservices and API gateway}
+\subsection{Installation}
+\begin{itemize}
+    \item Download the application JAR package from the Release page on our Github repo
+    \item Open your terminal and navigate to the folder hosting the JAR
+    \item Launch from your terminal with the following command:
+    \begin{verbatim}
+        java -jar CodeKataMicroservices.jar
+    \end{verbatim}
+\end{itemize}
+\newpage
+\subsection{Build from source}
+\begin{itemize}
+    \item Start by cloning the GitHub repo
+    \item Open a terminal and navigate to the CodeKataBattleFolder
+    \item Start the build process by typing
+    \begin{itemize}
+        \item For Linux:\begin{verbatim}
+            ./gradlew bootJar
+        \end{verbatim}
+        \item For Windows:\begin{verbatim}
+            gradlew.bat bootJar
+        \end{verbatim}
+    \end{itemize}
+    \item Next navigate to the build/libs folder where you will find the compiled JAR file.
+\end{itemize}
+\section{Web Server}
+\subsection{Installation}
+\begin{itemize}
+    \item Download the .war file for the web application from the Release page on our Github repo
+    \item Download Apache Tomcat Server v9.0
+    \item Follow the installation process for Tomcat
+    \item Install the webapp on the Tomcat Server
+    \begin{itemize}
+        \item With tomcat gui: Run the tomcat server on localhost and from the server homepage select "Manager App". On this page use the deploy form to install the war file.
+        \item With file explorer : inside the tomcat folder find "/webapps", from here copy the .war file.
+    \end{itemize}
+    \item Set enviroment variables: 
+    \begin{itemize}
+        \item For Windows: in "apache-tomcat-9.xxx/bin/" create file "setenv.bat". Inside copy "set APIGATEWAY\_URL=http://$<$URL\_TO\_SERVICES\_WITH\_PORT$>$.
+        \item For Linux: in "apache-tomcat-9.xxx/bin/" create file "setenv.sh" write "EXPORT APIGATEWAY\_URL="http://$<$URL\_TO\_SERVICES\_WITH\_PORT$>$".
+        \item (the quotation marks are necessary for linux)
+    \end{itemize} 
+    \item Run the server with the files startup.bat or startup.sh depending on your OS.
+    \item Connect to http://localhost:8080/CKBWebServer
+\end{itemize}
+
+\subsection{Build WAR file from source}
+\begin{itemize}
+    \item Start by cloning the GitHub repo
+    \item Open a terminal and navigate to the WebServer Folder
+    \item Start the build process by typing
+    \begin{itemize}
+        \item For Linux:\begin{verbatim}
+            ./gradlew war
+        \end{verbatim}
+        \item For Windows:\begin{verbatim}
+            gradlew.bat war
+        \end{verbatim}
+    \end{itemize}
+    \item Next navigate to the build/libs folder where you will find the compiled WAR file.
+    \item Follow the installation instruction to start the Apache Tomcat server
+\end{itemize}
+

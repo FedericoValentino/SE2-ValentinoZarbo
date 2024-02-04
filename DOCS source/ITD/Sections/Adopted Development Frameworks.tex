@@ -1,0 +1,39 @@
+As said in our DD document, the application is a micro-service architecture, with a REST interface and some client scripting. In the following sections you will find a list of adopted frameworks and technologies in order to accomplish our requirements.
+
+\section{Programming Languages}
+For sake of standards and application speed we decided to use the Java Programming
+Language, which is one of the most used languages in web and distributed
+applications.
+Of course, there are some pros and cons about using this type of language:
+\begin{itemize}
+    \item Pros:
+    \begin{itemize}
+        \item Speed: of course, since it is a compiled language, Java permits to  have very good performances on these elaborations;
+        \item Standard: as shown in figure 1, Java is the De Facto standard in enterprise web development and represents a very good solution for portable applications;
+        \item Stability: Java is a mature language that has immensely evolved over the years. Hence it's more stable and predictable.
+        \item Object-Oriented: The object-oriented nature of Java allows developers to create modular programs and write reusable codes. This saves lots of efforts and time, improving the productivity of the development process.
+        \item Well-documented
+    \end{itemize}
+    \newpage
+    \item Cons:
+    \begin{itemize} 
+            \item High verbosity: with respect to other programming languages (such as Python), Java contains a more verbose and less-readable syntax.
+            \item High memory consumption: since Java Programs run on top of Java Virtual Machine, it consumes more memory.
+    \end{itemize}
+\end{itemize}
+For the client-side scripting, we decided to adopt JavaScript for the web
+app. JavaScript is a text-based programming language used both on the client-
+side and server-side that allows to make web pages interactive. We decided to develop our web pages from scratch by using HTML and CSS. This choice gave us way more freedom in the customization of the web pages without having to rely on third party services.
+
+\section{Java Frameworks}
+
+\subsection{Spring}
+In order to accomplish the goal of having a micro-service event-based architecture, we decided to adopt the Spring development framework.
+Spring is an open source framework, used for RESTful Java application development. It's built on top of the Java Enterprise Edition (JEE) and represents an efficient and modern alternative to the classic Enterprise Java Bean (EJB) model. Of course, using a framework means working on a solid base, which is well tested and documented. In fact, Spring contains a proper paradigm in order to build micro-services and managing events on its API.
+
+\section{Others}
+
+\subsection{Java Server Pages and Java Servlets}
+
+To build the WebServer that will host the web pages we decided to use JSPs and Java Servlets because of their ease of use.
+Java servlets and Java server pages (JSPs) are Java programs that run on a Java application server and extend the capabilities of the Web server. Java servlets are Java classes that are designed to respond to HTTP requests in the context of a Web application. You can look at JSPs as an extension of HTML that gives you the ability to seamlessly embed snippets of Java code within HTML pages. These bits of Java code generate dynamic content, which is embedded within the other HTML/XML content. A JSP is translated into a Java servlet and executed on the server. JSP statements embedded in the JSP become part of the servlet generated from the JSP. The resulting servlet is executed on the server. 

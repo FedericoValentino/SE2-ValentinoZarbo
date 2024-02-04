@@ -1,0 +1,128 @@
+\section{Implemented Functions}
+With respect to the RASD and DD documents, we decided to implement the following functions:
+\begin{itemize}
+    \item Educator implemented functions:
+        \begin{itemize}
+            \item createTournament();
+            \item viewTournaments();
+            \item viewTournament();
+            \item createBattle();
+            \item viewBattle();
+            \item closeTournament();
+            \item addCollaborator();
+            \item manualEval();
+            \item viewLeaderboard();
+        \end{itemize}
+    \item Student implemented functions:
+        \begin{itemize}
+            \item viewTournaments();
+            \item viewTournament();
+            \item viewBattle();
+            \item joinBattle();
+            \item subscribeToTournament();
+            \item viewLeaderboard();
+        \end{itemize}
+\end{itemize}
+
+\section{Implemented Modules}
+We decided to implement the following modules:
+\begin{itemize}
+    \item Web Server
+    \item API Gateway
+    \item Message Broker
+    \item User Service
+    \item Leaderboard Service
+    \item Tournament Service
+    \item Battle Service
+    \item ManualEval Service
+    \item Notification Service(It isn't connected to any email service but outputs what it would've sent in an email)
+    \item Application and Source DBMS
+\end{itemize}
+The GitHub handler and software evaluation modules haven't been implemented since they are not required for showing the basic functionalities of the system.
+Next follows a table representing which requirements have been satisfied.
+
+\begin{center}
+    \begin{longtable}{ |l|p{0.85\linewidth}| c | }
+        \hline
+            \textbf{ID} & \textbf{Description}&\\
+        \hline
+            R1 & The platform allows a signed in educator to create tournaments & \checkmark\\
+        \hline
+            R2 & Educators can create battles in the context of a specific tournament they are involved in (Either by creation or by invitation) & \checkmark \\
+        \hline
+            R2.1 & The platform allows an educator that created a tournament, to invite other educator and to grant them permission to create battles in the tournament context & \checkmark\\
+        \hline
+            R2.2 & The platform allows an educator to upload the codekata (description and software project, including test cases and build automation scripts) when creating a battle & \checkmark\\
+        \hline
+            R2.3 & The platform allows an educator to set subscribtion and submission deadlines when creating a battle & \checkmark\\
+        \hline
+            R2.4 & The platform allows an educator to set minimum and maximum group size when creating a battle & \checkmark\\
+        \hline
+            R2.5 & The platform allows an educator creating a battle to include a manual evaluation stage &\\
+        \hline
+            R3 & The platform allows students to subscribe to a tournament & \checkmark\\
+        \hline
+            R4 & The platform allows a student subscribed to a tournament to join a battle in that tournament context & \checkmark\\
+        \hline
+            R4.1 & The platform allows students to create a group by inviting other students when joinin a battle & \checkmark\\
+        \hline
+            R5 & The platform allows Students to login & \checkmark\\
+        \hline
+            R6 & The platform allows Educators to login  & \checkmark\\
+        \hline
+            R7 & If manual evaluation is required during consolidation stage the platform allows an educator to go through sources and add a score to the group score & \checkmark\\
+        \hline
+            R8 & The platform allows all users to view student ranks from previous and current tournaments & \checkmark\\
+        \hline
+            R8.1 & For every tournament the platform maintains a ranking for students based on the sum of their battle scores & \checkmark\\
+        \hline
+            R9 & The platform pulls group sources from Github when it receives a notification within the submission deadline &\\
+        \hline
+            R9.1 & The platform analyzes, runs testcases and scores the source of a group solution for a codekata battle and updates the group score accordingly &\\
+        \hline
+            R10 & The platform allows all user to sign in & \checkmark\\
+        \hline
+            R11 & The platform allows educators to close tournaments  & \checkmark\\
+        \hline
+            R12 & When a battle deadline expires the platform sets the battle status to consolidation stage  & \checkmark\\
+        \hline
+            R13 & The platform allows all users who are involved in a battle to look at group ranks for that battle  & \checkmark\\
+        \hline
+            R13.1 & For every battle the platform maintains a ranking of the groups based on their battle score  & \checkmark\\
+        \hline
+            R14 & The platform will notify signed students of a newly created tournament  & \checkmark\\
+        \hline
+            R15 & The platform shall notify students who are subscribed into a tournament that a new battle is available in that tournament context & \checkmark \\
+        \hline
+            R16 & The plaftorm shall notify students who are participating in a battle that the final rank for that battle is available  & \checkmark\\
+        \hline
+            R17 & The plaftorm shall notify students who are subscribed in a tournament that the final rank for that tournament is available  & \checkmark\\
+        \hline
+            R18 & The platform shall create a new repository with Github for every new battle in any tournament after the submission deadline expires&\\
+        \hline
+            R19 & The platform shall send the battle repository link to students who joined that battle after the submission deadline expires& \checkmark\\
+        \hline
+    \end{longtable}
+\end{center}
+\newpage
+With respect to the RASD document then these are the following goals that have been satisfied:
+
+\begin{center}
+    \begin{longtable}{ |l|p{0.9\linewidth}| c | }
+        \hline
+        \textbf{ID} & \textbf{Description}&\\
+        \hline
+        G1 & An Educator can manage a tournament. & \checkmark\\
+        \hline
+        G2 & An educator can create battles inside of a tournament in which he is involved. & \checkmark\\
+        \hline
+        G3 & Students can participate in tournaments created by an educator& \checkmark\\
+        \hline
+        G4 & Students can participate and compete in battles created by an educator, alone or in groups.&\\
+        \hline
+        G5 & Students are scored based on their performance in battles.&\\
+        \hline
+        G6 & The platform allows students and educators to compare the performance of students. & \checkmark\\
+        \hline
+    \end{longtable}
+\end{center}

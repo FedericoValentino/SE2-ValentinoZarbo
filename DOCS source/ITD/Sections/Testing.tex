@@ -1,0 +1,20 @@
+In this section we will briefly describe how we tested the application, following the general guidelines given in the Design Document.
+We decided to write test cases only the Microservices and API gateway. Instead the web app was tested by manually searching for possible errors/bugs/glitches.
+
+\section{Microservices and API gateway}
+We wrote the test cases using the JUnit 5 suite and by following the suggested Spring testing approach. We did unit testing for all the microservices and database handlers (DBs do not really exists, but there are stubs handling them). Next we followed by some integration testing.
+
+\subsection{Integration Tests}
+All the tests described are considered integration tests because every component needed to interact one way or another with other components in order to achieve success.
+\begin{itemize}
+    \item \textbf{Battle Service:} We tested the methods regarding the battle interaction, addBattle and joinBattle. In the test for addBattle we also tested the collaboratoration option for a tournament. The joinBattle method instead has been tested by adding different groups for a battle and by making sure the addition satisfied the group constraints.
+    \item \textbf{Leaderboard Service:} We tested the getLeaderboardTournament() and getLeaderboardBattle() methods. Both tests regarded the assertion that the leaderboards were ordered correctly.
+    \item \textbf{ManualEval Service:} We tested the addManualScore() method by adding a random battle to the DB, making a team join that and using the method to add a score.
+    \item \textbf{Tournament Service:} We tested all the method which modify entries in the DB.
+    \item \textbf{User Service:} We tested the login() and register() functions in order to assert the correct return of users IDs.
+    \item \textbf{API Gateway:} We tested every method to see if the returning JSON string was in the correct format through the use of REGEX strings.
+\end{itemize}
+The above tests, which were in total 26 resulted in a 100\%  success rate. Thanks to the obtained result it is therefore possible to state that the back-end is sturdy and built on solid source code.
+
+\subsection{Unit Tests}
+Furthermore, we made some tests on the proper functioning of the DBMS. On a total of 11 tests the DBMS was successful in all of them.

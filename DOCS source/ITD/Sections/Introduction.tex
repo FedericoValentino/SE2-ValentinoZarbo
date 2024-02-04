@@ -1,0 +1,57 @@
+\section{Purpose}
+\ac{CKB} is a new platform that helps students improve their software development skills by training with peers on code katas . Educators use the platform to challenge students by creating code kata battles in which teams of students can compete against each other, thus proving (and improving) their skills.\newline
+A code kata battle is essentially a programming exercise in a programming language of choice (e.g., Java, Python). The exercise includes a brief textual description and a software project with build automation scripts (e.g., a Gradle project in case of Java sources) that contains a set of test cases that the program must pass, but without the program implementation. Students are asked to complete the project with their code. In particular, groups of students participating in a battle are expected to follow a test-first approach and develop a solution that passes the required tests. Groups deliver their solution to the platform (by the end of the battle). At the end of the battle, the platform assigns scores to groups to create a competition rank.
+
+\section{Scope}
+This document aims to describe how the implementation and integration testing took place.  This is the last step in the \ac{CKB} platform development cycle. Testing means to check that the application works as expected and described in the DD document.
+
+\section{Definitions, Acronyms, Abbreviations}
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Acronym} & \textbf{Definition}\\
+            \hline
+            CKB & CodeKataBattle\\
+            \hline
+            CK & Code Kata\\
+            \hline
+            UI & User Interface\\
+            \hline
+            SOA & Service Oriented Architecture \\
+            \hline
+            API & Application Programming Interface \\
+            \hline
+            HTML & HyperText Markup Language\\
+            \hline
+            CSS & Cascading Style Sheet\\
+            \hline
+            JS & JavaScript\\
+            \hline
+            DBMS & DataBase Management System\\
+            \hline
+        \end{tabular}
+        \caption{Acronyms used in the document}
+    \end{center}
+\end{table}
+
+\section{Revision History}
+
+\section{Reference Documents}
+
+\begin{itemize}
+    \item RASD Document for \ac{CKB}
+    \item DD Document for \ac{CKB}
+\end{itemize}
+
+\section{Document Structure}
+The document is structured as follows: 
+\begin{itemize}
+    \item Chapter 1: Introduction to the document and its scope
+    \item Chapter 2: Report on the implemented functions, modules in the application and mapping to requirements and goals
+    \item Chapter 3: Contains the adopted development frameworks
+    \item Chapter 4: Explains the structure of the source code
+    \item Chapter 5: Contains all the information on how we performed the testing
+    \item Chapter 6: Contains all the system requirements and installation instructions for the application
+\end{itemize}
