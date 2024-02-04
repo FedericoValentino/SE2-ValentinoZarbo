@@ -31,3 +31,9 @@ dependencies {
 
 test {
   useJUnitPlatform()  }
+
+war{
+  archiveBaseName = 'CKBWebServer'
+  archiveVersion = '1.0-SNAPSHOT'
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
