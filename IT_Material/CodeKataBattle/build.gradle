@@ -31,8 +31,7 @@ tasks.named('test') {
 
 bootJar {
     enabled = true
-    archiveBaseName = 'CodeKataBattleServices'
-    archiveVersion = '1.0-SNAPSHOT'
+    archiveFileName= 'CodeKataBattleServices.jar'
     manifest {
         attributes(
                 'Start-Class': 'it.polimi.se2.codekata.CodeKataBattleApplication'

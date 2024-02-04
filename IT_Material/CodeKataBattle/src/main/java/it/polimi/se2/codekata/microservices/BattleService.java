@@ -5,6 +5,7 @@ import it.polimi.se2.codekata.DBMS.DBMSTournamentEntry;
 import it.polimi.se2.codekata.DBMS.DBMSUserEntry;
 import it.polimi.se2.codekata.GeneralStuff.BattleStatus;
 import it.polimi.se2.codekata.GeneralStuff.Group;
+import it.polimi.se2.codekata.topics.InvitationsBattleTopic;
 import it.polimi.se2.codekata.topics.RepositoryTopic;
 import org.javatuples.Pair;
 import it.polimi.se2.codekata.DBMS.DBMSApplication;
@@ -126,12 +127,16 @@ public class BattleService
 
         //if all is good check for the battle and if min and max are respected add to battle
         Pair<Integer, Integer> rules = DB.getBattleGroupRules(BattleID);
-
+        int ID = -1;
         if(StudentID.size() <= rules.getValue1() && StudentID.size() >= rules.getValue0())
         {
             Group students = new Group(StudentID);
-            DB.addGroup(students, BattleID);
+            ID = DB.addGroup(students, BattleID);
+            publisher.publishEvent(new InvitationsBattleTopic(ID, StudentID));
         }
+
+
+
     }
 
     @Scheduled(fixedDelay = 1000)

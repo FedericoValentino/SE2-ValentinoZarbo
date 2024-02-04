@@ -33,6 +33,6 @@ test {
   useJUnitPlatform()  }
 
 war{
-  archiveBaseName = 'CKBWebServer'
+  archiveFileName = 'CKBWebServer.war'
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

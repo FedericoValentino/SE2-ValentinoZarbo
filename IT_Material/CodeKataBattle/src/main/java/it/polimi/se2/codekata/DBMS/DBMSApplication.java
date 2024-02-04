@@ -243,10 +243,12 @@ public class DBMSApplication
         return bID;
     }
 
-    public void addGroup(Group students, int bID)
+    public int addGroup(Group students, int bID)
     {
+        int ID = 0;
         for (DBMSBattleEntry battleEntry : BattleEntries) {
             if (battleEntry.bID == bID) {
+                ID = battleEntry.participatingGroups.size();
                 battleEntry.participatingGroups.add(students);
             }
         }
@@ -262,6 +264,7 @@ public class DBMSApplication
                 }
             }
         }
+        return ID;
     }
 
     public Pair<Integer, Integer> getBattleGroupRules(int bID)

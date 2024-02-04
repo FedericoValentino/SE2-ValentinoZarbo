@@ -1,5 +1,6 @@
 package it.polimi.se2.codekata.microservices;
 import it.polimi.se2.codekata.DBMS.DBMSApplication;
+import it.polimi.se2.codekata.GeneralStuff.UserType;
 import it.polimi.se2.codekata.topics.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
@@ -21,13 +22,15 @@ public class NotificationService
     @EventListener
     public void tournamentTopicListener(TournamentTopic event)
     {
-        ArrayList<Integer> subscribedStudents = DB.getSubscribedStudents(event.getTournamentID());
+        ArrayList<Integer> subscribedStudents = DB.getAllSignedUsers();
         for(int uID : subscribedStudents)
         {
-            if (event.getTournamentStatus()) {
-                sendEmail("Tournament " + event.getTournamentID() + " is starting!", uID);
-            } else {
-                sendEmail("Tournament " + event.getTournamentID() + " has ended!", uID);
+            if(DB.getUserInfo(uID).userType == UserType.STUDENT) {
+                if (event.getTournamentStatus()) {
+                    sendEmail("Tournament " + event.getTournamentID() + " is starting!", uID);
+                } else {
+                    sendEmail("Tournament " + event.getTournamentID() + " has ended!", uID);
+                }
             }
         }
     }

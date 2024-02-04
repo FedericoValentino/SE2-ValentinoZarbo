@@ -7,6 +7,7 @@ import it.polimi.se2.codekata.DBMS.DBMSUserEntry;
 import it.polimi.se2.codekata.GeneralStuff.BattlesElement;
 import it.polimi.se2.codekata.GeneralStuff.TournamentsElement;
 import it.polimi.se2.codekata.GeneralStuff.UserType;
+import it.polimi.se2.codekata.topics.InvitationsTournamentTopic;
 import it.polimi.se2.codekata.topics.TournamentTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -52,7 +53,9 @@ public class TournamentService
         if(DB.getUserInfo(UserId).userType == UserType.EDUCATOR && DB.getTournamentInfo(tID).creatorID == UserId && DB.getUserInfo(CollaboratorID).userType == UserType.EDUCATOR)
         {
             DB.grantBattleCreation(tID, CollaboratorID);
+            publisher.publishEvent(new InvitationsTournamentTopic(CollaboratorID, tID));
         }
+
     }
     public void closeTournament(int UserId, int TournamentID)
     {
