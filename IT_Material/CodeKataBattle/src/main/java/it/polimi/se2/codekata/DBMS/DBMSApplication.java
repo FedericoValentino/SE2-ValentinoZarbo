@@ -235,8 +235,12 @@ public class DBMSApplication
                 bID = this.BattleEntries.size();
                 tournamentEntry.Battles.add(bID);
                 this.BattleEntries.add(new DBMSBattleEntry(tID, bID, BattleName, new Pair<>(minsize, maxsize), assignment, new Pair<>(subsDL, submDL)));
-                DBMSUserEntry creator=this.getUserInfo(EduID);
-                creator.UserBattles.add(bID);
+                for(int edu : tournamentEntry.collaborators)
+                {
+                    DBMSUserEntry entry = getUserInfo(edu);
+                    entry.UserBattles.add(bID);
+                }
+
             }
         }
 

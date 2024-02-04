@@ -30,12 +30,15 @@ class BattleServiceTest
 
         appDB.grantBattleCreation(idT, edu1);
 
-        BS.createBattle(idT, edu, "TEST1", new Pair<>(3,1), "Ciao Ciao", new Pair<>(new Date(), new Date()), new ArrayList<>(Arrays.asList("Ciao", "ciao")));
-        BS.createBattle(idT, edu1, "TEST1", new Pair<>(3,1), "Ciao Ciao", new Pair<>(new Date(), new Date()), new ArrayList<>(Arrays.asList("Ciao", "ciao")));
-        BS.createBattle(idT, edu2, "TEST1", new Pair<>(3,1), "Ciao Ciao", new Pair<>(new Date(), new Date()), new ArrayList<>(Arrays.asList("Ciao", "ciao")));
+        int bID1 = BS.createBattle(idT, edu, "TEST1", new Pair<>(3,1), "Ciao Ciao", new Pair<>(new Date(), new Date()), new ArrayList<>(Arrays.asList("Ciao", "ciao")));
+        int bID2 = BS.createBattle(idT, edu1, "TEST1", new Pair<>(3,1), "Ciao Ciao", new Pair<>(new Date(), new Date()), new ArrayList<>(Arrays.asList("Ciao", "ciao")));
+        int bID3 = BS.createBattle(idT, edu2, "TEST1", new Pair<>(3,1), "Ciao Ciao", new Pair<>(new Date(), new Date()), new ArrayList<>(Arrays.asList("Ciao", "ciao")));
 
         assert (appDB.getBattlesOfTournament(idT).size() == 2);
-
+        assert (appDB.getUserInfo(edu).UserBattles.contains(bID1));
+        assert (appDB.getUserInfo(edu).UserBattles.contains(bID2));
+        assert (appDB.getUserInfo(edu1).UserBattles.contains(bID1));
+        assert (appDB.getUserInfo(edu1).UserBattles.contains(bID2));
     }
 
     @Test
