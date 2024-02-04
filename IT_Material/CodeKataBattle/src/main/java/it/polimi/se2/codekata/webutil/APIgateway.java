@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -159,8 +161,11 @@ public class APIgateway
     {
         int g1=Integer.parseInt(input.get("minsize"));
         int g2=Integer.parseInt(input.get("maxsize"));
+        Long date1, date2;
+        date1= Long.parseLong(input.get("subsd"));
+        date2= Long.parseLong(input.get("submd"));//milliseconds from 1700
         Pair<Integer,Integer> gl=new Pair<>(g1,g2);
-        Pair<Date,Date>dl=new Pair<>(new Date(),new Date());
+        Pair<Date,Date>dl=new Pair<>(new Date(date1),new Date(date2));
         ArrayList<String > fakeCase=new ArrayList<>();
         fakeCase.add("boh");
         BS.createBattle(idt,Integer.parseInt(input.get("uid")),input.get("bname"),gl,input.get("assignment"),dl,fakeCase);
@@ -194,8 +199,10 @@ public class APIgateway
     public String getDeadlines(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)
     {
         Pair<Date, Date> deadlines = BS.getDeadlines(uID, idB, idT);
-
-        return "{\"subs\":\""+deadlines.getValue0()+"\",\"subm\":\""+deadlines.getValue1()+"\"}";
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String d0 = formatter.format(deadlines.getValue0());
+        String d1 = formatter.format(deadlines.getValue1());
+        return "{\"subs\":\""+d0+"\",\"subm\":\""+d1+"\"}";
     }
 
     @PostMapping("/tournament/{idT}/battle/{idB}/join")

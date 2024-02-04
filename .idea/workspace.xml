@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="07798836-d5ae-4c24-9164-175a19b4b4d9" name="Changes" comment="done correct http connection, fixed a rest controller, implemented functionalities on client">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/MainPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/MainPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/battlePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/battlePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/tournament.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/tournament.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/createBattle.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/IT_Material/WebServer/src/main/webapp/WEB-INF/page-jsp/createBattle.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,9 +221,7 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="Gradle : it.polimi.se2.codekata : WebServer-1.0-SNAPSHOT.war" />
-        </option>
+        <option name="BuildArtifacts" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
@@ -259,6 +255,7 @@
       <workItem from="1706442558867" duration="13514000" />
       <workItem from="1706524182840" duration="19222000" />
       <workItem from="1706604881558" duration="15413000" />
+      <workItem from="1707056951971" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="Implementation Files">
       <option name="closed" value="true" />

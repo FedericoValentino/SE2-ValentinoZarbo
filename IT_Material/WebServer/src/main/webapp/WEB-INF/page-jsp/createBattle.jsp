@@ -15,8 +15,8 @@
                 minsize = document.getElementById("minG").value,
                 maxsize = document.getElementById("maxG").value,
                 assignment= document.getElementById("assTxt").value,
-                subsd = document.getElementById("subsD").value,
-                submd = document.getElementById("submD").value;
+                subsd = new Date(document.getElementById("subsD").value),
+                submd =  new Date(document.getElementById("submD").value);
             const loadData={
 
                 uid: ${pageContext.request.session.getAttribute("uid")} ,
@@ -25,9 +25,13 @@
                 minsize : minsize,
                 maxsize : maxsize,
                 assignment: assignment,
-                subsd : subsd,
-                submd : submd
+                subsd : subsd.getTime(),
+                submd : submd.getTime()
 
+            }
+            if(minsize>maxsize || minsize<0 || maxsize<0){
+                alert("Please insert acceptable values for minsize and maxsize")
+                return;
             }
             for (const key in loadData) {
                 if(loadData[key]==null || loadData[key]===""){
