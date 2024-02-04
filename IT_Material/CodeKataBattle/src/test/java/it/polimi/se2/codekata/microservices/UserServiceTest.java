@@ -57,4 +57,15 @@ class UserServiceTest
 
     }
 
+    @Test
+    void isEducator()
+    {
+        int id = US.registerUser("test", "test", "test", UserType.STUDENT);
+        int id2 = US.registerUser("test2", "test", "test", UserType.EDUCATOR);
+
+        assert(!US.isEducator(id));
+        assert(US.isEducator(id2));
+        assert(!US.isEducator(-1));
+    }
+
 }

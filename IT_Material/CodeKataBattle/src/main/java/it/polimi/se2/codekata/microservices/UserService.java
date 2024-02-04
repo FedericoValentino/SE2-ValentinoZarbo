@@ -1,6 +1,7 @@
 package it.polimi.se2.codekata.microservices;
 
 import it.polimi.se2.codekata.DBMS.DBMSApplication;
+import it.polimi.se2.codekata.DBMS.DBMSUserEntry;
 import it.polimi.se2.codekata.GeneralStuff.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,8 +50,17 @@ public class UserService
 
         return -1;
     }
-    public boolean isEducator(int userID){
-        return (DB.getUserInfo(userID).userType.equals(UserType.EDUCATOR));
+    public boolean isEducator(int userID)
+    {
+        DBMSUserEntry user = DB.getUserInfo(userID);
+        if(user != null)
+        {
+            return user.userType.equals(UserType.EDUCATOR);
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }

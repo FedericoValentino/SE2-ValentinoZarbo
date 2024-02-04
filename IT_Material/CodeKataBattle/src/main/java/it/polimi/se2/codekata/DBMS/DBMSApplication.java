@@ -18,7 +18,7 @@ public class DBMSApplication
 
     //iether this or load from file a preset
     private void preGeneratedData(ArrayList<DBMSTournamentEntry> tEntries,ArrayList<DBMSUserEntry> usEntries,ArrayList<DBMSBattleEntry> bEntries){
-        String []names = {"lask","asdas","lukas"};//todo addd a way to populate a bit more stuff for presentation
+        String []names = {"lask","asdas","lukas"};
          String []email= {"lask@mail.com","asdas@mail.com","lukas@mail.com"};
          String []password= {"lask","asdas","lukas"};
          UserType[]userType= {UserType.EDUCATOR,UserType.EDUCATOR,UserType.STUDENT};

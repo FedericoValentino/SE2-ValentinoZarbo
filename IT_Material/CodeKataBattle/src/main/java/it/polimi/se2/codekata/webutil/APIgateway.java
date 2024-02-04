@@ -16,7 +16,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-//TODO Cercare modo per testare
 @CrossOrigin
 @RestController
 public class APIgateway
@@ -76,7 +75,7 @@ public class APIgateway
             res.accumulate("isEdu", US.isEducator(ID)+"");
         }
         else
-            res.accumulate("error","no such user found");
+            res.accumulate("error","Error during registration");
         return res.toString();
     }
 /*
@@ -110,7 +109,7 @@ public class APIgateway
     @PostMapping("/tournament/{idT}/addCollaborator")
     public void addCollaborator(@PathVariable("idT") int idT, @RequestParam("uid") int UserID, @RequestParam("cUsername") String collaboratorName)
     {
-        TS.addCollaborator(UserID, collaboratorName, idT);//todo reqeust collaborator username instead of id
+        TS.addCollaborator(UserID, collaboratorName, idT);
     }
 
     @PostMapping("/tournament/{idT}/close")
@@ -166,7 +165,7 @@ public class APIgateway
         fakeCase.add("boh");
         BS.createBattle(idt,Integer.parseInt(input.get("uid")),input.get("bname"),gl,input.get("assignment"),dl,fakeCase);
         //BS.createBattle(idT, uID, battleName, new Pair<>(minSize, maxsize), assignment, new Pair<>(subscriptionDeadline, submissionDeadline), new ArrayList<>());
-    }//todo move post paramaeter to body, eventually create class for every type where usefull
+    }
 
     @GetMapping("tournament/{idT}/battle/{idB}/status")
     public String getBattleStatus(@RequestParam("uid")int uID, @PathVariable("idT") int idT, @PathVariable("idB") int idB)

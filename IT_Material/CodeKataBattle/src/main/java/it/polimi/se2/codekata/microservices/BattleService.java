@@ -78,7 +78,7 @@ public class BattleService
         if(canAccessBattleInfo(UserId,BattleId,tid))
             return DB.getBattleAssignement(BattleId);
         else
-            return null;//todo instead of returning null send an error if possible
+            return "";
     }
 
     public Pair<Date, Date> getDeadlines(int UserId, int BattleID, int tid)

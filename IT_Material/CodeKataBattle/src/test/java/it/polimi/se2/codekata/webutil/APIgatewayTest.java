@@ -39,7 +39,7 @@ class APIgatewayTest
 
 
         assert(matcher.matches());
-        assert(result2.equals("{\"error\":\"no such user found\"}"));
+        assert(result2.equals("{\"error\":\"Error during registration\"}"));
     }
 
     @Test

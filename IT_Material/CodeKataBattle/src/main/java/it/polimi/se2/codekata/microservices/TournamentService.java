@@ -72,7 +72,6 @@ public class TournamentService
     }
     public ArrayList<BattlesElement> getTournamentsBattles(int UserId, int TournamentID)
     {
-        //TODO add support for isInvolvedCreator
         ArrayList<BattlesElement> battleList = new ArrayList<BattlesElement>();
         DBMSTournamentEntry tournamentEntry = DB.getTournamentInfo(TournamentID);
 
