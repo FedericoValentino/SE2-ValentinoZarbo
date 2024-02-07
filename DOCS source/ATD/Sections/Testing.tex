@@ -1,0 +1,127 @@
+\section{Test Scenarios}
+\subsection{Register}
+\begin{enumerate}
+    \item Goal: Register a new user
+    \item Steps to reproduce:
+        \begin{itemize}
+            \item Open the app
+            \item Click on "New user? Sign Up!"
+            \item Fill out first name, second name, email, password and choose account type
+            \item Click Sign up button
+        \end{itemize}
+    \item Issues:
+        \begin{itemize}
+            \item If a user signs up with the same email as another user then the entry for that user is lost.
+        \end{itemize}
+\end{enumerate}
+
+\subsection{Login}
+\begin{enumerate}
+    \item Goal: Log into platform
+    \item Steps to reproduce:
+        \begin{itemize}
+            \item Open the app
+            \item Fill out email and password
+            \item Click Login button
+        \end{itemize}
+    \item Issues:
+        \begin{itemize}
+            \item The main page of the application contains information even when the user is completely new to the platform
+            \item If a students logs in they can't see or interact with anything
+        \end{itemize}
+\end{enumerate}
+
+
+\subsection{Create Tournament}
+\begin{enumerate}
+    \item Goal: Create a tournament
+    \item Steps to reproduce:
+        \begin{itemize}
+            \item Login
+            \item Click on manage tournaments
+            \item Click on $+$ symbol
+            \item Fill out the form
+            \item Create the tournament
+        \end{itemize}
+    \item Issues:
+        \begin{itemize}
+            \item Badge creation and scoring function not working
+            \item Sometimes the confirm button doesn't work and doesn't redirect you to the Tournaments Page
+            \item The newly created tournament contains information that shouldn't be there
+        \end{itemize}
+\end{enumerate}
+
+\subsection{Invite Educator}
+\begin{enumerate}
+    \item Goal: Invite an educator during tournament creation
+    \item Steps to reproduce:
+        \begin{itemize}
+            \item Login
+            \item Click on manage tournaments
+            \item Click on $+$ symbol
+            \item Fill out the form
+            \item Insert educator email to invite
+            \item Create the tournament
+        \end{itemize}
+    \item Issues:
+        \begin{itemize}
+            \item Invitations don't work, the other educator can't see their invitations and accept them
+        \end{itemize}
+\end{enumerate}
+
+\subsection{Create Battle}
+\begin{enumerate}
+    \item Goal: Create a battle
+    \item Steps to reproduce:
+        \begin{itemize}
+            \item Login
+            \item Create a tournament and go to the tournament page
+            \item Fill out the battle creation form
+            \item Click on create battle
+        \end{itemize}
+    \item Issues:
+        \begin{itemize}
+            \item Battle creation doesn't work, no new battle gets added to the GUI
+        \end{itemize}
+\end{enumerate}
+
+
+\subsection{Evaluation of Battle Sources}
+\begin{enumerate}
+    \item Goal: Manually evaluate sources
+    \item Steps to reproduce:
+        \begin{itemize}
+            \item Login
+            \item Go to a tournament page
+            \item Click on evaluate battle sources
+            \item Click on download sources
+            \item Add a score 
+            \item Click on finalize score
+        \end{itemize}
+    \item Issues:
+        \begin{itemize}
+            \item No button works on the evaluate battle sources page
+        \end{itemize}
+    \item Additional Points:
+        \begin{itemize}
+            \item This testing was only done since in the tournament page there is always a single battle that needs manual evaluation, otherwise the testing of this aspect wouldn't have happened
+        \end{itemize}
+\end{enumerate}
+
+\subsection{Join tournament}
+\begin{enumerate}
+    \item Goal: As a student join a tournament
+    \item Issues:
+        \begin{itemize}
+            \item Couldn't be tested due to the lack of any real tournament on the main page
+        \end{itemize}
+\end{enumerate}
+
+\subsection{Join Battle}
+\begin{enumerate}
+    \item Goal: As a student join a battle
+    \item Issues:
+        \begin{itemize}
+            \item Couldn't be tested due to the lack of any real tournament on the main page
+        \end{itemize}
+\end{enumerate}

@@ -4,6 +4,8 @@
 * Group registration deadline: 22/10/2023
 * RASD submission deadline: 22/12/2023
 * DD submission deadline: 07/01/2024
+* IT submission deadline: 04/02/2024
+* AT submission deadline: 07/02/2024
 * Final presentation: 14/02/24
 
 ----------
@@ -84,8 +86,7 @@ users can see the list of ongoing tournaments as well as the corresponding tourn
 
 When an educator closes a tournament, as soon as the final tournament rank becomes available the
 CKB platform notifies all students involved in the tournament.  
-
-(gamification exluded) 
+ 
 -----------
 
 

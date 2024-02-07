@@ -1,0 +1,11 @@
+For the installation phase we followed the \textit{Installation instruction} chapter in the IT document. 
+\section{Application Server}
+Since the given JAR files were not working and returned a security exception we decided to run the Application Server executables directly from source inside the Intellij IDEA IDE. Doing this they didn't raise any issues. The problematic part during the installation was the MongoDB and PostgreSQL parts. While they were was relatively easy to install the instructions lacked of any terminal command or whatsoever info on what the exact steps were to create the internal DBs and in case of Postgre how to configure the user. 
+
+\section{Webserver}
+Installing the Webserver instead was pretty straight forward, the terminal commands were described accurately. Unfortunately due to an untreated CORS policy we couldn't access the web page directly from our default browser and following the guide tips we had to install Google Chrome and launch it while disabling web security. Doing this gave us access to the \ac{CKB} web platform.\subsection{Platform}
+\begin{itemize}
+    \item Intel Core i5-9600k
+    \item 16 GB RAM
+    \item O.S.: Ubuntu 22.04
+\end{itemize}

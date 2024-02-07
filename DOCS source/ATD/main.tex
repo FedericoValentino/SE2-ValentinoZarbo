@@ -1,0 +1,131 @@
+\documentclass[oneside]{book}
+
+%---------------------------------------------------------------
+%   PACKAGES
+%---------------------------------------------------------------
+\usepackage{graphicx} % Required for inserting images
+\usepackage{xcolor}
+\usepackage{acronym}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{rotating}
+\usepackage{hyperref}
+\usepackage{tikz}
+
+
+%---------------------------------------------------------------
+%   ALLOY CONFIG
+%---------------------------------------------------------------
+\lstdefinelanguage{alloy}{
+    morekeywords={
+        module, open, as,
+        private, abstract, sig, extends, in,
+        lone, some, one, disj,
+        fact, pred, fun, assert,
+        run, check,
+        for, but, exactly,
+        this, not, implies, else, let,
+        not, no, set, all, sum,
+        iff, or, Int, and,
+        none, univ, iden
+    },
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[l]{--},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]{"},
+%literate={->}{$\rightarrow$}1
+% replacing characters can cause problems when copying from PDF to editor
+}[keywords,comments,strings]
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+\lstset{frame=tb,
+    language=alloy,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\bf\color{blue},
+    commentstyle=\it\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
+}
+
+%---------------------------------------------------------------
+%   NEW COMMANDS
+%---------------------------------------------------------------
+
+\newcommand{\newtext}[1]{\textcolor{blue}{#1}}
+\newcommand{\myworries}[1]{\textcolor{red}{#1}}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+%---------------------------------------------------------------
+%   ACRONYMS
+%---------------------------------------------------------------
+
+
+\acrodef{CKB}[CKB]{CodeKataBattle}
+\acrodef{CK}[CK]{CodeKata}
+\acrodef{UI}[UI]{User Interface}
+\acrodef{SOA}[SOA]{Service Oriented Architecture}
+\acrodef{API}[API]{Application Programming Interface}
+\acrodef{HTML}[HTML]{}
+\acrodef{CSS}[CSS]{}
+\acrodef{JS}[JS]{JavaScript}
+\acrodef{DBMS}[DBMS]{DataBase Management System}
+%---------------------------------------------------------------
+%   DOCUMENT
+%---------------------------------------------------------------
+
+\begin{document}
+
+
+\title{ATD}
+\author{Federico Valentino, Nicola Zarbo }
+\date{February 2023}
+
+
+\maketitle
+\newpage
+\setcounter{page}{1}
+
+\tableofcontents % Table of contents
+\cleardoublepage
+
+\chapter{Introduction}
+\input{Sections/Introduction}
+\newpage
+
+\chapter{Installation Setup}
+\input{Sections/Installation}
+\newpage
+
+\chapter{Acceptance Test Cases}
+\input{Sections/Testing}
+\newpage
+
+\chapter{Additional Points}
+\input{Sections/Additional Points}
+\newpage
+
+\chapter{Effort spent}
+\input{Sections/Effort}
+\newpage
+
+\chapter{References}
+\input{Sections/References}
+\newpage
+
+\end{document}
